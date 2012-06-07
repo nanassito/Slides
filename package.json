@@ -1,0 +1,10 @@
+{
+    "name": "slides"
+  , "version": "0.0.1"
+  , "private": false
+  , "dependencies": {
+      "express": "2.5.8"
+    , "mongodb": ">= 0.9.6-7"
+    , "nconf": ">=0.5.1"
+  }
+}
