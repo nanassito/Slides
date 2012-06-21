@@ -1,0 +1,72 @@
+// SPRITES
+// Glyphs and icons for buttons, nav, and more
+// -------------------------------------------
+
+
+// ICONS
+// -----
+
+// All icons receive the styles of the <i> tag with a base class
+// of .i and are then given a unique class to add width, height,
+// and background-position. Your resulting HTML will look like
+// <i class="icon-inbox"></i>.
+
+// For the white version of the icons, just add the .icon-white class:
+// <i class="icon-inbox icon-white"></i>
+
+[class*="icon-"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  .ie7-restore-right-whitespace();
+  line-height: 16px;
+  vertical-align: text-top;
+  background-image: url("@{iconSpritePath}");
+  background-position: 16px 16px;
+  background-repeat: no-repeat;
+
+}
+.icon-white {
+  background-image: url("@{iconWhiteSpritePath}");
+}
+
+.icon-reload		{ background-position: 0      0; }
+.icon-valid			{ background-position: -20px  0; }
+.icon-invalid		{ background-position: -40px  0; }
+.icon-warning		{ background-position: -60px  0; }
+
+.icon-header		{ background-position: 0      -20px; }
+.icon-section		{ background-position: -20px  -20px; }
+.icon-footer		{ background-position: -40px  -20px; }
+
+.icon-save			{ background-position: 0      -40px; }
+.icon-new			{ background-position: -20px  -40px; }
+.icon-open			{ background-position: -40px  -40px; }
+.icon-buddy			{ background-position: -60px  -40px; }
+
+.icon-align-left	{ background-position: 0      -60px; }
+.icon-align-center	{ background-position: -20px  -60px; }
+.icon-align-right	{ background-position: -40px  -60px; }
+.icon-align-justify	{ background-position: -60px  -60px; }
+
+.icon-media			{ background-position: 0      -80px; }
+.icon-video			{ background-position: -20px  -80px; }
+.icon-photo			{ background-position: -40px  -80px; }
+
+.icon-title			{ background-position: 0      -100px; }
+.icon-title-h1		{ background-position: -20px  -100px; }
+.icon-title-h2		{ background-position: -40px  -100px; }
+.icon-title-h3		{ background-position: -60px  -100px; }
+.icon-title-h4		{ background-position: -80px  -100px; }
+
+.icon-label			{ background-position: 0      -120px; }
+.icon-bold			{ background-position: -20px  -120px; }
+.icon-italic		{ background-position: -40px  -120px; }
+
+.icon-text			{ background-position: 0      -140px; }
+.icon-star			{ background-position: -20px  -140px; }
+.icon-comment		{ background-position: -40px  -140px; }
+
+.icon-list			{ background-position: 0      -160px; }
+.icon-list-numbered	{ background-position: -20px  -160px; }
+.icon-list-unumbered{ background-position: -40px  -160px; }
