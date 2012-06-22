@@ -193,6 +193,7 @@ button:hover {
   -o-transition: background-position 0.1s linear;
   transition: background-position 0.1s linear;
 }
+[data-state="selected"] > button,
 button.active,
 button:active {
   background-color: #e6e6e6;
@@ -309,8 +310,7 @@ button[disabled] {
   color: #ffffff;
   background-color: #0088cc;
 }
-.dropdown:hover ul,
-.dropdown.hover ul {
+.dropdown[data-state="selected"] ul {
   display: block;
 }
 [class*="icon-"] {
