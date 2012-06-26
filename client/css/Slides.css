@@ -504,6 +504,53 @@ button[disabled] {
   top: 0px;
   left: 0px;
 }
+.topbar > * {
+  margin: 0;
+  margin-top: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.topbar h1 {
+  color: white ;
+  display: inline-block;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 20px;
+}
+.topbar a {
+  margin-left: 80px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  font-size: 18px;
+  color: #555555;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.topbar a:hover {
+  color: white;
+}
+.browserid {
+  float: right;
+  display: inline-block;
+}
+.browserid span.orange {
+  background-color: orange;
+}
+.browserid .arrow-right-grey,
+.browserid .arrow-right-orange {
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  position: relative;
+}
+.browserid .arrow-right-grey {
+  border-left: 10px solid grey;
+  float: left;
+  background-color: orange;
+}
+.browserid .arrow-right-orange {
+  border-left: 10px solid orange;
+  float: right;
+}
 #toolbar {
   padding: 0 0 0 0;
   width: 100%;
@@ -513,10 +560,47 @@ button[disabled] {
   top: 40px;
   left: 0px;
 }
+#toolbar .btn-group {
+  margin-top: 4px;
+}
+#toolbar #btngrp1 {
+  padding-left: 180px;
+}
 /*
 section div     // -> cette règle est dangereuse car s'applique de manière très générale 
                 // y compris en dehors de la toolbar 
 {
 	margin-top:4px;
 }
-*/
+*/.SlideBar {
+  position: fixed;
+  top: 75px;
+  left: 0px;
+  width: 180px;
+  height: auto;
+  bottom: 0px;
+  right: 0px;
+  overflow-y: auto;
+  background-color: #9d261d;
+}
+.SlideContent {
+  position: fixed;
+  top: 75px;
+  left: 180px;
+  width: auto;
+  height: auto;
+  bottom: 0px;
+  right: 0px;
+  overflow-y: auto;
+  background-color: #049cdb;
+  padding-left: 4px;
+  vertical-align: middle;
+}
+.slide {
+  background-color: #ffffff;
+  width: 75%;
+  height: 90%;
+  margin: auto;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
