@@ -1,13 +1,18 @@
 // Dropdown menu behavior
 
-// initialisation
-dropdowns = document.querySelectorAll(".dropdown");
+document.addEventListener("DOMContentLoaded", init);
 
-for (var i = 0; i < dropdowns.length; i++) {
-	var elmt = dropdowns[i];
-	elmt.getElementsByTagName("button")[0].addEventListener("focus", selectDropdown);
-	elmt.getElementsByTagName("button")[0].addEventListener("blur", deselectDropdown);
+// initialisation
+function init(){
+	dropdowns = document.querySelectorAll(".dropdown");
+
+	for (var i = 0; i < dropdowns.length; i++) {
+		var elmt = dropdowns[i];
+		elmt.getElementsByTagName("button")[0].addEventListener("focus", selectDropdown);
+		elmt.getElementsByTagName("button")[0].addEventListener("blur", deselectDropdown);
+	}
 }
+
 
 function selectDropdown(){
 	console.log("Focus on "+ this.parentElement);

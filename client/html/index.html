@@ -5,11 +5,11 @@
 	
 	<body>
 		<section class="topbar">
-			<ul class="loginarea">
-				<li id="loggedout"><button><img src="img/persona-login.png"></button></li>
-				<li id="loggedin">Hi, <span></span> <a href="#">logout</a></li>
-				<li class="loading"><img src="img/loading.gif"></li>
-			</ul>
+			<section class="loginarea">
+				<div id="loggedout"><button><img src="img/persona-login.png"></button></div>
+				<div id="loggedin">Hi, <span></span> <a href="#">logout</a></div>
+				<div class="loading"><img src="img/loading.gif"></div>
+			</section>
 		</section>
 		<section class="btn-toolbar">
 			<div class="btn-group">
@@ -64,6 +64,7 @@
 		
 		<script src="https://browserid.org/include.js"></script>
   		<script src="../js/jquery.min.js"></script>
+		<script src="../js/identity.js"></script>
 		<script src="../js/dropdown.js"></script>
 	</body>
 </html>

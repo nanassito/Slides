@@ -19,22 +19,17 @@ nconf.defaults({});
  * Module dependencies.
  */
  
-var express = require('express')
-  , routes = {};
+var express = require('express'),
+	sessions = require('client-sessions');
 
 var app = module.exports = express.createServer();
 
 // Configuration
 
-var theme = nconf.get('theme');
-
 app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
-    app.use(express.static(nconf.get('basedir') +'/client'));
-    app.use("/", // compile to /*.html
-    		express.static(nconf.get('basedir') +'/client/html')); 
 });
 
 app.configure('development', function(){
@@ -47,14 +42,29 @@ app.configure('production', function(){
 
 // Routes
 
-//app.get('/', );
-//app.get('/new/article', routes.article.form_new);
-//app.post('/new/article', routes.article.save);
-//app.get('/article/:title', routes.article.view);
+// session support using signed cookies, also no caching of api requests
+app.use(function (req, res, next) {
+	if (/^\/api/.test(req.url)) {
+		res.setHeader('Cache-Control', 'no-cache, max-age=0');
 
-app.get('/test', function(req, res){
-	res.send('hello world');
+		return sessions({
+			cookieName: 'Slides',
+			secret: process.env['COOKIE_SECRET'] || 'define a real secret, please',
+			cookie: {
+				path: '/api',
+				httpOnly: true
+			}
+		})(req, res, next);
+	} else {
+		return next();
+	}
 });
+
+
+// static folders, should always be the last thing we configure.
+app.use(express.static(nconf.get('basedir') +'/client'));
+app.use("/", // compile to /*.html
+		express.static(nconf.get('basedir') +'/client/html')); 
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
