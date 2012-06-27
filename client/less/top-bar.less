@@ -1,0 +1,72 @@
+.topbar
+{
+	width: 100%;
+	height: 40px;
+	background-color:@black;
+    #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.topbar > *{
+    margin:0;
+    margin-top: 5px;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.topbar h1
+{
+    color: white ;
+    display : inline-block;
+    font-family : @monoFontFamily ;
+    font-size : 20px; 
+ 
+}
+
+.topbar a
+{
+    margin-left: 80px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    font-size : 18px; 
+    color: @gray ;
+    font-family : @monoFontFamily ;
+}
+
+.topbar a:hover 
+{
+    color: white;
+}
+
+.browserid
+{
+    float : right; 
+    display:inline-block;
+}
+
+.browserid span.orange{
+   background-color:orange;
+}
+
+.browserid .arrow-right-grey,
+.browserid .arrow-right-orange{
+   width: 0px;
+   height: 0px;
+   border-top: 10px solid transparent;
+   border-bottom: 10px solid transparent;
+   position:relative;
+}
+
+.browserid .arrow-right-grey{
+   border-left: 10px solid grey;
+   float:left;
+   background-color:orange;
+}
+
+.browserid .arrow-right-orange{
+   border-left: 10px solid orange;
+   float:right;
+}
+
