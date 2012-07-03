@@ -113,6 +113,17 @@
 			</iframe>
 		</section>
 		
+		<section id="misc" style="display:none;">
+			<!-- All DOM element that we do not want to display -->
+			
+			<section><!-- Login form for the persona mechanism -->
+				<form id="login-form" action="/auth" method="POST">
+					<input id="assertion-field" type="hidden" name="assertion" value=""/>
+				</form>
+			</section>
+			
+		</section>
+		
 		<script src="https://browserid.org/include.js"></script>
   		<script src="../js/jquery.min.js"></script>
 		<script src="../js/identity.js"></script>
