@@ -26,8 +26,6 @@ var app = module.exports = express.createServer();
 
 
 app.configure(function(){
-  	//app.set('views', __dirname + '/views');
-  	//app.set('view engine', 'jade');
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser());
@@ -47,8 +45,6 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-app.post('/auth', routes.persona.auth); 	//deprecated
-app.get('/logout', routes.persona.logout);	//deprecated
 app.post('/user/auth', routes.persona.auth);
 app.get('/user/logout', routes.persona.logout);
 
