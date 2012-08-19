@@ -47,7 +47,7 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-app.post('/auth', routes.persona.auth(nconf.get("audience")));
+app.post('/auth', routes.persona.auth);
 app.get('/logout', routes.persona.logout);
 
 app.listen(3000);

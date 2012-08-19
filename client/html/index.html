@@ -18,7 +18,7 @@
 			<a>New</a>
 			<a>Open</a>
 			
-			<a id="login">Sign in</a>
+			<span id="login" onclick="navigator.id.request()">Sign in</span>
 		</header>
 	
 		<section id="toolbar">
@@ -113,18 +113,7 @@
 			</iframe>
 		</section>
 		
-		<section id="misc" style="display:none;">
-			<!-- All DOM element that we do not want to display -->
-			
-			<section><!-- Login form for the persona mechanism -->
-				<form id="login-form" action="/auth" method="POST">
-					<input id="assertion-field" type="hidden" name="assertion" value=""/>
-				</form>
-			</section>
-			
-		</section>
-		
-		<script src="https://browserid.org/include.js"></script>
+		<script src="https://login.persona.org/include.js"></script>
 		<script src="../js/identity.js"></script>
 		<script src="../js/dropdown.js"></script>
 	</body>
