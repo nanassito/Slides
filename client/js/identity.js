@@ -3,7 +3,46 @@
  * related. This includes interacting with the Persona API, 
  * the Slides server, and updating the UI to reflect sign-in 
  * state.
+ *
+ * TODO : 
+ *	- refactor to have the ui updates in separates functions.
+ *  - change the onClick action when the user is logged in.
  */
+
+
+
+/**
+ * Get the element where we write the mail adress
+ */
+function getInfoLoginElement(){
+	return document.getElementById("infoLogin");
+}
+
+/**
+ * The user is logged in, we need to update the UI
+ */
+function updateUILoggedin(email){
+	var uiElmt = getInfoLoginElement();
+	uiElmt.innerHTML = email;
+}
+
+
+/**
+ * The user is being logged in, we need to update the UI
+ */
+function updateUIProcessing(){
+	var uiElmt = getInfoLoginElement();
+	uiElmt.innerHTML = "<img src='../img/loading.gif'/>";
+}
+
+
+/**
+ * The user is logged out, we need to update the UI
+ */
+function updateUILoggedout(){
+	var uiElmt = getInfoLoginElement();
+	uiElmt.innerHTML = "Sign in";
+}
 
 /**
  * A user has logged in! We need to:
@@ -13,9 +52,7 @@
 function onlogin(assertion) {
 	console.log("A user has just logged in (browser-side only)");
     if (assertion) {
-    	// Update the UI to show we are working
-		var uiElmt = document.getElementById("login");
-		uiElmt.innerHTML = "<img src='../img/loading.gif'/>";
+    	updateUIProcessing();
     	
     	// Just in case someone does not have javascript, or is using IE
     	if (!window.XMLHttpRequest) {
@@ -37,12 +74,12 @@ function onlogin(assertion) {
 					
 					// Update the UI
 					var response = JSON.parse(httpRequest.responseText);
-					uiElmt.innerHTML = response.email;
+					updateUILoggedin(response.email);
 				} else {
 					console.error("The user loggin process have failed.");
 					console.error("Server response code : "+httpRequest.status);
 					console.error("Content : "+httpRequest.responseText);
-					uiElmt.innerHTML = "Sign in";
+					updateUILoggedout();
 				}
 			}
 		}
@@ -61,6 +98,7 @@ function onlogin(assertion) {
  */
 function onlogout(){
 	console.log("A user has logged out.");
+	updateUILoggedout();
 }
 
 
