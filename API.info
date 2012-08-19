@@ -1,0 +1,30 @@
+GET /user/logout
+Log out the user
+
+POST /user/auth
+Log in the user using persona
+
+GET /presentation/:user/:title
+Return the presentation as an html file.
+
+GET /list/presentations
+Return a list of the presentations title alongside with the first slide.
+
+GET /list/templates
+Return a list of all available templates
+
+GET /template/:name
+Return the template as an html file.
+
+POST /new/presentation 
+{	
+	title : titre de la presentation,
+	template : http://url.of.the/template.html
+}
+Create a new presentation
+
+POST /presentation/:user/:title/:slide
+{
+	content : <section><p>Content of the slide</p></section>
+}
+Save the content of the slide

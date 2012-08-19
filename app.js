@@ -47,8 +47,18 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-app.post('/auth', routes.persona.auth);
-app.get('/logout', routes.persona.logout);
+app.post('/auth', routes.persona.auth); 	//deprecated
+app.get('/logout', routes.persona.logout);	//deprecated
+app.post('/user/auth', routes.persona.auth);
+app.get('/user/logout', routes.persona.logout);
+
+app.get('/presentation/:user/:title', routes.presentation.getPresentation);
+app.post('/presentation/:user/:title/:slide', routes.presentation.saveSlide);
+app.post('/new/presentation', routes.presentation.newPresentation);
+app.get('/list/presentations', routes.presentation.getList);
+
+app.get('/list/templates', routes.template.getList);
+app.get('/template/:name', routes.template.getTemplate);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

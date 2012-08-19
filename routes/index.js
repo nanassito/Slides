@@ -12,3 +12,5 @@ exports.index = function(req, resp){
 };
 
 exports.persona = require("./persona.js");
+exports.presentation = require("./presentation.js");
+exports.template = require("./template.js");
