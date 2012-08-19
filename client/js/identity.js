@@ -19,11 +19,22 @@ function getInfoLoginElement(){
 }
 
 /**
+ * Get the element to bind with persona actions
+ */
+function getLoginElement(){
+	return document.getElementById("login");
+}
+
+/**
  * The user is logged in, we need to update the UI
  */
 function updateUILoggedin(email){
 	var uiElmt = getInfoLoginElement();
 	uiElmt.innerHTML = email;
+	getLoginElement().onclick = function(event) {
+		event.preventDefault();
+		navigator.id.logout();
+	};
 }
 
 
@@ -42,6 +53,10 @@ function updateUIProcessing(){
 function updateUILoggedout(){
 	var uiElmt = getInfoLoginElement();
 	uiElmt.innerHTML = "Sign in";
+	getLoginElement().onclick = function(event) {
+		event.preventDefault();
+		navigator.id.request();
+	};
 }
 
 /**
@@ -107,8 +122,10 @@ function onlogout(){
  */
 window.onload = function () {
 	// Click on the login button. We may want to have this directly in the html
-	//var bid = document.getElementById("login");
-	//bid.addEventListener("click", navigator.id.request);
+	getLoginElement().onclick = function(event) {
+		event.preventDefault();
+		navigator.id.request();
+	};
 	
 	// Register Persona callbacks
 	navigator.id.watch({
