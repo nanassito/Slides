@@ -7,6 +7,12 @@ Log in the user using persona
 GET /presentation/:user/:title
 Return the presentation as an html file.
 
+POST /presentation/:user/:title/:slide
+{
+	content : <section><p>Content of the slide</p></section>
+}
+Save the content of the slide
+
 GET /list/presentations
 Return a list of the presentations title alongside with the first slide.
 
@@ -22,9 +28,3 @@ POST /new/presentation
 	template : http://url.of.the/template.html
 }
 Create a new presentation
-
-POST /presentation/:user/:title/:slide
-{
-	content : <section><p>Content of the slide</p></section>
-}
-Save the content of the slide
