@@ -37,19 +37,42 @@ exports.getPresentation = function (req, resp) {
 
 /*
  * Return the list of all the presentations belongings to the user.
+ * We need the following parameter to exists :
+ *	- req.session.email : email of the logged in user.
  * returned object = {
  *	[{
  *		title : title of the presentation,
- *		preview : image of the first slide
+ *		preview : html page with only the first slide included
  *	},…]
  * }
  */
 exports.getList = function (req, resp) {
-	console.warn("This function is a work in progress.");
+	if (!req.session.email){
+		// Only a logged in user can list his presentation
+		resp.writeHead(403);
+		resp.end();
+	}else{
 	
-	Presentation.find({}, function(err, docs){
-		console.log(docs);
-	});
+		Presentation.find({'author': req.session.email}, "title slides template", function(err, docs){
+			var data = [];
+		
+			if (err){
+				console.error(err);
+				resp.writeHead(500);
+			}else{
+				for (var i=0, doc; doc = docs[i]; i++){
+					data[i] = {
+						'title' : doc.title,
+						'preview' : "" // FIXME : render and add the preview.
+					};
+				}
+				resp.writeHead(200);
+			}
+	
+			resp.write(JSON.stringify(data));
+			resp.end();
+		});
+	}
 };
 
 
