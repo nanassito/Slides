@@ -60,24 +60,31 @@ exports.getList = function (req, resp) {
  *	- req.body.template : url of the template to use.
  */
 exports.newPresentation = function (req, resp) {
-	var presentation = new Presentation;
-	presentation.title = req.body.title;
-	presentation.author = req.session.email;
-	presentation.creationDate = new Date;
-	presentation.template = req.body.template;
+	if (!req.session.email){
+		// Only a logged in user can create presentation
+		resp.writeHead(403);
+		resp.end();
+	}else{
+
+		var presentation = new Presentation;
+		presentation.title = req.body.title;
+		presentation.author = req.session.email;
+		presentation.creationDate = new Date;
+		presentation.template = req.body.template;
 	
-	presentation.save(function(err){
-		if(err){
-			console.error("Creation of the new presentation failed.");
-			resp.writeHead(500);
-		}else{
-			console.log("New presentation created.");
-			// TODO : render and return the new presentation
-			resp.writeHead(200);
-		}
-	});
+		presentation.save(function(err){
+			if(err){
+				console.error("Creation of the new presentation failed.");
+				resp.writeHead(500);
+			}else{
+				console.log("New presentation created.");
+				// TODO : render and return the new presentation
+				resp.writeHead(200);
+			}
+		});
 	
-	resp.end();
+		resp.end();
+	}
 };
 
 

@@ -4,10 +4,10 @@ Log out the user
 POST /user/auth
 Log in the user using persona
 
-GET /presentation/:user/:presentation_id
+GET /presentation/:user_id/:presentation_id
 Return the presentation as an html file.
 
-POST /presentation/:user/:presentation_id/:slide_id
+POST /presentation/:user_id/:presentation_id/:slide_id
 {
 	content : <section><p>Content of the slide</p></section>
 }

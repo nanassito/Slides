@@ -67,6 +67,8 @@ exports.auth = function(req, resp){
 exports.logout = function (req, resp) {
 	console.info("Signing out "+ req.session.email);
 	req.session.destroy();
+	// TODO : Verify that destroying the session does not prevent from logging 
+	// in again
 	resp.writeHead(200);
 	resp.end();
 };
