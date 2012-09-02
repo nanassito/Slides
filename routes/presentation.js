@@ -7,19 +7,21 @@ var nconf = require('nconf'),
 var db = mongoose.connect('mongodb://localhost/Slides'),
 	Schema = mongoose.Schema;
 
-var Slide = new Schema({
+var slideSchema = new Schema({
 	lastEdit: Date,
 	content: String
 });
 
-var Presentation = new Schema({
+var presentationSchema = new Schema({
 	title: String,
 	author: String,
 	creationDate: Date,
-	start: String,
-	slides: [Slide],
-	end: String
+	slides: [slideSchema],
+	template: String
 });
+
+var Slide = db.model('Slide', slideSchema),
+	Presentation = db.model('Presentation', presentationSchema);
 
 
 /*
@@ -43,15 +45,39 @@ exports.getPresentation = function (req, resp) {
  * }
  */
 exports.getList = function (req, resp) {
-	console.error("Not implemented.");
+	console.warn("This function is a work in progress.");
+	
+	Presentation.find({}, function(err, docs){
+		console.log(docs);
+	});
 };
 
 
 /*
  * Create a new presentation
+ * We need the following parameter to exists :
+ *	- req.body.title : title of the new presentation
+ *	- req.body.template : url of the template to use.
  */
 exports.newPresentation = function (req, resp) {
-	console.error("Not implemented.");
+	var presentation = new Presentation;
+	presentation.title = req.body.title;
+	presentation.author = req.session.email;
+	presentation.creationDate = new Date;
+	presentation.template = req.body.template;
+	
+	presentation.save(function(err){
+		if(err){
+			console.error("Creation of the new presentation failed.");
+			resp.writeHead(500);
+		}else{
+			console.log("New presentation created.");
+			// TODO : render and return the new presentation
+			resp.writeHead(200);
+		}
+	});
+	
+	resp.end();
 };
 
 

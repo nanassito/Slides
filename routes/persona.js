@@ -5,7 +5,9 @@ var nconf = require('nconf'),
 
 
 /*
- *	The login function.
+ * The login function.
+ * We need the following parameter to exists :
+ *	- req.body.assertion : Persona assertion
  */
 exports.auth = function(req, resp){
 
