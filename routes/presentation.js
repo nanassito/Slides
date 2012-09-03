@@ -11,7 +11,8 @@ var db = mongoose.connect('mongodb://localhost/Slides'),
 
 var slideSchema = new Schema({
 	lastEdit: Date,
-	content: String
+	content: String,
+	classes: String
 });
 
 var presentationSchema = new Schema({
@@ -69,6 +70,7 @@ exports.getPresentation = function (req, resp) {
  *	- req.session.email : email of the logged in user.
  * returned object = {
  *	[{
+ *		_id : id of the presentation,
  *		title : title of the presentation,
  *		preview : html page with only the first slide included
  *	},…]
@@ -119,18 +121,23 @@ exports.newPresentation = function (req, resp) {
 		resp.end();
 	}else{
 
-		var presentation = new Presentation;
-		presentation.title = req.body.title;
-		presentation.author = req.session.email;
-		presentation.creationDate = new Date;
-		presentation.template = req.body.template;
-		
-		presentation.slides[0] = new Slide;
-		presentation.slides[0].lastEdit = new Date;
-		presentation.slides[0].content = renderNewSlide({
+		var presentation = new Presentation({
 			'title': req.body.title,
-			'author': req.session.email
+			'author': req.session.email,
+			'creationDate': new Date,
+			'template': req.body.template
 		});
+		
+		presentation.slides[0] = new Slide({
+			'lastEdit': new Date,
+			'classes':"First",
+			'content': renderNewSlide({
+				'title': req.body.title,
+				'author': req.session.email
+			})
+		});
+		
+		// save the new slide, if it worked, save and return the presentation.
 		presentation.slides[0].save(function(err){
 			if(err){
 				console.error("Creation of a new slide failed.");
@@ -138,24 +145,24 @@ exports.newPresentation = function (req, resp) {
 				resp.end();
 			}else{
 				console.log("New Slide created");
-			}
-		});
-		
-		presentation.save(function(err){
-			if(err){
-				console.error("Creation of a new presentation failed.");
-				resp.writeHead(500);
-			}else{
-				console.log("New presentation created : %s",
+				// now save, render and return the presentation
+				
+				presentation.save(function(err){
+					if(err){
+						console.error("Creation of a new presentation failed.");
+						resp.writeHead(500);
+					}else{
+						console.log("New presentation created : %s",
 															presentation.title);
-				resp.contentType('text/html');
-				resp.writeHead(200);
-				//TODO : We need to cascade and render slides too
-				resp.write(render(presentation));
+						resp.contentType('text/html');
+						resp.writeHead(200);
+						console.log(presentation.slides); // debug
+						resp.write(render(presentation));
+					}
+					resp.end();
+				});
 			}
-			resp.end();
 		});
-	
 	}
 };
 
