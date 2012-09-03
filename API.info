@@ -25,6 +25,7 @@ Return the template as an css file.
 
 * POST /new/presentation 
 {	
+	id : id de la presentation,
 	title : titre de la presentation,
 	template : http://url.of.the/template.css
 }

@@ -1,6 +1,8 @@
 // Configuration
 var nconf = require('nconf'),
-	mongoose = require('mongoose');
+	mongoose = require('mongoose'),
+	jade = require('jade'),
+	fs = require('fs');
 
 
 // Schema definition
@@ -22,6 +24,18 @@ var presentationSchema = new Schema({
 
 var Slide = db.model('Slide', slideSchema),
 	Presentation = db.model('Presentation', presentationSchema);
+
+// caching the presentation template to use in jade.
+// Call this to render a presentation
+var render = jade.compile(
+					fs.readFileSync('templates/presentation.html').utf8Slice());
+
+// caching the new slide template to use in jade.
+// Call this to render a new Slide
+var renderNewSlide = jade.compile(
+					fs.readFileSync('templates/new slide.html').utf8Slice());
+
+
 
 
 /*
@@ -110,19 +124,38 @@ exports.newPresentation = function (req, resp) {
 		presentation.author = req.session.email;
 		presentation.creationDate = new Date;
 		presentation.template = req.body.template;
-	
-		presentation.save(function(err){
+		
+		presentation.slides[0] = new Slide;
+		presentation.slides[0].lastEdit = new Date;
+		presentation.slides[0].content = renderNewSlide({
+			'title': req.body.title,
+			'author': req.session.email
+		});
+		presentation.slides[0].save(function(err){
 			if(err){
-				console.error("Creation of the new presentation failed.");
+				console.error("Creation of a new slide failed.");
 				resp.writeHead(500);
+				resp.end();
 			}else{
-				console.log("New presentation created.");
-				// TODO : render and return the new presentation
-				resp.writeHead(200);
+				console.log("New Slide created");
 			}
 		});
+		
+		presentation.save(function(err){
+			if(err){
+				console.error("Creation of a new presentation failed.");
+				resp.writeHead(500);
+			}else{
+				console.log("New presentation created : %s",
+															presentation.title);
+				resp.contentType('text/html');
+				resp.writeHead(200);
+				//TODO : We need to cascade and render slides too
+				resp.write(render(presentation));
+			}
+			resp.end();
+		});
 	
-		resp.end();
 	}
 };
 
