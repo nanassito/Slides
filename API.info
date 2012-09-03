@@ -1,28 +1,29 @@
-GET /user/logout
+* GET /user/logout
 Log out the user
 
-POST /user/auth
+* POST /user/auth
 Log in the user using persona
 
-GET /presentation/:user_id/:presentation_id
+* GET /presentation/:presentation_id
 Return the presentation as an html file.
 
-POST /presentation/:user_id/:presentation_id/:slide_id
-{
+POST /presentation/:slide_id
+[{
+	index: 1,
 	content : <section><p>Content of the slide</p></section>
-}
+},…]
 Save the content of the slide
 
-GET /list/presentations
+* GET /list/presentations
 Return a list of the presentations title alongside with the first slide.
 
-GET /list/templates
+* GET /list/templates
 Return a list of all available templates
 
 GET /template/:name
 Return the template as an css file.
 
-POST /new/presentation 
+* POST /new/presentation 
 {	
 	title : titre de la presentation,
 	template : http://url.of.the/template.css

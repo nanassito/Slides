@@ -48,8 +48,8 @@ app.get('/', routes.index);
 app.post('/user/auth', routes.persona.auth);
 app.get('/user/logout', routes.persona.logout);
 
-app.get('/presentation/:user/:title', routes.presentation.getPresentation);
-app.post('/presentation/:user/:title/:slide', routes.presentation.saveSlide);
+app.get('/presentation/:presentation_id', routes.presentation.getPresentation);
+app.post('/presentation/:title', routes.presentation.saveSlide);
 app.post('/new/presentation', routes.presentation.newPresentation);
 app.get('/list/presentations', routes.presentation.getList);
 

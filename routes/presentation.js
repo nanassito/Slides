@@ -27,11 +27,25 @@ var Slide = db.model('Slide', slideSchema),
 /*
  * Return a presentation as an html file.
  * We need the following parameter to exists :
- *	- req.params.user : email adress of the user that own the presentation
- *	- req.params.title : title of the presentation
+ *	- req.params.user_id : email adress of the user that own the presentation
+ *	- req.params.title_id : title of the presentation
  */
 exports.getPresentation = function (req, resp) {
-	console.error("Not implemented.");
+	Presentation.findOne({'_id':req.params.presentation_id}, 
+							function(err, doc){
+		if (err){
+			console.error(err);
+			resp.writeHead(500);
+		}else{
+			var presentation = "";
+			presentation = doc.title;
+			//TODO : render the full page before sending
+			resp.contentType('text/html');
+			resp.writeHead(200);
+			resp.write(presentation);
+		}
+		resp.end();
+	});
 };
 
 
@@ -48,12 +62,12 @@ exports.getPresentation = function (req, resp) {
  */
 exports.getList = function (req, resp) {
 	if (!req.session.email){
-		// Only a logged in user can list his presentation
+		// Only a logged in user can list his presentations
 		resp.writeHead(403);
 		resp.end();
 	}else{
-	
-		Presentation.find({'author': req.session.email}, "title slides template", function(err, docs){
+		
+		Presentation.find({'author': req.session.email}, "title slides template, _id", function(err, docs){
 			var data = [];
 		
 			if (err){
@@ -62,10 +76,12 @@ exports.getList = function (req, resp) {
 			}else{
 				for (var i=0, doc; doc = docs[i]; i++){
 					data[i] = {
+						'id' : doc._id,
 						'title' : doc.title,
 						'preview' : "" // FIXME : render and add the preview.
 					};
 				}
+				resp.contentType('application/json');
 				resp.writeHead(200);
 			}
 	
@@ -116,7 +132,6 @@ exports.newPresentation = function (req, resp) {
  * We need the following parameter to exists :
  *	- req.params.user : email adress of the user that own the presentation
  *	- req.params.title : title of the presentation being edited
- *	- req.params.slide : slide identifier
  */
 exports.saveSlide = function (req, resp) {
 	console.error("Not implemented.");
