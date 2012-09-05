@@ -92,12 +92,14 @@ exports.getList = function (req, resp) {
 				resp.writeHead(500);
 			}else{
 				for (var i=0, doc; doc = docs[i]; i++){
-					data[i] = {
-						'id' : doc._id,
-						'title' : doc.title,
-						'template' : doc.template,
-						'firstSlide' : doc.slides[0].content
-					};
+					if (doc.slides[0]){
+						data.push({
+							'id' : doc._id,
+							'title' : doc.title,
+							'template' : doc.template,
+							'firstSlide' : doc.slides[0].content
+						});
+					}
 				}
 				resp.contentType('application/json');
 				resp.writeHead(200);
