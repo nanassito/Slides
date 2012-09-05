@@ -94,7 +94,8 @@ exports.getList = function (req, resp) {
 					data[i] = {
 						'id' : doc._id,
 						'title' : doc.title,
-						'preview' : "" // FIXME : render and add the preview.
+						'template' : doc.template,
+						'firstSlide' : doc.slides[0].content
 					};
 				}
 				resp.contentType('application/json');
