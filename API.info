@@ -93,8 +93,8 @@ The user must be logged in.
 **Request :** 
 ```
 POST /new/presentation  
-'title' = title of the presentation
-'template' = url of the css to use for the presentation.
+'title' = title of the presentation  
+'template' = url of the css to use for the presentation.  
 ```
 **Success request :**
 ```
@@ -104,6 +104,9 @@ There will be a default first slide.
 Each slide is a <section class="slide" data-_id=":slide_id"> in the body.  
 ```
 **Failure request :** 
+```
+http400 // The post request must define 'title' and 'template'.  
+```
 ```
 http403 // the user must be logged in.  
 ```
