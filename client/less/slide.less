@@ -1,24 +1,23 @@
-.SlideContent 
-{
-    position: fixed;
-    top: 75px;
-    left: 180px;
-    width:auto;
-    height:auto;
-    bottom:0px;
-    right:0px;
-    overflow-y:auto; 
-    background-color: @blue;
-    padding-left:4px;
-    vertical-align:middle; 
+#current-slide{
+	position: fixed;
+	margin: auto;
+	right: 0;
+	bottom: 0;
+	left:168px;
+	top:75px;
+	
+	&> iframe{
+		width:100%;
+		height:100%;
+	}
 }
 
-.slide 
-{
-    background-color: @white;
-    width:75%;
-    height:90%;
-    margin:auto;
-    margin-top:2.5%;
-    margin-bottom:2.5%;
+#current-slide-preview{
+    margin: 20px;
+    height : 300px;
+    
+	&> iframe{
+		width:100%;
+		height:100%;
+	}
 }

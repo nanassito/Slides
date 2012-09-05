@@ -1,26 +1,17 @@
-#toolbar
-{
-	padding : 0 0 0 0;
-	width: 100%;
-	height: 36px;
-	background-color:@grayLighter;
+#toolbar{
 	position: fixed;
 	top: 40px;
-	left: 0px;
+	left: 0;
+	
+	width: 100%;
+	height:30px;
+	
+	overflow:visible;
+	
+	padding-top:5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	background-color: @grayLighter;
+	border-bottom: solid 1px @grayLight;
 }
-
-#toolbar .btn-group
-{
-    margin-top:4px;
-}
-
-#toolbar #btngrp1{
-    padding-left:@padding-left;
-}
-/*
-section div     // -> cette règle est dangereuse car s'applique de manière très générale 
-                // y compris en dehors de la toolbar 
-{
-	margin-top:4px;
-}
-*/

@@ -1,100 +1,295 @@
 ﻿<!DOCTYPE html>
-
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>SlideZ</title>
-		<meta charset="utf-8" />
-		 <link rel="stylesheet" href="../css/Slides.css" type="text/css" media="screen" />
-    </head>
+	<head>
+		<meta charset="utf-8"/>
+	    <link rel="stylesheet" href="../css/Slides.css" type="text/css" media="screen" />
+	    
+	    <title>Slides - Titulo de la presentación</title>
+	</head>
 	
 	<body>
 		<header>
-			<section class="topbar">
-				<h1 id="title">Titre de la présentation</h1>
-				
-				<a href="#">Open</a>
-				<a href="#">New</a>
+			<h1 id="Title_Prs" data-toggle="modal" href="#Titre">Titulo de la presentación</h1>
 			
-				<div class="browserid">
-					<span><i class="icon-user"></i></span>
-					<div class="arrow-right-grey"></div>
-					<span class="orange">Sign in</span>
-					<div class="arrow-right-orange"></div>
-				</div>
-			</section>
+			<span id="saving-status">
+				<i class="icon-valid icon-white"></i> saved
+			</span>
 			
-			<section id="toolbar">
-				<div id="btngrp1" class="btn-group">
-					<button title="add a header"><i class="icon-header"></i></button>
-					<button title="add a section"><i class="icon-section"></i></button>
-					<button title="add a footer"><i class="icon-footer"></i></button>
-				</div>
-
-				<div class="btn-group">
-					<button><i class="icon-text"></i></button>
-					<button class="dropdown"><i class="icon-title"></i>
-						<ul>
-							<li><a href="#"><i class="icon-title-h1"></i> Titre 1</a>
-							<li><a href="#"><i class="icon-title-h2"></i> Titre 2</a>
-							<li><a href="#"><i class="icon-title-h3"></i> Titre 3</a>
-							<li><a href="#"><i class="icon-title-h4"></i> Titre 4</a>
-						</ul>
-					</button>
-					<button class="dropdown"><i class="icon-list"></i>
-						<ul>
-							<li><a href="#"><i class="icon-list-numbered"></i> ordered</a>
-							<li><a href="#"><i class="icon-list-unumbered"></i> unordered</a>
-						</ul>
-					</button>
-					<button class="dropdown"><i class="icon-media"></i>
-						<ul>
-							<li><a href="#"><i class="icon-photo"></i> photo</a>
-							<li><a href="#"><i class="icon-video"></i> video</a>
-						</ul>
-					</button>
-					<button><i class="icon-label"></i></button>
-				</div>
-
-				<div class="btn-group">
-					<button><i class="icon-align-left"></i></button>
-					<button><i class="icon-align-center"></i></button>
-					<button><i class="icon-align-right"></i></button>
-					<button><i class="icon-align-justify"></i></button>
-				</div>
-
-				<div class="btn-group">
-					<button><i class="icon-star"></i></button>
-				</div>
-
-				<div class="btn-group">
-					<button><i class="icon-comment"></i></button>
-				</div>
-			</section>
+			<a data-toggle="modal" href="#new1">New </a>
+			<a data-toggle="modal" href="#open">Open</a>
 			
+			<span id="login">
+				<i class="icon-persona-before"></i>
+				<p id="infoLogin">Sign in</p>
+				<i class="icon-persona-after"></i>
+			</span>
 		</header>
-		
-		<section class = "SlideBar">	
-			<p>
+	
+		<section id="toolbar">
+			<div class="btn-group">
+				<button title="add a header"><i class="icon-header"></i></button>
+				<button title="add a section"><i class="icon-section"></i></button>
+				<button title="add a footer"><i class="icon-footer"></i></button>
+			</div>
 			
-			Michael Joseph Jackson1, né le 29 août 1958 à Gary (Indiana) et mort le 25 juin 2009 à Los Angeles (Californie), est un chanteur, danseur-chorégraphe, auteur-compositeur-interprète acteur et réalisateur américain2,3. Il est reconnu par le Livre Guinness des records comme étant l’artiste le plus couronné de succès de tous les temps4,5,6,7. Selon le Rock and Roll Hall of Fame, il a été identifié comme étant l'artiste le plus populaire dans toute l'histoire de l'industrie du spectacle8.
-Septième d'une famille de neuf enfants, il chante avec ses frères dès l'âge de six ans et débute une carrière professionnelle à l'âge de onze ans au sein des Jackson Five, groupe formé avec ses frères aînés. Tout en restant membre du groupe, il entame en 1971 une carrière solo. De ses sept albums solo parus de son vivant, les sept figurent parmi les plus vendus au monde : Off the Wall (1979), Thriller (1982), Bad (1987), Dangerous (1991), HIStory (1995) Blood on the Dance Floor (1997) et Invincible (2001).
-Dans les années 1980, Michael Jackson devient une figure majeure de la musique pop et l'une des personnalités les plus célèbres du xxe siècle. Il révolutionne l'industrie du disque, notamment en concevant des clips musicaux comparables à des courts-métrages de cinéma, comme Beat It, Billie Jean, Thriller ou Bad9. Au cours de ses concerts, vidéos et apparitions publiques, il popularise largement de nombreux pas de danse, dont le Moonwalk, qui devient sa signature. Ayant fusionné les genres de musique soul, funk et rock, son style vocal et musical continue d'influencer nombre d'artistes de hip-hop, pop et R'n'B contemporain.
-Surnommé « The King of Pop » (« Le Roi de la pop »)10,11, Michael Jackson a battu nombre de records de l'industrie du disque. Au total, ses ventes s'élèvent à environ 1 milliard d'exemplaires12, ce qui le classe parmi les trois plus gros vendeurs de disques de tous les temps, avec les Beatles13 et Elvis Presley14. Thriller, dont les estimations des ventes varient entre 65 et 118 millions, est quant à lui l'album le plus vendu de toute l'histoire de la musique15,16. Michael Jackson a remporté plus de prix que n'importe quel autre artiste17 et a été élu Artiste du Millénaire aux World Music Awards en 200018.
-Michael Jackson a donné plus de 400 millions de dollars à des œuvres caritatives, notamment grâce à sa tournée Dangerous World Tour. Toutefois, son image publique a été considérablement ternie à cause de certains aspects de sa vie privée, notamment son goût pour la chirurgie esthétique, son mode de vie jugé excentrique par les tabloïdes, ainsi que deux accusations d'abus sexuel sur mineur. L'une n'a pas connu de suite judiciaire et l'autre a abouti à un procès, au terme duquel Michael Jackson a été acquitté. Ses deux mariages et ses trois enfants sont également à l'origine de polémiques, notamment concernant sa paternité. En 2010, le FBI rend public le dossier de Michael Jackson, dans lequel les autorités soulignent n'avoir trouvé aucune preuve ou comportement chez Jackson qui soutiendrait les accusations passées.
-Michael Jackson meurt le 25 juin 2009, par « homicide accidentel » lié à une overdose de médicaments. Le 7 novembre 2011, à l'issue d'un procès de neuf semaines, le Dr Conrad Murray, son médecin personnel, est reconnu coupable d'homicide involontaire par la Cour supérieure de Los Angeles19.
-			</P>		
-		</section>
-		
-		<section class = "SlideContent">
-			<div class = "slide">
+			<div class="btn-group">
+				<button><i class="icon-text"></i></button>
+				<div class="dropdown">
+					<button><i class="icon-title"></i></button>
+					<ul>
+						<li><a href="#"><i class="icon-title-h1"></i> Titre 1</a>
+						<li><a href="#"><i class="icon-title-h2"></i> Titre 2</a>
+						<li><a href="#"><i class="icon-title-h3"></i> Titre 3</a>
+						<li><a href="#"><i class="icon-title-h4"></i> Titre 4</a>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<button><i class="icon-list"></i></button>
+					<ul>
+						<li><a href="#"><i class="icon-list-numbered"></i> ordered</a>
+						<li><a href="#"><i class="icon-list-unumbered"></i> unordered</a>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<button><i class="icon-media"></i></button>
+					<ul>
+						<li><a href="#"><i class="icon-photo"></i> photo</a>
+						<li><a href="#"><i class="icon-video"></i> video</a>
+					</ul>
+				</div>
+				<button><i class="icon-label"></i></button>
+			</div>
 			
+			<div class="btn-group">
+				<button><i class="icon-align-left"></i></button>
+				<button><i class="icon-align-center"></i></button>
+				<button><i class="icon-align-right"></i></button>
+				<button><i class="icon-align-justify"></i></button>
+			</div>
+			
+			<div class="btn-group">
+				<button><i class="icon-star"></i></button>
+			</div>
+			
+			<div class="btn-group">
+				<button><i class="icon-comment"></i></button>
 			</div>
 		</section>
+
+		<aside>
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+			
+			<a  data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+			<section class="slide-preview">
+			</section>
+
+			<a data-toggle="modal" href="#ModalContent"><i class="icon-plus"></i></a>
+		</aside>
+		
+		<section id="current-slide">
+			<iframe src="./test-presentation.html">
+			</iframe>
+		</section>
 		
 		
-	</body>
+		
+		
+		
+		<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/prettify.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+	<script src="https://login.persona.org/include.js"></script>
+	<script src="../js/identity.js"></script>
+	<script src="../js/dropdown.js"></script>
+	<script src="../js/myJs.js"></script>
+	<script src="../js/bootstrap-tab.js"></script>
 
 	
+		<!-- La fenêtre popup TItre 1
+    ================================================== -->
+	<div id="new1" class="modal fade">	
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h2>Set up</h2>
+		</div>
+		
+		<div class="modal-body">
+		
+			<div class="tabbable tabs-left">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab1" data-toggle="tab">1. Choose A Title Template</a></li>
+					<li><a href="#tab2" data-toggle="tab">2. Choose A Footer 2</a></li>
+					<li><a href="#tab3" data-toggle="tab">3. Choose A Css</a></li>
+					<li><a href="#tab4" data-toggle="tab">4. Verification</a></li>
+				</ul>
+			</div>
+			
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab1">
+					<h3>Choose a Title Slide</h3>
+					<img class="imgTemp" src ="../img/Slide1-1.png">
+					<img class="imgTemp" src ="../img/Slide1-2.png">
+					<img class="imgTemp" src ="../img/Slide1-3.png">
+					<img class="imgTemp" src ="../img/Empty.png"> 
+				</div>
+				<div class="tab-pane" id="tab2">
+					<h3>Choose a Footer type</h3>
+					<img class="imgTemp" src ="../img/footer1.png">
+					<img class="imgTemp" src ="../img/footer2.png">
+					<img class="imgTemp" src ="../img/footer3.png">
+					<img class="imgTemp" src ="../img/Empty.png"> 
+				</div>
+				<div class="tab-pane" id="tab3">
+					<h3>Choose a Css</h3>
+					<section class="temp-preview">
+					</section>
+					<section class="temp-preview">
+					</section>
+					<section class="temp-preview">
+					</section> 
+				</div>
+				<div class="tab-pane" id="tab4">
+					<h3>Please verificate your Choice</h3>
+					<section id="current-slide-preview">
+						<iframe src="./test-presentation.html">
+						</iframe>
+					</section> 
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="modal-footer">
+		  <button title="Close the popup" data-dismiss="modal">Close</button>
+		  <button title="Select the template">Back</button>
+		  <button title="Select the template">Next</button>
+		</div>
+		
+		
+	</div>
 	
+	
+	
+	
+		<!-- La fenêtre popup Content
+    ================================================== -->
+	
+	<div id="ModalContent" class="modal fade">	
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h2>Choose A Template</h2>
+		</div>
+		<div class="modal-body">
+			
+			<h3>Choose a Content Slide</h3>
+				<img class="imgTemp" src ="../img/Titre_texte.png">
+				<img class="imgTemp" src ="../img/Titre_texte_colonneD.png">
+				<img class="imgTemp" src ="../img/Titre_texte_colonneG.png">
+				<img class="imgTemp" src ="../img/Titre_texte_colonneG+D.png">
+				<img class="imgTemp" src ="../img/Empty.png">
+		</div>
+		
+		<div class="modal-footer">
+		  <button title="Close the popup" data-dismiss="modal">Close</button>
+		  <button title="Select the template" >Select</button>
+		</div>
+	</div>
+	
+	<!-- La fenêtre popup Nom du Doc
+    ================================================== -->
+	
+	<div id="Titre" class="modal fade">	
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h2>Choose A Title</h2>
+		</div>
+		<div class="modal-body">
+			<input type="text" id ="span" class="span" />
+		</div>
+		
+		<div class="modal-footer">
+		  <button title="Close the popup" data-dismiss="modal">Close</button>
+		  <button  onclick="notEmpty(document.getElementById('span'), 'Please Enter a Value')" title="Select the template"  >Save</button>
+		</div>
+	</div>
+	
+	
+	
+	<!-- La fenêtre popup Open
+    ================================================== -->
+	<div id="open" class="modal fade">	
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h2>Open</h2>
+		</div>
+		
+		<div class="modal-body">
+			<div class="tabbable tabs-left">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#open1" data-toggle="tab">1. Open a project saved on the web</a></li>
+					<li><a href="#open2" data-toggle="tab">2. Open a project saved on your computer</a></li>
+				</ul>
+			</div>
+		
+			<div class="tab-content">
+				<div class="tab-pane active" id="open1">
+					<h3>Open a project saved on the web</h3>
+					<section> 
+						<section class="temp-preview">
+						</section>
+						<section class="temp-preview">
+						</section>
+						<section class="temp-preview">
+						</section>
+					</section>
+				</div>
+				<div class="tab-pane" id="open2">
+					<h3>Open a project saved on your computer</h3>
+					<p> Please select a file html saved in your computer. The other files may do not work on this application.</p>
+					<td>
+					<p> For open this file, please clik on Upload.</p>
+					<button title="Close the popup">Upload</button>
+				</div>			
+			</div>
+		</div>
+		
+		<div class="modal-footer">
+		  <button title="Close the popup" data-dismiss="modal">Close</button>
+		  <button title="Select the template">Back</button>
+		  <button title="Select the template">Next</button>
+		</div>	
+		
+	</div>
+		
+	</body>
 </html>

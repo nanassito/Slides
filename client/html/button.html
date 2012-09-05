@@ -4,6 +4,13 @@
 	</head>
 	
 	<body>
+		<section class="topbar">
+			<ul class="loginarea">
+				<li id="loggedout"><button><img src="img/persona-login.png"></button></li>
+				<li id="loggedin">Hi, <span></span> <a href="#">logout</a></li>
+				<li class="loading"><img src="img/loading.gif"></li>
+			</ul>
+		</section>
 		<section class="btn-toolbar">
 			<div class="btn-group">
 				<button title="add a header"><i class="icon-header"></i></button>
@@ -54,5 +61,9 @@
 				<button><i class="icon-comment"></i></button>
 			</div>
 		</section>
+		
+		<script src="https://browserid.org/include.js"></script>
+  		<script src="../js/jquery.min.js"></script>
+		<script src="../js/dropdown.js"></script>
 	</body>
 </html>
