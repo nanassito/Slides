@@ -1,0 +1,7 @@
+!!! 5
+
+title #{title}
+link(href="#{template}", rel="stylesheet", type="text/css")
+
+each slide in slides
+	section(class="#{slide.classes}")!= slide.content

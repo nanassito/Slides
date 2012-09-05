@@ -1,0 +1,138 @@
+# API definition
+
+### Login a user
+Log in the user using persona.  
+**Request :**  
+```
+POST /user/auth  
+'assertion' = assertion delivered by Mozilla Persona  
+```
+**Success response :**  
+```
+http200  
+{  
+    'status':   'okay',  
+    'email':    The address contained in the assertion\, for the intended  
+                person being logged in,  
+    'audience': The audience value contained in the assertion. Expected to  
+                be your own website URL.,  
+    'expires':  The date the assertion expires\, expressed as the primitive  
+                value of a Date object: that is\, the number of milliseconds  
+                since midnight 01 January\, 1970 UTC.,  
+    'issuer':   The hostname of the identity provider that issued the  
+                assertion.  
+}  
+```
+
+**Failure response :**  
+```
+http500  
+A string explaining why verification failed.  
+```
+
+
+### Logout a user
+Log out the user.  
+**Request :** 
+```
+GET /user/logout  
+```
+**Success response :** 
+```
+http200  
+```
+
+
+### List all presentations
+Get a list of all presentations for a given user.  
+The user must be logged in.  
+**Request :** 
+```
+GET /list/presentations  
+```
+**Success request :**
+```
+http200  
+[{  
+    'id': id of the presentation,  
+    'title': title of the presentation,  
+    'template': template used by the presentation,  
+    'firstSlide': content of the first slide in the presentation,  
+},…]  
+```
+**Failure request :** 
+```
+http403 // the user must be logged in.  
+```
+```
+http500 // No presentation available  
+```
+
+
+### Get a presentation
+Get a presentation as an html file.  
+**Request :** 
+```
+GET /presentation/:presentation_id  
+```
+**Success request :**
+```
+http200  
+Content is the whole html file.  
+Each slide is a <section class="slide" data-_id=":slide_id"> in the body.  
+```
+**Failure request :** 
+```
+http500  
+```
+
+
+### Create a new presentation
+Create a new presentation  
+The user must be logged in.  
+**Request :** 
+```
+POST /new/presentation  
+'title' = title of the presentation  
+'template' = url of the css to use for the presentation.  
+```
+**Success request :**
+```
+http200  
+Content is the whole html file.  
+There will be a default first slide.  
+Each slide is a <section class="slide" data-_id=":slide_id"> in the body.  
+```
+**Failure request :** 
+```
+http400 // The post request must define 'title' and 'template'.  
+```
+```
+http403 // the user must be logged in.  
+```
+```
+http500 // No presentation available.  
+```
+
+
+POST /presentation/:slide_id
+[{
+	index: 1,
+	content : <section><p>Content of the slide</p></section>
+},…]
+Save the content of the slide
+
+* GET /list/templates
+Return a list of all available templates
+
+GET /template/:name
+Return the template as an css file.
+
+* POST /new/presentation 
+{	
+	id : id de la presentation,
+	title : titre de la presentation,
+	template : http://url.of.the/template.css
+}
+Create a new presentation and return it
+***

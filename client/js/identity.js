@@ -100,7 +100,7 @@ function onlogin(assertion) {
 		}
 		
 		// Send the assertion for server-side verification and login
-		httpRequest.open("POST", "/auth");
+		httpRequest.open("POST", "/user/auth");
 		httpRequest.send(formData);
     }
 }
@@ -112,8 +112,31 @@ function onlogin(assertion) {
  * your backend.
  */
 function onlogout(){
-	console.log("A user has logged out.");
-	updateUILoggedout();
+	updateUIProcessing();
+	
+	// preparing the post request to send the assertion for verification
+	var httpRequest = new XMLHttpRequest();
+	
+	// get the response from the server
+	httpRequest.onreadystatechange = function(){
+		// state 4 means that we have the full response.
+		if (httpRequest.readyState === 4) {
+			if (httpRequest.status === 200) {
+				console.log("A user has logged out.");
+				updateUILoggedout();
+			} else {
+				console.error("Logout failed.");
+				console.error("Server response code : "+httpRequest.status);
+				console.error("Content : "+httpRequest.responseText);
+				// There will be a UI bug here, 
+				// the login button will stay in 'processing'
+			}
+		}
+	}
+	
+	// Send the assertion for server-side verification and login
+	httpRequest.open("GET", "/user/logout");
+	httpRequest.send();
 }
 
 
