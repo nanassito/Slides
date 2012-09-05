@@ -47,17 +47,18 @@ var renderNewSlide = jade.compile(
  */
 exports.getPresentation = function (req, resp) {
 	Presentation.findOne({'_id':req.params.presentation_id}, 
-							function(err, doc){
+							function(err, presentation){
 		if (err){
 			console.error(err);
 			resp.writeHead(500);
+		}else if(!presentation){
+			console.error("Presentation %s does not exists",
+													req.params.presentation_id);
+			resp.writeHead(404);
 		}else{
-			var presentation = "";
-			presentation = doc.title;
-			//TODO : render the full page before sending
 			resp.contentType('text/html');
 			resp.writeHead(200);
-			resp.write(presentation);
+			resp.write(render(presentation));
 		}
 		resp.end();
 	});
@@ -119,6 +120,9 @@ exports.newPresentation = function (req, resp) {
 	if (!req.session.email){
 		// Only a logged in user can create presentation
 		resp.writeHead(403);
+		resp.end();
+	}else if(!req.body.title || !req.body.template){
+		resp.writeHead(400);
 		resp.end();
 	}else{
 
