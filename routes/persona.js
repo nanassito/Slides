@@ -72,3 +72,16 @@ exports.logout = function (req, resp) {
 	resp.writeHead(200);
 	resp.end();
 };
+
+
+/*
+ *	Prevent anonymous access to an other function
+ */
+exports.verifiedUser = function (req, resp, next) {
+	if (!req.session.email){
+		resp.writeHead(403);
+		resp.end();
+	}else{
+		next();
+	}
+};

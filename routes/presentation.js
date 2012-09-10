@@ -78,37 +78,31 @@ exports.getPresentation = function (req, resp) {
  * }
  */
 exports.getList = function (req, resp) {
-	if (!req.session.email){
-		// Only a logged in user can list his presentations
-		resp.writeHead(403);
-		resp.end();
-	}else{
-		
-		Presentation.find({'author': req.session.email}, "title slides template, _id", function(err, docs){
-			var data = [];
-		
-			if (err){
-				console.error(err);
-				resp.writeHead(500);
-			}else{
-				for (var i=0, doc; doc = docs[i]; i++){
-					if (doc.slides[0]){
-						data.push({
-							'id' : doc._id,
-							'title' : doc.title,
-							'template' : doc.template,
-							'firstSlide' : doc.slides[0].content
-						});
-					}
-				}
-				resp.contentType('application/json');
-				resp.writeHead(200);
-			}
+	Presentation.find({'author': req.session.email}, 
+							"title slides template, _id", function(err, docs){
+		var data = [];
 	
-			resp.write(JSON.stringify(data));
-			resp.end();
-		});
-	}
+		if (err){
+			console.error(err);
+			resp.writeHead(500);
+		}else{
+			for (var i=0, doc; doc = docs[i]; i++){
+				if (doc.slides[0]){
+					data.push({
+						'id' : doc._id,
+						'title' : doc.title,
+						'template' : doc.template,
+						'firstSlide' : doc.slides[0].content
+					});
+				}
+			}
+			resp.contentType('application/json');
+			resp.writeHead(200);
+		}
+
+		resp.write(JSON.stringify(data));
+		resp.end();
+	});
 };
 
 
@@ -119,11 +113,7 @@ exports.getList = function (req, resp) {
  *	- req.body.template : url of the template to use.
  */
 exports.newPresentation = function (req, resp) {
-	if (!req.session.email){
-		// Only a logged in user can create presentation
-		resp.writeHead(403);
-		resp.end();
-	}else if(!req.body.title || !req.body.template){
+	if(!req.body.title || !req.body.template){
 		resp.writeHead(400);
 		resp.end();
 	}else{

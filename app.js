@@ -45,17 +45,20 @@ app.configure('production', function(){
 });
 
 // Routes
+var verifiedUser = routes.persona.verifiedUser;
 
 app.get('/', routes.index);
 app.post('/user/auth', routes.persona.auth);
 app.get('/user/logout', routes.persona.logout);
 
 app.get('/presentation/:presentation_id', routes.presentation.getPresentation);
-app.post('/presentation/:title', routes.presentation.saveSlide);
-app.post('/new/presentation', routes.presentation.newPresentation);
+app.post('/presentation/:presentation_id', verifiedUser, 
+												routes.presentation.saveSlide);
+app.post('/new/presentation',verifiedUser, routes.presentation.newPresentation);
 
-app.get('/list/presentations', routes.presentation.getList);
+app.get('/list/presentations', verifiedUser, routes.presentation.getList);
 app.get('/list/templates', routes.template.getList);
 
-app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+app.listen(3000); // FIXME : use nconf 
+console.log("Express server listening on port %d in %s mode", 
+										app.address().port, app.settings.env);
