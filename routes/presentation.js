@@ -6,7 +6,7 @@ var nconf = require('nconf'),
 
 
 // Schema definition
-var db = mongoose.connect('mongodb://localhost/Slides'),
+var db = mongoose.connect(nconf.get("mongoUrl")),
 	Schema = mongoose.Schema;
 
 var slideSchema = new Schema({
@@ -29,12 +29,12 @@ var Slide = db.model('Slide', slideSchema),
 // caching the presentation template to use in jade.
 // Call this to render a presentation
 var render = jade.compile(
-					fs.readFileSync('templates/presentation.html').utf8Slice());
+					fs.readFileSync('views/presentation.html').utf8Slice());
 
 // caching the new slide template to use in jade.
 // Call this to render a new Slide
 var renderNewSlide = jade.compile(
-					fs.readFileSync('templates/new slide.html').utf8Slice());
+					fs.readFileSync('views/new slide.html').utf8Slice());
 
 
 

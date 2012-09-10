@@ -10,8 +10,9 @@ nconf.overrides({
 nconf.argv().env().file({ file:'./config.json' });
 
 nconf.defaults({
-	audience : "http://localhost:3000",
-	secret : "A very secret key"
+	'audience' : "http://localhost:3000",
+	'secret' : "A very secret key",
+	'mongoUrl' : "mongodb://localhost/Slides"
 });
 
 
@@ -32,6 +33,7 @@ app.configure(function(){
 	app.use(express.session({ secret: nconf.get("secret")}));
 	app.use(app.router);
 	app.use(express.static(nconf.get('basedir') +'/client'));
+	app.use('/template', express.static(nconf.get('basedir') +'/templates'));
 });
 
 app.configure('development', function(){
@@ -51,10 +53,9 @@ app.get('/user/logout', routes.persona.logout);
 app.get('/presentation/:presentation_id', routes.presentation.getPresentation);
 app.post('/presentation/:title', routes.presentation.saveSlide);
 app.post('/new/presentation', routes.presentation.newPresentation);
-app.get('/list/presentations', routes.presentation.getList);
 
+app.get('/list/presentations', routes.presentation.getList);
 app.get('/list/templates', routes.template.getList);
-app.get('/template/:name', routes.template.getTemplate);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

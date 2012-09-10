@@ -1,27 +1,22 @@
 // Configuration
-var nconf = require('nconf');
+var nconf = require('nconf'),
+	fs = require('fs');
 
 
 /*
  * Return the list of all available templates.
- * returned object = {
- *	[
- *		{
- *			url : url of the template,
- *			preview : image of the template
- *		},…
- *	]
- * }
+ * returned object = [
+ *	url of the template,…
+ * ]
  */
 exports.getList = function (req, resp) {
-	console.error("Not implemented.");
-};
-
-
-/*
- * Return a template as an html file.
- * We need the req.params.name of the template.
- */
-exports.getTemplate = function (req, resp) {
-	console.error("Not implemented.");
+	fs.readdir(nconf.get('basedir')+"/templates", function(err, files){
+		if (err){
+			console.error(err);
+			resp.writeHead(500);
+			resp.send();
+		}else{
+			resp.send(files);
+		}
+	});
 };
