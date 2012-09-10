@@ -16,6 +16,13 @@ exports.getList = function (req, resp) {
 			resp.writeHead(500);
 			resp.send();
 		}else{
+			console.log(files);
+			var i = files.length;
+			while (i--){
+				if (files[i].substr(-4, 4) != ".css"){
+					files.splice(i, 1);
+				}
+			}
 			resp.send(files);
 		}
 	});
