@@ -79,8 +79,7 @@ exports.logout = function (req, resp) {
  */
 exports.verifiedUser = function (req, resp, next) {
 	if (!req.session.email){
-		resp.writeHead(403);
-		resp.end();
+		resp.send(403);
 	}else{
 		next();
 	}
