@@ -174,11 +174,6 @@ exports.newPresentation = function (req, resp) {
  *	- req.body.position : position of the slide in the presentation
  */
 exports.saveSlide = function (req, resp) {
-	// FIXME : verify that position is an integer
-	
-	console.error("Not tested. ");
-	// TODO : if the slide modifed is the first one, update presentation title
-	
 	Presentation.findOne({'_id':req.params.presentation_id}, 
 							function(err, presentation){
 		if (err){
@@ -202,12 +197,10 @@ exports.saveSlide = function (req, resp) {
 			slide.classes = req.body.classes;
 			slide.lastEdit = new Date;
 			
-			// TODO : handle slide position
-			
 			presentation.markModified("slides");
 			presentation.save(function (err, newPresentation){
 				if (err){
-					console.log(err);
+					console.error(err);
 					resp.send(500);
 				}
 				resp.contentType('application/json');
