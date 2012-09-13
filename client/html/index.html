@@ -7,118 +7,22 @@
 	    <title>Slides - Titulo de la presentación</title>
 	</head>
 	
-	<body>
+	<body data-view="splash">
 		<header>
-			<h1>Titulo de la presentación</h1>
-			
-			<span id="saving-status">
-				<i class="icon-valid icon-white"></i> saved
-			</span>
-			
-			<a>New</a>
-			<a>Open</a>
-			
-			<span id="login">
-				<i class="icon-persona-before"></i>
-				<p id="infoLogin">Sign in</p>
-				<i class="icon-persona-after"></i>
-			</span>
 		</header>
 	
-		<section id="toolbar">
-			<div class="btn-group">
-				<button title="add a header"><i class="icon-header"></i></button>
-				<button title="add a section"><i class="icon-section"></i></button>
-				<button title="add a footer"><i class="icon-footer"></i></button>
-			</div>
-			
-			<div class="btn-group">
-				<button><i class="icon-text"></i></button>
-				<div class="dropdown">
-					<button><i class="icon-title"></i></button>
-					<ul>
-						<li><a href="#"><i class="icon-title-h1"></i> Titre 1</a>
-						<li><a href="#"><i class="icon-title-h2"></i> Titre 2</a>
-						<li><a href="#"><i class="icon-title-h3"></i> Titre 3</a>
-						<li><a href="#"><i class="icon-title-h4"></i> Titre 4</a>
-					</ul>
-				</div>
-				<div class="dropdown">
-					<button><i class="icon-list"></i></button>
-					<ul>
-						<li><a href="#"><i class="icon-list-numbered"></i> ordered</a>
-						<li><a href="#"><i class="icon-list-unumbered"></i> unordered</a>
-					</ul>
-				</div>
-				<div class="dropdown">
-					<button><i class="icon-media"></i></button>
-					<ul>
-						<li><a href="#"><i class="icon-photo"></i> photo</a>
-						<li><a href="#"><i class="icon-video"></i> video</a>
-					</ul>
-				</div>
-				<button><i class="icon-label"></i></button>
-			</div>
-			
-			<div class="btn-group">
-				<button><i class="icon-align-left"></i></button>
-				<button><i class="icon-align-center"></i></button>
-				<button><i class="icon-align-right"></i></button>
-				<button><i class="icon-align-justify"></i></button>
-			</div>
-			
-			<div class="btn-group">
-				<button><i class="icon-star"></i></button>
-			</div>
-			
-			<div class="btn-group">
-				<button><i class="icon-comment"></i></button>
-			</div>
+		<section id="app-content">
+			<h1>SlideZ</h1>
+			<img 	onclick="navigator.id.request();" 
+					alt="Sign in with Persona"
+					src="../img/persona-login.png"></img>
 		</section>
-
-		<aside>
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-			
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-
-			<a><i class="icon-plus"></i></a>
-			<section class="slide-preview">
-			</section>
-
-			<a><i class="icon-plus"></i></a>
-		</aside>
 		
-		<section id="current-slide">
-			<iframe src="./test-presentation.html">
-			</iframe>
-		</section>
+		<footer>
+		</footer>
 		
 		<script src="https://login.persona.org/include.js"></script>
 		<script src="../js/identity.js"></script>
-		<script src="../js/dropdown.js"></script>
+		<script src="../js/viewManager.js"></script>
 	</body>
 </html>
