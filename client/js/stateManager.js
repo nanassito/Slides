@@ -16,22 +16,10 @@ function changeState(){
 	var state = hash.substr(1, hash.indexOf('/')-1)
 	
 	if (state == "splash"){
-		openSplash();
 		document.body.setAttribute("data-state", state);
 		
 	}else if (state == "main"){
-		openHeader();
 		openMain();
-		document.body.setAttribute("data-state", state);
-		
-	}else if (state == "overview"){
-		openHeader();
-		openOverview();
-		document.body.setAttribute("data-state", state);
-		
-	}else if (state == "edit"){
-		openHeader();
-		openEdit();
 		document.body.setAttribute("data-state", state);
 		
 	}else {
@@ -41,42 +29,11 @@ function changeState(){
 
 
 /**
- * Display all the presentation contained in list
- */
-function createPresentationGrid(list){
-	var appContent = document.getElementById("app-content");
-	appContent.innerHTML = "";
-	var wrapper = document.createElement("section");
-	wrapper.setAttribute("id", "wrapper");
-	appContent.appendChild(wrapper);
-	
-	for (var i=0, elmt; elmt = list[i]; i++){
-		var iframe = document.createElement("iframe");
-		wrapper.appendChild(iframe);
-		
-		var content = "";
-		content += "<link 	rel='stylesheet'";
-		content += "		href='"+elmt.template+"'";
-		content += "		type='text/css'";
-		content += "		media='screen'/>";
-		content += "<section>";
-		content += elmt.firstSlide;
-		content += "</section>";
-		
-		iframe.src = "data:text/html;charset=utf-8,"+escape(content);
-		iframe.onclick=""
-	}
-
-//iframe.src = "data:text/html;charset=utf-8," + escape("<body><h1>Test</h1></body>");
-}
-
-
-/**
  * changing state and entering the main state
  * We fecth all presentation available for the user and display them
  */
 function openMain(){
-	document.querySelector("#app-header>h1").textContent="Open a presentation";
+	changeTitle("Open a presentation");
 	
 	// fetch the list of presentations from the server.
 	var httpRequest = new XMLHttpRequest();
@@ -87,7 +44,7 @@ function openMain(){
 			if (httpRequest.status === 200) {
 				// Here we have the list.
 				var list = JSON.parse(httpRequest.responseText);
-				createPresentationGrid(list);
+				createGrid(list, newIframe);
 			}else if (httpRequest.status === 403) {
 				// user is not logged in
 				document.location.hash = "#splash";
@@ -105,41 +62,55 @@ function openMain(){
 
 
 /**
- * changing state and entering a state containing the standard header
+ * Change the window title
  */
-function openHeader(){
-	var header = document.getElementById("app-header");
-	if (!header.hasChildNodes()){
-		var title = document.createElement("h1");
-		header.appendChild(title);
-		
-		var button = document.createElement('button');
-		var icon = document.createElement('i');
-		icon.setAttribute("class", "icon-buddy");
-		button.appendChild(icon);
-		button.appendChild(document.createTextNode(document.session.email));
-		button.onclick = function(){navigator.id.logout()};
-		header.appendChild(button);
-	}
+function changeTitle(newTitle){
+	document.querySelector("#app-header>h1").textContent=newTitle;
 }
 
 
 /**
- * changing state and entering the splash state.
+ * Display all the presentation contained in list
  */
-function openSplash(){
-	document.getElementById("app-header").innerHTML = "";
-	var content = document.getElementById("app-content");
-	content.innerHTML = "";
-	var title = document.createElement("h1");
-	title.textContent = "SlideZ";
-	content.appendChild(title);
-	var image = document.createElement("img");
-	image.setAttribute("src", "../img/persona-login.png");
-	image.setAttribute("alt", "Sign in with Persona");
-	image.onclick = function(){navigator.id.request()};
-	content.appendChild(image);
+function createGrid(list, displayFunction){
+	var defaultSlide = "<h1>Title of the presentation</h1>";
+	defaultSlide += "<p class='author'>author@email.com</p>";
+
+	var container = document.getElementById("app-grid");
+	container.innerHTML = "";
+	
+	for (var i=0, elmt; elmt = list[i]; i++){
+		elmt.content = elmt.firstSlide || defaultSlide;
+		displayFunction(container, elmt);
+	}
+
+//iframe.src = "data:text/html;charset=utf-8," + escape("<body><h1>Test</h1></body>");
 }
+
+
+/**
+ * Append an iframe element to node and fill it with content and stylesheet
+ */
+function newIframe(node, elmt){
+	var iframe = document.createElement("iframe");
+	node.appendChild(iframe);
+	
+	var data = "";
+	data += "<link 	rel='stylesheet'";
+	data += "		href='"+elmt.template+"'";
+	data += "		type='text/css'";
+	data += "		media='screen'/>";
+	data += "<section data-slide='unknown'>";
+	data += 		elmt.content;
+	data += "</section>";
+	
+	iframe.src = "data:text/html;charset=utf-8,"+escape(data);
+	
+	iframe.addEventListener("click", function(){
+		window.location.hash = "#edit/"+elmt._id;
+	});
+}
+
 
 /**
  * DOM has been loaded, bind all the events.

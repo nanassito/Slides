@@ -109,6 +109,7 @@ html {
 }
 body {
   margin: 0;
+  height: 100%;
 }
 a {
   color: inherit;
@@ -126,6 +127,9 @@ button:active:hover {
   -webkit-box-shadow: inset 0 0 10px #bbbbbb;
   -moz-box-shadow: inset 0 0 10px #bbbbbb;
   box-shadow: inset 0 0 10px #bbbbbb;
+}
+button * {
+  display: inline;
 }
 .clearfix {
   *zoom: 1;
@@ -161,66 +165,54 @@ button:active:hover {
   src: local('Nothing You Could Do'), local('NothingYouCouldDo'), url(../font/NothingYouCouldDo.ttf) format('truetype'), url(../font/NothingYouCouldDo.woff) format('woff'), url(http://themes.googleusercontent.com/static/fonts/nothingyoucoulddo/v3/jpk1K3jbJoyoK0XKaSyQAZsYoLsUhJo8DEpooYVMXYU.woff) format('woff');
 }
 #app-header {
-  position: fixed;
-  height: 80px;
   width: 100%;
 }
-#app-header h1 {
-  margin-top: 20px;
-  margin-left: 10px;
-  float: left;
+#app-header  > * {
+  display: inline-block;
+  margin: 10px;
 }
-#app-header button {
-  margin-top: 14px;
-  margin-right: 10px;
+#app-header  > button {
   float: right;
+  margin-top: 13px;
 }
-#app-content {
-  position: fixed;
-  top: 80px;
-  bottom: 0;
+body[data-state="main"]  > #splash {
+  display: none;
 }
-body[data-state="splash"] {
+body[data-state="splash"]  > #app-header,
+body[data-state="splash"]  > #app-grid,
+body[data-state="splash"]  > #app-overview {
+  display: none;
+}
+body[data-state="splash"]  > #splash {
   display: table;
   height: 100%;
   width: 100%;
 }
-body[data-state="splash"]  > header,
-body[data-state="splash"]  > footer {
-  display: none;
-}
-body[data-state="splash"]  > #app-content {
+body[data-state="splash"]  > #splash  > section {
   position: relative;
   display: table-cell;
   vertical-align: middle;
+  text-align: center;
+  margin: auto;
   width: 100%;
   height: 100%;
   color: #333333;
 }
-body[data-state="splash"]  > #app-content  > * {
-  text-align: center;
-  margin: auto;
-}
-body[data-state="splash"]  > #app-content img {
+body[data-state="splash"]  > #splash  > section img {
   display: block;
   cursor: pointer;
+  margin: auto;
 }
-body[data-state="splash"]  > #app-content h1 {
+body[data-state="splash"]  > #splash  > section h1 {
   font-family: 'Nothing You Could Do', sans;
   font-size: 4em;
   margin: 0;
 }
-#app-content {
-  margin-left: 10px;
-  margin-right: 10px;
+#app-grid {
+  margin: 10px;
 }
-#app-content  > #wrapper {
-  overflow: auto;
-  position: fixed;
-  top: 80px;
-  bottom: 0;
-}
-#app-content  > #wrapper  > iframe {
+#app-grid  > iframe {
+  background-color: #ffffff;
   border: 1px solid #bbbbbb;
   border-radius: 4px;
   height: 200px;

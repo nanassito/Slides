@@ -10,6 +10,8 @@
  */
 function onAfterLogin(userData){
 	document.session = userData;
+	var buttonLabel = document.querySelector("#app-header>button>p");
+	buttonLabel.textContent = document.session.email;
 	document.location.hash = "#main";
 }
 

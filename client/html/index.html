@@ -8,14 +8,26 @@
 	</head>
 	
 	<body data-state="splash">
-		<header id="app-header"></header>
-	
-		<section id="app-content">
-			<h1>SlideZ</h1>
-			<img 	onclick="navigator.id.request();" 
-					alt="Sign in with Persona"
-					src="../img/persona-login.png"></img>
+		<section id="splash">
+			<section>
+				<h1>SlideZ</h1>
+				<img 	onclick="navigator.id.request();" 
+						alt="Sign in with Persona"
+						src="../img/persona-login.png"></img>
+			</section>
 		</section>
+	
+		<header id="app-header">
+			<h1></h1>
+			<button onclick="navigator.id.logout();">
+				<i class="icon-buddy"></i>
+				<p></p>
+			</button>
+		</header>
+	
+		<section id="app-grid"></section>
+	
+		<section id="app-edit"></section>
 		
 		<footer id="app-footer"></footer>
 		
