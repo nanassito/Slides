@@ -5,53 +5,20 @@
  * state.
  */
 
-
 /**
- * Get the element where we write the mail adress
+ * The login process is over, add data to the DOM and change state.
  */
-function getInfoLoginElement(){
-	return document.getElementById("infoLogin");
+function onAfterLogin(userData){
+	document.session = userData;
+	document.location.hash = "#main";
 }
 
 /**
- * Get the element to bind with persona actions
+ * The login process is over, remove data from the DOM and change state.
  */
-function getLoginElement(){
-	return document.getElementById("login");
-}
-
-/**
- * The user is logged in, we need to update the UI
- */
-function updateUILoggedin(email){
-	var uiElmt = getInfoLoginElement();
-	uiElmt.innerHTML = email;
-	getLoginElement().onclick = function(event) {
-		event.preventDefault();
-		navigator.id.logout();
-	};
-}
-
-
-/**
- * The user is being logged in, we need to update the UI
- */
-function updateUIProcessing(){
-	var uiElmt = getInfoLoginElement();
-	uiElmt.innerHTML = "<img src='../img/loading.gif'/>";
-}
-
-
-/**
- * The user is logged out, we need to update the UI
- */
-function updateUILoggedout(){
-	var uiElmt = getInfoLoginElement();
-	uiElmt.innerHTML = "Sign in";
-	getLoginElement().onclick = function(event) {
-		event.preventDefault();
-		navigator.id.request();
-	};
+function onAfterLogout(){
+	if (document.session) document.session = undefined;
+	document.location.hash = "#splash";
 }
 
 /**
@@ -62,8 +29,6 @@ function updateUILoggedout(){
 function onlogin(assertion) {
 	console.log("A user has just logged in (browser-side only)");
     if (assertion) {
-    	updateUIProcessing();
-    	
     	// Just in case someone does not have javascript, or is using IE
     	if (!window.XMLHttpRequest) {
     		console.error("Please test me in a real browser.");
@@ -81,15 +46,12 @@ function onlogin(assertion) {
 			if (httpRequest.readyState === 4) {
 				if (httpRequest.status === 200) {
 					console.log("Server is aware that the user is logged in.");
-					
-					// Update the UI
-					var response = JSON.parse(httpRequest.responseText);
-					updateUILoggedin(response.email);
+					onAfterLogin(JSON.parse(httpRequest.responseText));
 				} else {
 					console.error("The user loggin process have failed.");
 					console.error("Server response code : "+httpRequest.status);
 					console.error("Content : "+httpRequest.responseText);
-					updateUILoggedout();
+					onAfterLogout();
 				}
 			}
 		}
@@ -107,8 +69,6 @@ function onlogin(assertion) {
  * your backend.
  */
 function onlogout(){
-	updateUIProcessing();
-	
 	// preparing the post request to send the assertion for verification
 	var httpRequest = new XMLHttpRequest();
 	
@@ -118,13 +78,11 @@ function onlogout(){
 		if (httpRequest.readyState === 4) {
 			if (httpRequest.status === 200) {
 				console.log("A user has logged out.");
-				updateUILoggedout();
+				onAfterLogout();
 			} else {
 				console.error("Logout failed.");
 				console.error("Server response code : "+httpRequest.status);
 				console.error("Content : "+httpRequest.responseText);
-				// There will be a UI bug here, 
-				// the login button will stay in 'processing'
 			}
 		}
 	}
@@ -138,13 +96,7 @@ function onlogout(){
 /**
  * DOM has been loaded, bind all the events.
  */
-window.onload = function () {
-	// Click on the login button. We may want to have this directly in the html
-	getLoginElement().onclick = function(event) {
-		event.preventDefault();
-		navigator.id.request();
-	};
-	
+document.addEventListener("DOMContentLoaded", function () {
 	// Register Persona callbacks
 	navigator.id.watch({
 		//loggedInEmail: 'bob@example.org',
@@ -152,4 +104,4 @@ window.onload = function () {
 		onlogin: onlogin,
 		onlogout: onlogout
 	});
-}
+});

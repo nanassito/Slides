@@ -144,31 +144,32 @@ a {
   font-weight: 400;
   src: local('Nothing You Could Do'), local('NothingYouCouldDo'), url(../font/NothingYouCouldDo.ttf) format('truetype'), url(../font/NothingYouCouldDo.woff) format('woff'), url(http://themes.googleusercontent.com/static/fonts/nothingyoucoulddo/v3/jpk1K3jbJoyoK0XKaSyQAZsYoLsUhJo8DEpooYVMXYU.woff) format('woff');
 }
-body[data-view="splash"] {
+body[data-state="splash"] {
   background-image: url('../img/whitey.png');
   display: table;
   height: 100%;
   width: 100%;
 }
-body[data-view="splash"]  > header,
-body[data-view="splash"]  > footer {
+body[data-state="splash"]  > header,
+body[data-state="splash"]  > footer {
   display: none;
 }
-body[data-view="splash"]  > #app-content {
+body[data-state="splash"]  > #app-content {
   display: table-cell;
-  vertical-align: center;
+  vertical-align: middle;
   width: 100%;
   height: 100%;
   color: #333333;
 }
-body[data-view="splash"]  > #app-content  > * {
+body[data-state="splash"]  > #app-content  > * {
   text-align: center;
   margin: auto;
 }
-body[data-view="splash"]  > #app-content img {
+body[data-state="splash"]  > #app-content img {
   display: block;
+  cursor: pointer;
 }
-body[data-view="splash"]  > #app-content h1 {
+body[data-state="splash"]  > #app-content h1 {
   font-family: 'Nothing You Could Do', sans;
   font-size: 4em;
   margin: 0;
