@@ -39,6 +39,18 @@ function changeState(){
 }
 
 /**
+ * changing state and entering the main state
+ * We fecth all presentation available for the user and display them
+ */
+function openMain(){
+	document.querySelector("#app-header>h1").textContent="Open a presentation";
+	
+	var content = document.getElementById("app-content");
+	content.innerHTML = "";
+}
+
+
+/**
  * changing state and entering a state containing the standard header
  */
 function openHeader(){
