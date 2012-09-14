@@ -20,14 +20,17 @@ function changeState(){
 		
 	}else if (state == "main"){
 		openHeader();
+		openMain();
 		document.body.setAttribute("data-state", state);
 		
 	}else if (state == "overview"){
 		openHeader();
+		openOverview();
 		document.body.setAttribute("data-state", state);
 		
 	}else if (state == "edit"){
 		openHeader();
+		openEdit();
 		document.body.setAttribute("data-state", state);
 		
 	}else {
@@ -40,8 +43,17 @@ function changeState(){
  */
 function openHeader(){
 	var header = document.getElementById("app-header");
-	if (!header.innerHTML){
+	if (!header.hasChildNodes()){
+		var title = document.createElement("h1");
+		header.appendChild(title);
 		
+		var button = document.createElement('button');
+		var icon = document.createElement('i');
+		icon.setAttribute("class", "icon-buddy");
+		button.appendChild(icon);
+		button.appendChild(document.createTextNode(document.session.email));
+		button.onclick = function(){navigator.id.logout()};
+		header.appendChild(button);
 	}
 }
 
@@ -50,17 +62,17 @@ function openHeader(){
  * changing state and entering the splash state.
  */
 function openSplash(){
-	 document.getElementById("app-header").innerHTML = "";
-	 var content = document.getElementById("app-content");
-	 content.innerHTML = "";
-	 var title = document.createElement("h1");
-	 title.textContent = "SlideZ";
-	 content.appendChild(title);
-	 var image = document.createElement("img");
-	 image.setAttribute("src", "../img/persona-login.png");
-	 image.setAttribute("alt", "Sign in with Persona");
-	 image.onclick = function(){navigator.id.request()};
-	 content.appendChild(image);
+	document.getElementById("app-header").innerHTML = "";
+	var content = document.getElementById("app-content");
+	content.innerHTML = "";
+	var title = document.createElement("h1");
+	title.textContent = "SlideZ";
+	content.appendChild(title);
+	var image = document.createElement("img");
+	image.setAttribute("src", "../img/persona-login.png");
+	image.setAttribute("alt", "Sign in with Persona");
+	image.onclick = function(){navigator.id.request()};
+	content.appendChild(image);
 }
 
 /**
