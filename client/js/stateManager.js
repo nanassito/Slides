@@ -12,8 +12,9 @@
  * Change active state according to the hash
  */
 function changeState(){
-	var state = window.location.hash.substring(1)
-
+	var hash = window.location.hash + "/";
+	var state = hash.substr(1, hash.indexOf('/')-1)
+	
 	if (state == "splash"){
 		openSplash();
 		document.body.setAttribute("data-state", state);
@@ -38,6 +39,38 @@ function changeState(){
 	}
 }
 
+
+/**
+ * Display all the presentation contained in list
+ */
+function createPresentationGrid(list){
+	var appContent = document.getElementById("app-content");
+	appContent.innerHTML = "";
+	var wrapper = document.createElement("section");
+	wrapper.setAttribute("id", "wrapper");
+	appContent.appendChild(wrapper);
+	
+	for (var i=0, elmt; elmt = list[i]; i++){
+		var iframe = document.createElement("iframe");
+		wrapper.appendChild(iframe);
+		
+		var content = "";
+		content += "<link 	rel='stylesheet'";
+		content += "		href='"+elmt.template+"'";
+		content += "		type='text/css'";
+		content += "		media='screen'/>";
+		content += "<section>";
+		content += elmt.firstSlide;
+		content += "</section>";
+		
+		iframe.src = "data:text/html;charset=utf-8,"+escape(content);
+		iframe.onclick=""
+	}
+
+//iframe.src = "data:text/html;charset=utf-8," + escape("<body><h1>Test</h1></body>");
+}
+
+
 /**
  * changing state and entering the main state
  * We fecth all presentation available for the user and display them
@@ -45,8 +78,29 @@ function changeState(){
 function openMain(){
 	document.querySelector("#app-header>h1").textContent="Open a presentation";
 	
-	var content = document.getElementById("app-content");
-	content.innerHTML = "";
+	// fetch the list of presentations from the server.
+	var httpRequest = new XMLHttpRequest();
+	
+	httpRequest.onreadystatechange = function(){
+		// state 4 means that we have the full response.
+		if (httpRequest.readyState === 4) {
+			if (httpRequest.status === 200) {
+				// Here we have the list.
+				var list = JSON.parse(httpRequest.responseText);
+				createPresentationGrid(list);
+			}else if (httpRequest.status === 403) {
+				// user is not logged in
+				document.location.hash = "#splash";
+			}else if (httpRequest.status === 500) {
+				console.error("Something went wrong on the server.");
+			}else {
+				console.error("Got strange response : %s", httpRequest.status);
+			}
+		}
+	}
+	
+	httpRequest.open("GET", "/list/presentations");
+	httpRequest.send();
 }
 
 

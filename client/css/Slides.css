@@ -105,12 +105,10 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-image: url('../img/whitey.png');
 }
 body {
   margin: 0;
-  background-image: url('../img/whitey.png');
-  height: 100%;
-  width: 100%;
 }
 a {
   color: inherit;
@@ -162,24 +160,37 @@ button:active:hover {
   font-weight: 400;
   src: local('Nothing You Could Do'), local('NothingYouCouldDo'), url(../font/NothingYouCouldDo.ttf) format('truetype'), url(../font/NothingYouCouldDo.woff) format('woff'), url(http://themes.googleusercontent.com/static/fonts/nothingyoucoulddo/v3/jpk1K3jbJoyoK0XKaSyQAZsYoLsUhJo8DEpooYVMXYU.woff) format('woff');
 }
-body  > #app-header h1 {
+#app-header {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+}
+#app-header h1 {
   margin-top: 20px;
   margin-left: 10px;
   float: left;
 }
-body  > #app-header button {
+#app-header button {
   margin-top: 14px;
   margin-right: 10px;
   float: right;
 }
+#app-content {
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+}
 body[data-state="splash"] {
   display: table;
+  height: 100%;
+  width: 100%;
 }
 body[data-state="splash"]  > header,
 body[data-state="splash"]  > footer {
   display: none;
 }
 body[data-state="splash"]  > #app-content {
+  position: relative;
   display: table-cell;
   vertical-align: middle;
   width: 100%;
@@ -198,6 +209,23 @@ body[data-state="splash"]  > #app-content h1 {
   font-family: 'Nothing You Could Do', sans;
   font-size: 4em;
   margin: 0;
+}
+#app-content {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#app-content  > #wrapper {
+  overflow: auto;
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+}
+#app-content  > #wrapper  > iframe {
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  height: 200px;
+  width: 300px;
+  margin: 5px;
 }
 [class*="icon-"] {
   display: inline-block;
