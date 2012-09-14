@@ -6,45 +6,81 @@
 <!-- Your Slides -->
 <!-- One section is one slide -->
 
-</head><body style="-moz-transform: scale(0.75);" class="loaded"><section aria-selected="true">
-    <h1>Build your slides in <strong>HTML5</strong> and <strong>CSS3</strong> with <strong>DZSlides</strong>.</h1>
-    <footer>by <a href="http://twitter.com/paulrouget">@paulrouget</a>.</footer>
+</head><body style="-moz-transform: scale(0.75);" class="loaded">
+
+
+<section class="titre1" aria-selected="true">
+    <h1>Titre</h1>
+	<h2>SousTitre</h2>
+    <!--<footer>by <a href="http://twitter.com/paulrouget">@paulrouget</a>.</footer>-->
 </section>
 
 <section class="chapter">
-    <h1>HTML5 and CSS3?</h1>
+    <h1>Exemple</h1>
 </section>
 
-<section>
-    <h2>What are slides <strong>made</strong> of?</h2>
-    <ul>
-        <li>Text
-        </li><li>Images
-        </li><li>Videos
-    </li></ul>
-    <video tabindex="0" src="test-presentation_files/big_buck_bunny.webm"></video>
-    <h2><strong>HTML5</strong> can do that.</h2>
+<section class="content1 footer1">
+    <header>
+		<h1>Titulo del <strong>Slide</strong> !!!</h2>
+	</header>
+	<div>
+		<p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+	</div>
+	<footer>
+		<div>  Emilien Marcelot page 1 </div>
+	</footer>
 </section>
 
-<section>
-    <h2>How slides <strong>behave</strong>?</h2>
-    <ul>
-        <li>Transitions
-        </li><li>Resolution independent
-    </li></ul>
-    <span id="arrow">◰</span>
-    <h2><strong>CSS3</strong> can do that.</h2>
+<section class ="content2 footer2">
+    <header>
+		<h1>Titulo del <strong>Slide</strong> !!!</h2>
+	</header>
+	<div>
+		<p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+		<aside class="aright">
+			<ul>
+				<li>Text
+				</li><li>Images
+				</li><li>Videos
+			</li></ul>
+		</aside>
+	</div>
+	<footer>
+		<div>  Emilien Marcelot  </div>
+		<div>   page 1 </div>
+	</footer>
 </section>
 
 <section class="chapter">
     <h1>What is DZSlides?</h1>
 </section>
 
-<section>
-    <h2><strong>One</strong> single HTML file.</h2>
-    <svg style="margin: 50px auto 0 auto; display: block;" width="200px" height="300px">
-        <path stroke="#FFFFFF" fill="none" stroke-width="5" d="M50 10 h 140 v 280 h -180 v -240 z M 50 10 v 40 h -40 "></path>
-    </svg>
+<section class="content4 footer3">
+    <header>
+		<h1>Titulo del <strong>Slide</strong> !!!</h2>
+	</header>
+	<div>
+		<aside class="aleft">
+			<ul>
+				<li>Text
+				</li><li>Images
+				</li><li>Videos
+			</li></ul>
+		</aside>
+		<p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+		<aside class="aright">
+			<ul>
+				<li>Text
+				</li><li>Images
+				</li><li>Videos
+			</li></ul>
+		</aside>
+	</div>
+	<footer>
+		<div>  11h42 </div>
+		<div>  Emilien Marcelot  </div>
+		<div>   page 1 </div>
+	</footer>
 </section>
 
 <section>
@@ -169,11 +205,11 @@
 
 <!-- Style -->
 
-<link href="test-presentation_files/css.css" rel="stylesheet">
+<link href="test-presentation_files/css2.css" rel="stylesheet">
 <style>
   html { background-color: black; }
   a { color: #FF0066; } a:hover {text-decoration: underline;}
-  footer { position: absolute; bottom: 50px; right: 50px; }
+  
   strong {color: #FF0066}
   body {
       font-family: 'Oswald', arial, serif;
@@ -197,33 +233,148 @@
   section[aria-selected] ~ section { left: +150% }
 
   .chapter { background-color: black;}
+  
+  
   .chapter h1 {line-height: 600px; vertical-align: middle; margin: 0; text-align: center; display: block}
+  
+  .titre1 h1 {
+			margin-top: 150px ;
+			text-align: center;
+  }
+  .titre1 h2 {
+			margin-top: 30px;
+			text-align: center;
+  }
 
-  h1 {
-      margin: 50px 100px 0 100px;
-      font-size: 50px;
-      text-shadow: 0px -1px 0px #000;
-      text-align: left;
+  .titre2 h1 {
+			margin-right: 20px;
+			margin-left: 0px;
+			margin-top : 75px;
+			text-align: left;
+			border-radius : 0px 06px 6px 0px;
   }
-  h2 {
-      color: #FAE50B;
-      margin: 70px 0 0 0;
-      font-size: 40px;
-      text-align: center;
+  .titre2 h2 {
+			margin-right: 60px;
+			margin-left: 0px;
+			margin-top : 10px;
+			text-align: left;
+			font-size: 40px;
+			border-radius : 0px 06px 6px 0px;
   }
+  
+  .titre3 h1 {
+			margin: 20px 100px 0px 0px;
+			text-align: left;
+			font-size: 50px;
+			border-radius : 0px 06px 6px 0px;
+			
+  }
+  .titre3 h2 {
+			position: absolute; bottom: 0px; right: 0px; 
+			margin : 5px 0px 20px 20px ;
+			text-align: right;
+			font-size: 40px;
+			border-radius : 06px 0px 0px 06px;
+  }
+  
+  .footer1 footer{
+		position: absolute; bottom: 20px;
+		display :inline-block;
+		width:100%;
+		}
+  .footer1 footer div{
+			display :inline-block;
+			text-align: center;
+			width:100%;
+		}
+		
+  .footer2 footer{
+		position: absolute; bottom: 20px;
+		display :inline-block;
+		width:800px;
+		
+		}
+		
+  .footer2 footer div{
+			display :inline-block;
+			text-align: center;
+			width:395px;
+		}
+		
+  .footer3 footer{
+		position: absolute; bottom: 20px;
+		display :inline-block;
+		width:800px;
+		
+		}
+		
+  .footer3 footer div{
+			display :inline-block;
+			text-align: center;
+			width:260px;
+		}
+
+  header h1{
+	margin : 20px;
+	text-align: left;
+  }
+  
+  .content1 p{
+      margin: 50px;
+  }
+  
+  .content2 div{
+	display : inline-block;
+  }
+  
+  .content2 p{
+	margin: 10px;
+	display: inline-block;
+	width:550px;
+  }
+  
+  .content2 aside{
+	margin: 10px;
+	display: inline-block;
+	vertical-align :top;
+	width:195px;
+  }
+  
+  .content4 div{
+	display : inline-block;
+  }
+  
+  .content4 p{
+	margin: 10px;
+	display: inline-block;
+	width:400px;
+  }
+  
+  .content4 aside{
+	margin: 10px;
+	display: inline-block;
+	vertical-align :top;
+	width:157px;
+  }
+  
+  .aleft {
+  border-right: 4px solid white;
+  }
+  .aright {
+  border-left: 4px solid white;
+  }
+  
+  
   ul {
-      margin-top: 70px;
       font-size: 35px;
-      text-align: right;
-      border-right: 4px solid white;
-      padding-right: 40px;
-      min-width: 310px;
-      margin-left: 50px;
+      text-align: left;
+      
+      padding-left: 10px;
       display: inline-block;
   }
   q, p {
-      margin: 50px auto 0 auto;
-      width: 500px;
+      margin: 50px;
+     
   }
   q:after {content: ""}
   q:before {content: ""}

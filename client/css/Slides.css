@@ -1,0 +1,1046 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+#map_canvas img {
+  max-width: none;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+button,
+input {
+  *overflow: visible;
+  line-height: normal;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+button {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 18px;
+  *line-height: 20px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+button:hover,
+button:active,
+button.active,
+button.disabled,
+button[disabled] {
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+button:active,
+button.active {
+  background-color: #cccccc \9;
+}
+button:first-child {
+  *margin-left: 0;
+}
+button:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+  /* Buttons in IE7 don't get borders, so darken on hover */
+
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -ms-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+[data-state="selected"] > button,
+button.active,
+button:active {
+  background-color: #e6e6e6;
+  background-color: #d9d9d9 \9;
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+button.disabled,
+button[disabled] {
+  cursor: default;
+  background-color: #e6e6e6;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.btn-group {
+  display: inline-block;
+}
+.btn-group + .btn-group {
+  margin-left: 5px;
+}
+.btn-group > button,
+.btn-group > .dropdown,
+.btn-group > .dropdown > button {
+  position: relative;
+  float: left;
+  margin-left: -1px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.btn-group > button:first-child {
+  margin-left: 0;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+}
+.btn-group > button:last-child {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
+.dropdown {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+}
+.dropdown ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  padding: 4px 0;
+  margin: 0 -1px 0;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-left-radius: 0;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+.dropdown ul.pull-right {
+  right: 0;
+  left: auto;
+}
+.dropdown ul .divider {
+  *width: 100%;
+  height: 1px;
+  margin: 8px 1px;
+  *margin: -5px 0 5px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ffffff;
+}
+.dropdown ul li > a {
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 18px;
+  color: #333333;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.dropdown ul li > a:hover {
+  color: #ffffff;
+  background-color: #0088cc;
+}
+.dropdown[data-state="selected"] ul {
+  display: block;
+}
+[class*="icon-"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  *margin-right: .3em;
+  line-height: 16px;
+  vertical-align: text-top;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-position: 16px 16px;
+  background-repeat: no-repeat;
+}
+[class*="icon-"]:last-child {
+  *margin-left: 0;
+}
+.icon-white {
+  background-image: url("../img/glyphicons-halflings-white.png");
+}
+.icon-reload {
+  background-position: 0      0;
+}
+.icon-valid {
+  background-position: -20px 0;
+}
+.icon-invalid {
+  background-position: -40px 0;
+}
+.icon-warning {
+  background-position: -60px 0;
+}
+.icon-plus {
+  background-position: -80px 0;
+}
+.icon-header {
+  background-position: 0 -20px;
+}
+.icon-section {
+  background-position: -20px -20px;
+}
+.icon-footer {
+  background-position: -40px -20px;
+}
+.icon-save {
+  background-position: 0 -40px;
+}
+.icon-new {
+  background-position: -20px -40px;
+}
+.icon-open {
+  background-position: -40px -40px;
+}
+.icon-buddy {
+  background-position: -60px -40px;
+}
+.icon-align-left {
+  background-position: 0 -60px;
+}
+.icon-align-center {
+  background-position: -20px -60px;
+}
+.icon-align-right {
+  background-position: -40px -60px;
+}
+.icon-align-justify {
+  background-position: -60px -60px;
+}
+.icon-media {
+  background-position: 0 -80px;
+}
+.icon-video {
+  background-position: -20px -80px;
+}
+.icon-photo {
+  background-position: -40px -80px;
+}
+.icon-title {
+  background-position: 0 -100px;
+}
+.icon-title-h1 {
+  background-position: -20px -100px;
+}
+.icon-title-h2 {
+  background-position: -40px -100px;
+}
+.icon-title-h3 {
+  background-position: -60px -100px;
+}
+.icon-title-h4 {
+  background-position: -80px -100px;
+}
+.icon-label {
+  background-position: 0 -120px;
+}
+.icon-bold {
+  background-position: -20px -120px;
+}
+.icon-italic {
+  background-position: -40px -120px;
+}
+.icon-text {
+  background-position: 0 -140px;
+}
+.icon-star {
+  background-position: -20px -140px;
+}
+.icon-comment {
+  background-position: -40px -140px;
+}
+.icon-list {
+  background-position: 0 -160px;
+}
+.icon-list-numbered {
+  background-position: -20px -160px;
+}
+.icon-list-unumbered {
+  background-position: -40px -160px;
+}
+[class*="icon-persona-"] {
+  height: 25px;
+  line-height: 25px;
+}
+.icon-persona-before {
+  background-position: -60px -120px;
+  width: 34px;
+}
+.icon-persona-after {
+  background-position: -60px -150px;
+  width: 14px;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #2c2c2c;
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+header h1 {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 1;
+}
+header * {
+  float: left;
+  color: #999999;
+  text-decoration: none;
+  height: 40px;
+  display: inline-block;
+}
+header  > a,
+header #saving-status {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+header #saving-status {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+header  > a {
+  vertical-align: middle;
+}
+header  > a:hover {
+  background-color: #292929;
+  background-image: -moz-linear-gradient(top, #222222, #333333);
+  background-image: -ms-linear-gradient(top, #222222, #333333);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#333333));
+  background-image: -webkit-linear-gradient(top, #222222, #333333);
+  background-image: -o-linear-gradient(top, #222222, #333333);
+  background-image: linear-gradient(top, #222222, #333333);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222222', endColorstr='#333333', GradientType=0);
+}
+header #login {
+  float: right;
+  margin-right: 20px;
+  height: 25px;
+  margin-top: 7px;
+}
+header #login #infoLogin {
+  color: white;
+  margin-top: 0;
+  padding-top: 2px;
+  height: 22px;
+  background-color: #5da9db;
+  background-image: -moz-linear-gradient(top, #6bb7e5, #4994cc);
+  background-image: -ms-linear-gradient(top, #6bb7e5, #4994cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6bb7e5), to(#4994cc));
+  background-image: -webkit-linear-gradient(top, #6bb7e5, #4994cc);
+  background-image: -o-linear-gradient(top, #6bb7e5, #4994cc);
+  background-image: linear-gradient(top, #6bb7e5, #4994cc);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6bb7e5', endColorstr='#4994cc', GradientType=0);
+  border-bottom: solid 1px #336d97;
+}
+header #login img {
+  height: 20px;
+}
+#toolbar {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  overflow: visible;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #eeeeee;
+  border-bottom: solid 1px #999999;
+}
+aside {
+  position: fixed;
+  top: 75px;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+  background-color: #eeeeee;
+  border-right: solid 1px #999999;
+  width: 168px;
+  text-align: center;
+}
+aside .slide-preview {
+  width: 130px;
+  height: 100px;
+  border: solid 1px #999999;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#current-slide {
+  position: fixed;
+  margin: auto;
+  right: 0;
+  bottom: 0;
+  left: 168px;
+  top: 75px;
+}
+#current-slide > iframe {
+  width: 100%;
+  height: 100%;
+}
+#current-slide-preview {
+  width: 133px;
+  height: 100px;
+  border: solid 1px #999999;
+  margin: 10px;
+  display: inline-block;
+}
+#current-slide-preview > iframe {
+  width: 100%;
+  height: 100%;
+}
+.modal-open .dropdown-menu {
+  z-index: 2050;
+}
+.modal-open .dropdown.open {
+  *z-index: 2050;
+}
+.modal-open .popover {
+  z-index: 2060;
+}
+.modal-open .tooltip {
+  z-index: 2070;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000;
+}
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.modal {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  z-index: 1050;
+  max-height: 567px;
+  margin: -250px 0 0 -280px;
+  background-color: #ffffff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  *border: 1px solid #999;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.modal.fade {
+  top: -100%;
+  -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+  -ms-transition: opacity 0.3s linear, top 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+  transition: opacity 0.3s linear, top 0.3s ease-out;
+}
+.modal.fade.in {
+  top: 50%;
+}
+.modal-header {
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+.modal-header .close {
+  margin-top: 2px;
+}
+.modal-body {
+  display: inline-block;
+  overflow-y: auto;
+  vertical-align: top;
+  width: 650px;
+  max-height: 400px;
+}
+.modal-body .section {
+  display: inline-block;
+}
+.modal-form {
+  margin-bottom: 0;
+}
+.modal-footer {
+  padding: 14px 15px 15px;
+  margin-bottom: 0;
+  text-align: right;
+  background-color: #C0C0C0;
+  border-top: 1px solid #ddd;
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.close {
+  float: right;
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 13.5px;
+  text-shadow: 0 1px 0 #ffffff;
+  filter: alpha(opacity=20);
+  -khtml-opacity: 0.2;
+  -moz-opacity: 0.2;
+  opacity: 0.2;
+}
+.temp-preview {
+  width: 126px;
+  height: 92px;
+  border: solid 1px #999999;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+  display: inline-block;
+}
+.temp-preview:hover {
+  border: solid 3px #999999;
+}
+.imgTemp {
+  border: solid 3px #999999;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-block;
+}
+.imgTemp:hover {
+  border: solid 3px #049cdb;
+}
+.imgTemp:active {
+  border: solid 3px #049cdb;
+}
+input.span {
+  width: 400px;
+  height: 40px;
+}
+.span {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+.nav {
+  padding-top: 20px;
+  margin-left: 0;
+  margin-bottom: 0;
+  margin-top: 0 ;
+  margin-right: 19px;
+  list-style: none;
+  height: 380px;
+  border-right: 1px solid #DDD;
+  float: left ;
+}
+.nav a {
+  font-family: cursive;
+}
+.nav > li > a {
+  display: block;
+}
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+.nav > .pull-right {
+  float: right;
+}
+/*
+// Space them out when they follow another list item (link)
+.nav li + .nav-header {
+  margin-top: 9px;
+}
+
+*/
+/*
+
+.nav-list {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0;
+}
+.nav-list > li > a,
+.nav-list .nav-header {
+  margin-left:  -15px;
+  margin-right: -15px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.nav-list > li > a {
+  padding: 3px 15px;
+}
+.nav-list > .active > a,
+.nav-list > .active > a:hover {
+  color: @white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  background-color: @linkColor;
+}
+.nav-list [class^="icon-"] {
+  margin-right: 2px;
+}
+// Dividers (basically an hr) within the dropdown
+.nav-list .divider {
+  .nav-divider();
+}
+
+*/
+/*
+// Common styles
+.nav-tabs,
+.nav-pills {
+  .clearfix();
+}
+.nav-tabs > li,
+.nav-pills > li {
+  float: left;
+}
+.nav-tabs > li > a,
+.nav-pills > li > a {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 2px;
+  line-height: 14px; // keeps the overall height an even number
+}
+*/
+/*
+// Give the tabs something to sit on
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+}*/
+.nav-tabs > li {
+  margin-bottom: -1px;
+}
+.nav-tabs > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  line-height: 18px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+.nav-tabs > li > a:hover {
+  border-color: #eeeeee #eeeeee #dddddd;
+}
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  color: black;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+/*
+// PILLS
+// -----
+
+// Links rendered as pills
+.nav-pills > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  .border-radius(5px);
+}
+
+// Active state
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: @white;
+  background-color: @linkColor;
+}
+
+
+
+// STACKED NAV
+// -----------
+
+// Stacked tabs and pills
+.nav-stacked > li {
+  float: none;
+}
+.nav-stacked > li > a {
+  margin-right: 0; // no need for the gap between nav items
+}
+*/
+/*
+// Tabs
+.nav-tabs.nav-stacked {
+  border-bottom: 0;
+}
+.nav-tabs.nav-stacked > li > a {
+  border: 1px solid #ddd;
+  .border-radius(0);
+}
+.nav-tabs.nav-stacked > li:first-child > a {
+  .border-radius(4px 4px 0 0);
+}
+.nav-tabs.nav-stacked > li:last-child > a {
+  .border-radius(0 0 4px 4px);
+}
+.nav-tabs.nav-stacked > li > a:hover {
+  border-color: #ddd;
+  z-index: 2;
+}
+*/
+/*
+// Pills
+.nav-pills.nav-stacked > li > a {
+  margin-bottom: 3px;
+}
+.nav-pills.nav-stacked > li:last-child > a {
+  margin-bottom: 1px; // decrease margin to match sizing of stacked tabs
+}
+
+
+
+// DROPDOWNS
+// ---------
+
+.nav-tabs .dropdown-menu {
+  .border-radius(0 0 5px 5px); // remove the top rounded corners here since there is a hard edge above the menu
+}
+.nav-pills .dropdown-menu {
+  .border-radius(4px); // make rounded corners match the pills
+}
+
+// Default dropdown links
+// -------------------------
+// Make carets use linkColor to start
+.nav-tabs .dropdown-toggle .caret,
+.nav-pills .dropdown-toggle .caret {
+  border-top-color: @linkColor;
+  border-bottom-color: @linkColor;
+  margin-top: 6px;
+}
+.nav-tabs .dropdown-toggle:hover .caret,
+.nav-pills .dropdown-toggle:hover .caret {
+  border-top-color: @linkColorHover;
+  border-bottom-color: @linkColorHover;
+}
+
+// Active dropdown links
+// -------------------------
+.nav-tabs .active .dropdown-toggle .caret,
+.nav-pills .active .dropdown-toggle .caret {
+  border-top-color: @grayDark;
+  border-bottom-color: @grayDark;
+}
+
+// Active:hover dropdown links
+// -------------------------
+.nav > .dropdown.active > a:hover {
+  color: @black;
+  cursor: pointer;
+}
+
+// Open dropdowns
+// -------------------------
+.nav-tabs .open .dropdown-toggle,
+.nav-pills .open .dropdown-toggle,
+.nav > li.dropdown.open.active > a:hover {
+  color: @white;
+  background-color: @grayLight;
+  border-color: @grayLight;
+}
+.nav li.dropdown.open .caret,
+.nav li.dropdown.open.active .caret,
+.nav li.dropdown.open a:hover .caret {
+  border-top-color: @white;
+  border-bottom-color: @white;
+  .opacity(100);
+}
+
+// Dropdowns in stacked tabs
+.tabs-stacked .open > a:hover {
+  border-color: @grayLight;
+}
+
+
+*/
+.tab-content {
+  overflow: auto;
+}
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
+}
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+.tab-content > .active,
+.pill-content > .active {
+  display: inline-block;
+}
+.tabs-below > .nav-tabs {
+  border-top: 1px solid #ddd;
+}
+.tabs-below > .nav-tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+}
+.tabs-below > .nav-tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+.tabs-below > .nav-tabs > li > a:hover {
+  border-bottom-color: transparent;
+  border-top-color: #ddd;
+}
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover {
+  border-color: transparent #ddd #ddd #ddd;
+  color: black;
+}
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li {
+  float: none;
+}
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  text-decoration: none;
+  font-family: cursive;
+  color: #555 ;
+}
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+  display: inline-block;
+}
+.tabs-left > .nav-tabs > li > a {
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+.tabs-left > .nav-tabs > li > a:hover {
+  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+}
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover {
+  border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #ffffff;
+  color: black;
+  font-size: 18px;
+}

@@ -40,9 +40,7 @@
   left: 50%;
   z-index: 1050;
   max-height : 567px;
-  //width: 800px;
   margin: -250px 0 0 -280px;
-  //overflow: auto;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -87,12 +85,13 @@
 
 .modal-body {
   display: inline-block;
+  overflow-y: auto;
   vertical-align:top;
   width:650px;
   max-height: 400px;
   .section {
   display: inline-block;
-  }  
+  } 
 }
 
 .modal-form {
@@ -113,17 +112,8 @@
      -moz-box-shadow: inset 0 1px 0 #ffffff;
           box-shadow: inset 0 1px 0 #ffffff;
 }
-/*
-.modal-footer:before,
-.modal-footer:after {
-  display: table;
-  content: "";
-}
 
-.modal-footer:after {
-  clear: both;
-}
-*/
+
 .modal-footer .btn + .btn {
   margin-bottom: 0;
   margin-left: 5px;
@@ -133,6 +123,7 @@
   margin-left: -1px;
 }
 
+//Bouton X
 .close {
   float: right;
   color: #000000;
@@ -146,6 +137,7 @@
   opacity: 0.2;
 }
 
+//Slides
 .temp-preview {
     	width:126px;
 		height:92px;
@@ -161,6 +153,8 @@
 .temp-preview:hover {
     border: solid 3px @grayLight;
 }
+
+//images
 
 .imgTemp{
    border: solid 3px @grayLight;
@@ -179,6 +173,8 @@
 .imgTemp:active{
     border: solid 3px @blue;
 }
+
+//Dialogue de text !!
 
 input.span {
 width: 400px;

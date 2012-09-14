@@ -1,5 +1,6 @@
 
 var titre_pres ;
+var content;
 
 
 
@@ -25,9 +26,30 @@ function sizeUp(elem){
 	//alert (monElement.style.fontSize);
 	monElement.style.fontSize = "24px";
 	}
-	
-	
 
+function valider(elem){ 
+	content=elem;
+	DeleteBorder();
+	var monElement = document.getElementById(elem) ;
+	monElement.style.border = "3px solid #049CDB";
+
+	}
+	
+function DeleteBorder(){ 
+	document.getElementById("content1").style.border ="3px solid #999";
+	document.getElementById("content2").style.border ="3px solid #999";
+	document.getElementById("content3").style.border ="3px solid #999";
+	document.getElementById("content4").style.border ="3px solid #999";
+	document.getElementById("content5").style.border ="3px solid #999";
+}
+
+function alerte() {
+	if (content=='content0'){
+		alert("Please Select a template");
+	}
+	else
+		$('#ModalContent').modal('hide')
+}
 
 
 
