@@ -18,7 +18,7 @@ function changeState(){
 	if (state == "splash"){
 		document.body.setAttribute("data-state", state);
 		
-	}else if (state == "main"){
+	}else if (state == "main"){ // /list/presentations
 		openMain();
 		document.body.setAttribute("data-state", state);
 		
@@ -44,7 +44,9 @@ function openMain(){
 			if (httpRequest.status === 200) {
 				// Here we have the list.
 				var list = JSON.parse(httpRequest.responseText);
-				createGrid(list, newIframe);
+				// TODO : create something prettier than this ugly '+'
+				list.splice(0, 0, {firstSlide:"+"});
+				createGrid(list, presentationAdapter, iframeCreator);
 			}else if (httpRequest.status === 403) {
 				// user is not logged in
 				document.location.hash = "#splash";
@@ -70,18 +72,31 @@ function changeTitle(newTitle){
 
 
 /**
+ * Adapt presentation data to be used by a elmtCreator.
+ */
+function presentationAdapter(presentation){
+	if (presentation.id){
+		url = "/presentation/"+presentation.id;
+	}else{
+		url = "/new/presentation";
+	}
+	return {
+		stylesheet : presentation.template,
+		content : presentation.firstSlide,
+		url : url
+	};
+}
+
+
+/**
  * Display all the presentation contained in list
  */
-function createGrid(list, displayFunction){
-	var defaultSlide = "<h1>Title of the presentation</h1>";
-	defaultSlide += "<p class='author'>author@email.com</p>";
-
+function createGrid(list, dataAdapter, elmtCreator){
 	var container = document.getElementById("app-grid");
 	container.innerHTML = "";
 	
 	for (var i=0, elmt; elmt = list[i]; i++){
-		elmt.content = elmt.firstSlide || defaultSlide;
-		displayFunction(container, elmt);
+		elmtCreator(container, dataAdapter(elmt));
 	}
 
 //iframe.src = "data:text/html;charset=utf-8," + escape("<body><h1>Test</h1></body>");
@@ -89,15 +104,15 @@ function createGrid(list, displayFunction){
 
 
 /**
- * Append an iframe element to node and fill it with content and stylesheet
+ * Create an iframe element inside node and fill it with elmt
  */
-function newIframe(node, elmt){
+function iframeCreator(node, elmt){
 	var iframe = document.createElement("iframe");
 	node.appendChild(iframe);
 	
 	var data = "";
 	data += "<link 	rel='stylesheet'";
-	data += "		href='"+elmt.template+"'";
+	data += "		href='"+elmt.stylesheet+"'";
 	data += "		type='text/css'";
 	data += "		media='screen'/>";
 	data += "<section data-slide='unknown'>";
@@ -106,9 +121,9 @@ function newIframe(node, elmt){
 	
 	iframe.src = "data:text/html;charset=utf-8,"+escape(data);
 	
-	iframe.addEventListener("click", function(){
-		window.location.hash = "#edit/"+elmt._id;
-	});
+	//iframe.addEventListener("focus", function(){
+	//	window.location.hash = elmt.url;
+	//});
 }
 
 

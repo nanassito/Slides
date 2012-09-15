@@ -211,7 +211,8 @@ body[data-state="splash"]  > #splash  > section h1 {
 #app-grid {
   margin: 10px;
 }
-#app-grid  > iframe {
+#app-grid  > iframe,
+#app-grid  > section {
   background-color: #ffffff;
   border: 1px solid #bbbbbb;
   border-radius: 4px;
