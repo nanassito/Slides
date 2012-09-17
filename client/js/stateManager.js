@@ -7,6 +7,8 @@
  * TODO : bind to pop state.
  */
 function changeState(target, options){
+	console.log("changing to state : "+target+" - "+options);
+
 	if (target == "splash"){
 		window.history.pushState("Splash", "SlideZ", "/");
 		document.body.setAttribute("data-state", "splash");
@@ -16,11 +18,45 @@ function changeState(target, options){
 		document.body.setAttribute("data-state", "home");
 		openMain();
 	
+	}else if(target == "overview"){
+		window.history.pushState("Overview", "SlideZ", "/")
+		document.body.setAttribute("data-state", "home");
+		openOverview(options.presentation_id);
+	
 	}
 }
 
 
-
+/**
+ * Changing state and entering the overview mode of a presentation
+ */
+function openOverview(presentation_id){
+	// download the presentation content
+	var httpRequest = new XMLHttpRequest();
+	
+	httpRequest.onreadystatechange = function(){
+		// state 4 means that we have the full response.
+		if (httpRequest.readyState === 4) {
+			if (httpRequest.status === 200) {
+				// Here we have the presentation.
+				var sandbox = document.getElementById("app-sandbox");
+				sandbox.innerHTML = httpRequest.responseText;
+				var list = sandbox.querySelectorAll(
+											"app-sandbox section[data-slide]");
+				//changeTitle(sandbox.querySelectorAll(
+											"app-sandbox title")[0].innerHTML);
+				//createGrid(list, presentationAdapter, sectionCreator);
+			}else if (httpRequest.status === 500) {
+				console.error("Something went wrong on the server.");
+			}else {
+				console.error("Got strange response : %s", httpRequest.status);
+			}
+		}
+	}
+	
+	httpRequest.open("GET", "/presentation/"+presentation_id);
+	httpRequest.send();
+}
 
 
 /**
@@ -41,7 +77,7 @@ function openMain(){
 				var list = JSON.parse(httpRequest.responseText);
 				// TODO : create something prettier than this ugly '+'
 				list.splice(0, 0, {firstSlide:"+"});
-				createGrid(list, presentationAdapter, iframeCreator);
+				createGrid(list, presentationListAdapter, iframeCreator);
 			}else if (httpRequest.status === 403) {
 				// user is not logged in
 				document.location.hash = "#splash";
@@ -70,7 +106,7 @@ function changeTitle(newTitle){
 /**
  * Adapt presentation data to be used by a elmtCreator.
  */
-function presentationAdapter(presentation){
+function presentationListAdapter(presentation){
 	if (presentation.id){
 		targetState = {
 			state : "overview",

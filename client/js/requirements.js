@@ -11,10 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			"desc" : "window.history",
 			"object" : window.history
 		},
-		{
-			"desc" : "fake requirement",
-			"object" : window.pouet
-		},
 	];
 
 	for (var i=0, elmt; elmt = requirements[i]; i++){
