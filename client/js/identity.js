@@ -31,12 +31,6 @@ function onAfterLogout(){
 function onlogin(assertion) {
 	console.log("A user has just logged in (browser-side only)");
     if (assertion) {
-    	// Just in case someone does not have javascript, or is using IE
-    	if (!window.XMLHttpRequest) {
-    		console.error("Please test me in a real browser.");
-    		alert("Are you sure you have a real browser ?");
-    	}
-    	
     	// preparing the post request to send the assertion for verification
     	var httpRequest = new XMLHttpRequest();
 		var formData = new FormData();
