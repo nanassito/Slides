@@ -63,6 +63,7 @@ function openMain(){
  */
 function changeTitle(newTitle){
 	document.querySelector("#app-header>h1").textContent=newTitle;
+	document.title = newTitle + " - SlideZ";
 }
 
 
@@ -71,14 +72,20 @@ function changeTitle(newTitle){
  */
 function presentationAdapter(presentation){
 	if (presentation.id){
-		url = "/presentation/"+presentation.id;
+		targetState = {
+			state : "overview",
+			options : {
+				presentation_id : presentation.id
+			}
+		}
 	}else{
-		url = "/new/presentation";
+		targetState = "/new/presentation";
+		targetState = {state : "new"}
 	}
 	return {
 		stylesheet : presentation.template,
 		content : presentation.firstSlide,
-		url : url
+		targetState : targetState
 	};
 }
 
@@ -93,8 +100,6 @@ function createGrid(list, dataAdapter, elmtCreator){
 	for (var i=0, elmt; elmt = list[i]; i++){
 		elmtCreator(container, dataAdapter(elmt));
 	}
-
-//iframe.src = "data:text/html;charset=utf-8," + escape("<body><h1>Test</h1></body>");
 }
 
 
@@ -116,7 +121,7 @@ function iframeCreator(node, elmt){
 	
 	iframe.src = "data:text/html;charset=utf-8,"+escape(data);
 	
-	//iframe.addEventListener("focus", function(){
-	//	window.location.hash = elmt.url;
-	//});
+	iframe.contentWindow.addEventListener("click", function(){
+		changeState(elmt.targetState.state, elmt.targetState.options);
+	});
 }
