@@ -175,7 +175,7 @@ button * {
   float: right;
   margin-top: 13px;
 }
-body[data-state="main"]  > #splash {
+body  > #splash {
   display: none;
 }
 body[data-state="splash"]  > #app-header,

@@ -12,7 +12,8 @@ function onAfterLogin(userData){
 	document.session = userData;
 	var buttonLabel = document.querySelector("#app-header>button>p");
 	buttonLabel.textContent = document.session.email;
-	document.location.hash = "#main";
+	//document.location.hash = "#main";
+	changeState("home");
 }
 
 /**
@@ -20,7 +21,8 @@ function onAfterLogin(userData){
  */
 function onAfterLogout(){
 	if (document.session) document.session = undefined;
-	document.location.hash = "#splash";
+	//document.location.hash = "#splash";
+	changeState("splash");
 }
 
 /**

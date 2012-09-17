@@ -1,31 +1,26 @@
 /*
  * The view manager handle the context switching between all views.
- *
- * List of the states available
- *	- splash : the user is not logged in
- *	- main : The user is logged in but is not working on a specific presentation
- *	- overview : The user has opened a presentation but is in overview mode
- *	- edit : The user is editing a specific slide
  */
 
 /**
  * Change active state according to the hash
+ * TODO : bind to pop state.
  */
-function changeState(){
-	var hash = window.location.hash + "/";
-	var state = hash.substr(1, hash.indexOf('/')-1)
-	
-	if (state == "splash"){
-		document.body.setAttribute("data-state", state);
+function changeState(target, options){
+	if (target == "splash"){
+		window.history.pushState("Splash", "SlideZ", "/");
+		document.body.setAttribute("data-state", "splash");
 		
-	}else if (state == "main"){ // /list/presentations
+	}else if (target == "home"){
+		window.history.pushState("Home", "SlideZ", "/")
+		document.body.setAttribute("data-state", "home");
 		openMain();
-		document.body.setAttribute("data-state", state);
-		
-	}else {
-		console.error("Unknown state : %s", state);
+	
 	}
 }
+
+
+
 
 
 /**
@@ -125,11 +120,3 @@ function iframeCreator(node, elmt){
 	//	window.location.hash = elmt.url;
 	//});
 }
-
-
-/**
- * DOM has been loaded, bind all the events.
- */
-document.addEventListener("DOMContentLoaded", function () {
-	window.addEventListener("hashchange", changeState);
-});
