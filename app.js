@@ -11,10 +11,24 @@ nconf.argv().env().file({ file:'./config.json' });
 
 nconf.defaults({
 	audience : "http://localhost:3000",
-	secret : "A very secret key"
+	secret : "A very secret key",
+	run : "testing"
 });
 
 
+/**
+ * If we are in testing
+ */
+if (nconf.get("run") == "testing"){
+	var devtools = require("./tools").devtools;
+	devtools.createEnv(startApp);
+}else{
+	startApp();
+}
+
+
+// the actual software
+function startApp(){
 /**
  * Module dependencies.
  */
@@ -52,3 +66,4 @@ app.get('/logout', routes.persona.logout);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+}
