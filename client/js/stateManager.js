@@ -8,24 +8,36 @@
  */
 function changeState(target, options){
 	console.log("changing to state : "+target+" - "+options);
+	var data = {
+		target : target,
+		options : options
+	};
 
 	if (target == "splash"){
-		window.history.pushState("Splash", "SlideZ", "/");
+		window.history.pushState(data, "SlideZ", "/");
 		document.body.setAttribute("data-state", "splash");
 		
 	}else if (target == "home"){
-		window.history.pushState("Home", "SlideZ", "/")
+		window.history.pushState(data, "Your presentations - SlideZ", "/list/presentations")
 		document.body.setAttribute("data-state", "home");
 		openMain();
 	
 	}else if(target == "overview"){
-		window.history.pushState("Overview", "SlideZ", "/")
+		window.history.pushState(data, options.title+" - SlideZ", 
+									"/presentation/"+options.presentation_id);
 		document.body.setAttribute("data-state", "home");
 		openOverview(options.presentation_id);
 	
 	}
 }
 
+
+/**
+ * Browser back button management
+ */
+window.addEventListener("popstate", function(event){
+	changeState(event.state.target, event.state.options);
+});
 
 /**
  * Changing state and entering the overview mode of a presentation
@@ -39,13 +51,11 @@ function openOverview(presentation_id){
 		if (httpRequest.readyState === 4) {
 			if (httpRequest.status === 200) {
 				// Here we have the presentation.
-				var sandbox = document.getElementById("app-sandbox");
-				sandbox.innerHTML = httpRequest.responseText;
-				var list = sandbox.querySelectorAll(
-											"app-sandbox section[data-slide]");
-				//changeTitle(sandbox.querySelectorAll(
-											"app-sandbox title")[0].innerHTML);
-				//createGrid(list, presentationAdapter, sectionCreator);
+				var grid = document.getElementById("app-grid");
+				grid.innerHTML = httpRequest.responseText;
+				// TODO :
+				// - change title
+				// - add back button
 			}else if (httpRequest.status === 500) {
 				console.error("Something went wrong on the server.");
 			}else {
@@ -111,6 +121,7 @@ function presentationListAdapter(presentation){
 		targetState = {
 			state : "overview",
 			options : {
+				title : presentation.title,
 				presentation_id : presentation.id
 			}
 		}
