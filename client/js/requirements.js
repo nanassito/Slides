@@ -5,16 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	var requirements = [
 		{
 			"desc" : "window.XMLHttpRequest",
-			"object" : window.XMLHttpRequest
+			"test" : window.XMLHttpRequest
 		},
 		{
 			"desc" : "window.history",
-			"object" : window.history
+			"test" : (window.history && window.history.pushState)
 		},
 	];
 
 	for (var i=0, elmt; elmt = requirements[i]; i++){
-		if (!elmt.object){
+		if (!elmt.test){
 			alert("No support for "+elmt.desc);
 		}
 	}
