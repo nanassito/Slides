@@ -90,7 +90,7 @@ function openMain(){
 				createGrid(list, presentationListAdapter, iframeCreator);
 			}else if (httpRequest.status === 403) {
 				// user is not logged in
-				document.location.hash = "#splash";
+				changeState("splash");
 			}else if (httpRequest.status === 500) {
 				console.error("Something went wrong on the server.");
 			}else {

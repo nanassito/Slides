@@ -2,7 +2,7 @@
 
 title #{title}
 meta(name="presentation-id", content="#{_id}")
-link(href="#{template}", rel="stylesheet", type="text/css")
+link(href="/template/#{template}", rel="stylesheet", type="text/css")
 
 each slide in slides
 	section(class="#{slide.classes}", data-slide="#{slide._id}")!= slide.content
