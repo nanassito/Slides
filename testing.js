@@ -1,54 +1,54 @@
-// task management to make sure we are ready to go
-var tasks = [],
-	processes = [],
-	childProcess = require("child_process");
+/**
+ * Manage all necessary operation in a test configuration
+ */
+var childProcess = require("child_process");
 
-function startApp(){
-	var app = childProcess.spawn("node", ['app.js']);
-	app.stderr.on("data", function(data){
-		console.err(data);
-	});
-	app.stdout.on("data", function(data){
-		console.log(data);
-	});
-	app.on("exit", function(code){
-		processes.forEach(function(process){
-			process.kill();
-		});
-	});
-	removeTask("start database");
+var state = -1,
+	launchers = [
+		updateRevNumber,
+		startDb,
+		compileStyles,
+		startApp,
+		function(){} // end the chain
+	],
+	processes = [];
+
+/**
+ * Go on to the next step in the chain
+ */
+function next(){
+	state++;
+	launchers[state]();
 }
 
-function removeTask(description){
-	tasks.splice(tasks.indexOf(description), 1);
-	if (!tasks.length) startApp();
+/**
+ * start the mongo database server.
+ */
+function updateRevNumber(){
+	next();
 }
 
-var fs = require('fs');
-
-// start the database
+/**
+ * start the mongo database server.
+ */
 function startDb(){
-	tasks.push("start database");
 	var mongod = childProcess.spawn("mongod", ['-f', 'data/mongo.conf']);
-	mongod.stderr.on("data", function(data){
-		console.err(data);
-	});
-	mongod.on("exit", function(code){
-		console.log("--> Database turned off ("+code+")");
+	mongod.stderr.on("data", function(data){ console.error(data.toString()); });
+	mongod.on("exit", function(code, signal){
+		console.error("Database turned off ("+code+")");
+		processes.splice(processes.indexOf(mongod), 1);
+		if (signal!='SIGTERM') killAll();
 	});
 	processes.push(mongod);
-	removeTask("start database");
+	next();
 }
 
-// update revision number
-function updateVersion(){
-
-}
-
-// recompile the styles
+/**
+ * start the mongo database server.
+ */
 function compileStyles(){
-	task.push("recompile styles");
-	var less = require('less');
+	var less = require('less'),
+		fs = require('fs');
 	var content = fs.readFileSync("client/less/Slides.less").toString();
 	var lessParser = new(less.Parser)({
 		paths:["./client/less"],
@@ -57,13 +57,45 @@ function compileStyles(){
 	lessParser.parse(content, function(err, tree){
 		if (err) console.error(err);
 		fs.writeFileSync("client/css/Slides.css", tree.toCSS());
-		removeTask("recompile styles");
+		next();
 	});
 }
 
-function main(){
-	startDb();
-	updateVersion();
-	compileStyles();
+/**
+ * start the mongo database server.
+ */
+function startApp(){
+	var slidez = childProcess.spawn("node", ["app.js"]);
+	slidez.stderr.on("data", function(data){ console.error(data.toString()); });
+	slidez.stdout.on("data", function(data){ console.log(data.toString()); });
+	slidez.on("exit", function(code, signal){
+		console.error("Exiting SlideZ ("+code+")");
+		processes.splice(processes.indexOf(slidez), 1);
+		if (signal!='SIGTERM') killAll();
+	});
+	processes.push(slidez);
+	next();
 }
-main();
+
+/**
+ * start the mongo database server.
+ */
+function killAll(){
+	processes.forEach(function(process){
+		process.kill(signal='SIGTERM');
+	});
+}
+
+
+/**
+ * When the app is closed
+ */
+process.on("exit", function(code, signal){
+	console.log("Exiting main process");
+	processes.splice(processes.indexOf(process), 1);
+	if (signal!='SIGTERM') killAll();
+});
+
+// start the program
+processes.push(process);
+next();
