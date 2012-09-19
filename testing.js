@@ -25,6 +25,13 @@ function next(){
  * start the mongo database server.
  */
 function updateRevNumber(){
+	var fs = require('fs'),
+		info = JSON.parse(fs.readFileSync("package.json").toString());
+	
+	version = info.version.split('.', 3);
+	info.version = version[0]+'.'+version[1]+'.'+(new Date()).toJSON();
+	
+	fs.writeFileSync("package.json", JSON.stringify(info, undefined, 4));
 	next();
 }
 
