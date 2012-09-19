@@ -12,8 +12,8 @@ function onAfterLogin(userData){
 	document.session = userData;
 	var buttonLabel = document.querySelector("#app-header>button>p");
 	buttonLabel.textContent = document.session.email;
-	//document.location.hash = "#main";
-	changeState("home");
+	window.History.pushState({name:"home"}, "Open a presentation - SlideZ",
+														"/list/presentations");
 }
 
 /**
@@ -22,7 +22,7 @@ function onAfterLogin(userData){
 function onAfterLogout(){
 	if (document.session) document.session = undefined;
 	//document.location.hash = "#splash";
-	changeState("splash");
+	window.History.pushState({name:"splash"}, "SlideZ", "/");
 }
 
 /**

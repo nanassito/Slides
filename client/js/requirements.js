@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		{
 			"desc" : "window.history",
-			"test" : (window.history && window.history.pushState)
+			"test" : window.History.enabled
 		},
 	];
 

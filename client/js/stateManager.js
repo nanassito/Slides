@@ -6,38 +6,25 @@
  * Change active state according to the hash
  * TODO : bind to pop state.
  */
-function changeState(target, options){
-	console.log("changing to state : "+target+" - "+options);
-	var data = {
-		target : target,
-		options : options
-	};
+window.History.Adapter.bind(window, "statechange", function(){
+	var state = window.History.getState();
+	
+	console.log("changing to state : "+state.data);
 
-	if (target == "splash"){
-		window.history.pushState(data, "SlideZ", "/");
+	if (state.data.name == "splash"){
 		document.body.setAttribute("data-state", "splash");
 		
-	}else if (target == "home"){
-		window.history.pushState(data, "Your presentations - SlideZ", "/list/presentations")
+	}else if (state.data.name == "home"){
 		document.body.setAttribute("data-state", "home");
 		openMain();
 	
-	}else if(target == "overview"){
-		window.history.pushState(data, options.title+" - SlideZ", 
-									"/presentation/"+options.presentation_id);
+	}else if(state.data.name == "overview"){
 		document.body.setAttribute("data-state", "home");
-		openOverview(options.presentation_id);
+		openOverview(state.data.presentation_id);
 	
 	}
-}
-
-
-/**
- * Browser back button management
- */
-window.addEventListener("popstate", function(event){
-	changeState(event.state.target, event.state.options);
 });
+
 
 /**
  * Changing state and entering the overview mode of a presentation
@@ -90,7 +77,7 @@ function openMain(){
 				createGrid(list, presentationListAdapter, iframeCreator);
 			}else if (httpRequest.status === 403) {
 				// user is not logged in
-				changeState("splash");
+				window.History.pushState({name:"splash"}, "SlideZ", "/");
 			}else if (httpRequest.status === 500) {
 				console.error("Something went wrong on the server.");
 			}else {
@@ -119,15 +106,19 @@ function changeTitle(newTitle){
 function presentationListAdapter(presentation){
 	if (presentation.id){
 		targetState = {
-			state : "overview",
-			options : {
-				title : presentation.title,
+			data : {
+				name : "overview",
 				presentation_id : presentation.id
-			}
+			},
+			title : presentation.title+" - SlideZ",
+			url : "/presentation/"+presentation.id
 		}
 	}else{
-		targetState = "/new/presentation";
-		targetState = {state : "new"}
+		targetState = {
+			data : {name : "new"},
+			title : "Create a new presentation - SlideZ",
+			url : "/new/presentation"
+		}
 	}
 	return {
 		stylesheet : presentation.template,
@@ -168,7 +159,8 @@ function iframeCreator(node, elmt){
 	
 	iframe.src = "data:text/html;charset=utf-8,"+escape(data);
 	
-	iframe.contentWindow.addEventListener("click", function(){
-		changeState(elmt.targetState.state, elmt.targetState.options);
+	iframe.contentDocument.addEventListener("click", function(){
+		window.History.pushState(elmt.targetState.data, elmt.targetState.title,
+														elmt.targetState.url);
 	});
 }
