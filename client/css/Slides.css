@@ -220,6 +220,7 @@ body[data-state="splash"]  > #splash  > section h1 {
   margin: 5px;
   display: inline-block;
   overflow: hidden;
+  float: left;
 }
 #app-grid  > section  > iframe {
   float: left;
@@ -234,11 +235,11 @@ body[data-state="splash"]  > #splash  > section h1 {
   opacity: 0;
   height: 100%;
   width: 100%;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  -ms-transition: opacity 0.5s;
-  -o-transition: opacity 0.5s;
-  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -ms-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 #app-grid  > section  > iframe  + section:hover {
   opacity: 1;
