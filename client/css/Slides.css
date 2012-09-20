@@ -211,7 +211,6 @@ body[data-state="splash"]  > #splash  > section h1 {
 #app-grid {
   margin: 10px;
 }
-#app-grid  > iframe,
 #app-grid  > section {
   background-color: #ffffff;
   border: 1px solid #bbbbbb;
@@ -221,6 +220,34 @@ body[data-state="splash"]  > #splash  > section h1 {
   margin: 5px;
   display: inline-block;
   overflow: hidden;
+}
+#app-grid  > section  > iframe {
+  float: left;
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+#app-grid  > section  > iframe  + section {
+  position: relative;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+#app-grid  > section  > iframe  + section:hover {
+  opacity: 1;
+}
+#app-grid  > section  > iframe  + section  > h1 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
 }
 [class*="icon-"] {
   display: inline-block;

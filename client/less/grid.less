@@ -1,7 +1,6 @@
 #app-grid{
     margin:10px;
     
-    & > iframe,
     & > section {
     	background-color: @white;
         border: 1px solid @grayLighter;
@@ -11,5 +10,34 @@
 		margin:5px;
 		display:inline-block;
 		overflow:hidden;
+		
+		& > iframe{
+			float:left;
+			height:100%;
+			width:100%;
+			border:none;
+		
+			& + section{
+				position:relative;
+				z-index:10;
+				background-color:rgba(255, 255, 255, 0.8);
+				opacity:0;
+				height:100%;
+				width:100%;
+				
+				.transition(opacity 0.5s);
+				
+				&:hover{
+					opacity:1;
+				}
+				
+				& > h1{
+					position:absolute;
+					width:100%;
+					text-align:center;
+					margin-top:80px;
+				}
+			}
+		}
 	}
 }

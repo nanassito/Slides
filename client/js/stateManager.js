@@ -9,7 +9,7 @@
 window.History.Adapter.bind(window, "statechange", function(){
 	var state = window.History.getState();
 	
-	console.log("changing to state : "+state.data);
+	console.log("changing to state : "+JSON.stringify(state.data));
 
 	if (state.data.name == "splash"){
 		document.body.setAttribute("data-state", "splash");
@@ -145,8 +145,16 @@ function createGrid(list, dataAdapter, elmtCreator){
  * Create an iframe element inside node and fill it with elmt
  */
 function iframeCreator(node, elmt){
-	var iframe = document.createElement("iframe");
-	node.appendChild(iframe);
+	var wrapper = document.createElement("section"),
+		iframe = document.createElement("iframe"),
+		link = document.createElement("section"),
+		linkContent = document.createElement("h1");
+	node.appendChild(wrapper);
+	wrapper.appendChild(iframe);
+	wrapper.appendChild(link);
+	link.appendChild(linkContent);
+	
+	linkContent.textContent = "Open";
 	
 	var data = "";
 	data += "<link 	rel='stylesheet'";
@@ -159,7 +167,8 @@ function iframeCreator(node, elmt){
 	
 	iframe.src = "data:text/html;charset=utf-8,"+escape(data);
 	
-	iframe.contentDocument.addEventListener("click", function(){
+	link.addEventListener("click", function(){
+		// TODO : bind only left click
 		window.History.pushState(elmt.targetState.data, elmt.targetState.title,
 														elmt.targetState.url);
 	});
