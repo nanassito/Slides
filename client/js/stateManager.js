@@ -22,8 +22,38 @@ window.History.Adapter.bind(window, "statechange", function(){
 		document.body.setAttribute("data-state", "home");
 		openOverview(state.data.presentation_id);
 	
+	}else if(state.data.name == "edit"){
+		document.body.setAttribute("data-state", "edit");
+		openEdit(state.data.slide_index);
+	
 	}
 });
+
+
+/**
+ * Changing state and entering the edit mode.
+ */
+function openEdit(slideIndex){
+	exitEdit();
+	var slide = document.querySelectorAll("[data-slide]")[slideIndex];
+	slide.setAttribute('contenteditable', true);
+	slide.setAttribute('aria-selected', true);
+}
+
+
+/**
+ * Changing the current slide or exiting the edit mode.
+ */
+function exitEdit(){
+	var slides = document.querySelectorAll("[contenteditable]");
+	for (var i=0, slide; slide = slides[i]; i++){
+		slide.removeAttribute("contenteditable");
+	}
+	var slides = document.querySelectorAll("[aria-selected]");
+	for (var i=0, slide; slide = slides[i]; i++){
+		slide.removeAttribute("aria-selected");
+	}
+}
 
 
 /**
