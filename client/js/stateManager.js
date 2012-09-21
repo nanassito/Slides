@@ -12,18 +12,18 @@ window.History.Adapter.bind(window, "statechange", function(){
 	console.log("changing to state : "+JSON.stringify(state.data));
 
 	if (state.data.name == "splash"){
-		document.body.setAttribute("data-state", "splash");
+		document.body.setAttribute("data-view", "splash");
 		
 	}else if (state.data.name == "home"){
-		document.body.setAttribute("data-state", "home");
+		document.body.setAttribute("data-view", "grid");
 		openMain();
 	
 	}else if(state.data.name == "overview"){
-		document.body.setAttribute("data-state", "home");
+		document.body.setAttribute("data-view", "grid");
 		openOverview(state.data.presentation_id);
 	
 	}else if(state.data.name == "edit"){
-		document.body.setAttribute("data-state", "edit");
+		document.body.setAttribute("data-view", "edit");
 		openEdit(state.data.slide_index);
 	
 	}
@@ -34,6 +34,7 @@ window.History.Adapter.bind(window, "statechange", function(){
  * Changing state and entering the edit mode.
  */
 function openEdit(slideId){
+	document.body.setAttribute("data-view", "edit");
 	exitEdit();
 	console.log("trying to edit slide "+slideId);
 	var slide = document.querySelectorAll("[data-slide='"+slideId+"']")[0];
@@ -69,7 +70,7 @@ function openOverview(presentation_id){
 		if (httpRequest.readyState === 4) {
 			if (httpRequest.status === 200) {
 				// Here we have the presentation.
-				var grid = document.getElementById("app-grid");
+				var grid = document.getElementById("app-content");
 				grid.innerHTML = httpRequest.responseText;
 				var slides = document.querySelectorAll("[data-slide]");
 				for (var i=0, slide; slide = slides[i]; i++){
@@ -169,7 +170,7 @@ function presentationListAdapter(presentation){
  * Display all the presentation contained in list
  */
 function createGrid(list, dataAdapter, elmtCreator){
-	var container = document.getElementById("app-grid");
+	var container = document.getElementById("app-content");
 	container.innerHTML = "";
 	
 	for (var i=0, elmt; elmt = list[i]; i++){

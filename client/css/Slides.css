@@ -178,17 +178,17 @@ button * {
 body  > #splash {
   display: none;
 }
-body[data-state="splash"]  > #app-header,
-body[data-state="splash"]  > #app-grid,
-body[data-state="splash"]  > #app-overview {
+body[data-view="splash"]  > #app-header,
+body[data-view="splash"]  > #app-content,
+body[data-view="splash"]  > #app-overview {
   display: none;
 }
-body[data-state="splash"]  > #splash {
+body[data-view="splash"]  > #splash {
   display: table;
   height: 100%;
   width: 100%;
 }
-body[data-state="splash"]  > #splash  > section {
+body[data-view="splash"]  > #splash  > section {
   position: relative;
   display: table-cell;
   vertical-align: middle;
@@ -198,20 +198,20 @@ body[data-state="splash"]  > #splash  > section {
   height: 100%;
   color: #333333;
 }
-body[data-state="splash"]  > #splash  > section img {
+body[data-view="splash"]  > #splash  > section img {
   display: block;
   cursor: pointer;
   margin: auto;
 }
-body[data-state="splash"]  > #splash  > section h1 {
+body[data-view="splash"]  > #splash  > section h1 {
   font-family: 'Nothing You Could Do', sans;
   font-size: 4em;
   margin: 0;
 }
-#app-grid {
+body[data-view="grid"] #app-content {
   margin: 10px;
 }
-#app-grid  > section {
+body[data-view="grid"] #app-content  > section {
   background-color: #ffffff;
   border: 1px solid #bbbbbb;
   border-radius: 4px;
@@ -222,13 +222,13 @@ body[data-state="splash"]  > #splash  > section h1 {
   overflow: hidden;
   float: left;
 }
-#app-grid  > section  > iframe {
+body[data-view="grid"] #app-content  > section  > iframe {
   float: left;
   height: 100%;
   width: 100%;
   border: none;
 }
-#app-grid  > section  > iframe  + section {
+body[data-view="grid"] #app-content  > section  > iframe  + section {
   position: relative;
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.8);
@@ -241,14 +241,25 @@ body[data-state="splash"]  > #splash  > section h1 {
   -o-transition: opacity 0.4s;
   transition: opacity 0.4s;
 }
-#app-grid  > section  > iframe  + section:hover {
+body[data-view="grid"] #app-content  > section  > iframe  + section:hover {
   opacity: 1;
 }
-#app-grid  > section  > iframe  + section  > h1 {
+body[data-view="grid"] #app-content  > section  > iframe  + section  > h1 {
   position: absolute;
   width: 100%;
   text-align: center;
   margin-top: 80px;
+}
+body[data-view="edit"] #app-content  > section[data-slide] {
+  background-color: #ffffff;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  height: 200px;
+  width: 300px;
+  margin: 5px;
+  display: inline;
+  overflow: hidden;
+  float: left;
 }
 [class*="icon-"] {
   display: inline-block;
