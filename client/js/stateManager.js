@@ -33,9 +33,10 @@ window.History.Adapter.bind(window, "statechange", function(){
 /**
  * Changing state and entering the edit mode.
  */
-function openEdit(slideIndex){
+function openEdit(slideId){
 	exitEdit();
-	var slide = document.querySelectorAll("[data-slide]")[slideIndex];
+	console.log("trying to edit slide "+slideId);
+	var slide = document.querySelectorAll("[data-slide='"+slideId+"']")[0];
 	slide.setAttribute('contenteditable', true);
 	slide.setAttribute('aria-selected', true);
 }
@@ -70,6 +71,12 @@ function openOverview(presentation_id){
 				// Here we have the presentation.
 				var grid = document.getElementById("app-grid");
 				grid.innerHTML = httpRequest.responseText;
+				var slides = document.querySelectorAll("[data-slide]");
+				for (var i=0, slide; slide = slides[i]; i++){
+					slide.addEventListener("click", (function(){
+						openEdit(this.getAttribute("data-slide"));
+					}).bind(slide));
+				}
 				// TODO :
 				// - change title
 				// - add back button
