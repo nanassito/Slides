@@ -1,0 +1,7 @@
+1 - When creating a new presentation, add a button to actually create the 
+	presentation
+2 - When creating a new presentation, set focus on the title and style so that 
+	it's obvious the user should edit that.
+3 - New iteration of the API (keep backward compatibility)
+	- separate api url pattern from browser's one using /api/
+	

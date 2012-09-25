@@ -26,8 +26,81 @@ window.History.Adapter.bind(window, "statechange", function(){
 		document.body.setAttribute("data-view", "edit");
 		openEdit(state.data.slide_index);
 	
+	}else if(state.data.name == "new"){
+		document.body.setAttribute("data-view", "grid");
+		openNew();
+	
+	}else if(state.data.name == "createNewPresentation"){
+		createNewPresentation(state.data.template);
+	
 	}
 });
+
+
+/**
+ * Create a new presentation
+ */
+function createNewPresentation(template){
+	var httpRequest = new XMLHttpRequest();
+	var formData = new FormData();
+	formData.append("title", document.querySelector("#app-header>h1")
+									 .textContent);
+	formData.append("template", template);
+	
+	// get the response from the server
+	httpRequest.onreadystatechange = function(){
+		// state 4 means that we have the full response.
+		if (httpRequest.readyState === 4) {
+			if (httpRequest.status === 200) {
+				console.log("Presentation created");
+				// FIXME : next version of the API should return the url 
+				window.History.pushState({name:"home"}, 
+						 "Open a presentation - SlideZ", "/list/presentations");
+			} else if(httpRequest.status === 403){
+				console.log("You new to be connected to create a presentation");
+			}else {
+				console.error("Failed to create the presentation");
+				alert("Failed to create the presentation");
+			}
+		}
+	}
+	
+	// Send the assertion for server-side verification and login
+	httpRequest.open("POST", "/new/presentation");
+	httpRequest.send(formData);
+}
+
+/**
+ * Changing state and entering mode to create a new presentation.
+ */
+function openNew(){
+	changeTitle("Title of the new presentation");
+	document.title = "New presentation";
+
+	document.querySelector("#app-header>h1").setAttribute("contenteditable", 
+																		"true");
+	
+	// fetch the list of templates from the server.
+	var httpRequest = new XMLHttpRequest();
+	
+	httpRequest.onreadystatechange = function(){
+		// state 4 means that we have the full response.
+		if (httpRequest.readyState === 4) {
+			if (httpRequest.status === 200) {
+				// Here we have the list.
+				var list = JSON.parse(httpRequest.responseText);
+				createGrid(list, templateListAdapter, iframeCreator);
+			}else if (httpRequest.status === 500) {
+				console.error("Something went wrong on the server.");
+			}else {
+				console.error("Got strange response : %s", httpRequest.status);
+			}
+		}
+	}
+	
+	httpRequest.open("GET", "/list/templates");
+	httpRequest.send();
+}
 
 
 /**
@@ -110,8 +183,7 @@ function openMain(){
 			if (httpRequest.status === 200) {
 				// Here we have the list.
 				var list = JSON.parse(httpRequest.responseText);
-				// TODO : create something prettier than this ugly '+'
-				list.splice(0, 0, {firstSlide:"+"});
+				list.splice(0, 0, {});
 				createGrid(list, presentationListAdapter, iframeCreator);
 			}else if (httpRequest.status === 403) {
 				// user is not logged in
@@ -157,11 +229,31 @@ function presentationListAdapter(presentation){
 			title : "Create a new presentation - SlideZ",
 			url : "/new/presentation"
 		}
+		// TODO add the content to firstSlide here
 	}
 	return {
 		stylesheet : presentation.template,
 		content : presentation.firstSlide,
 		targetState : targetState
+	};
+}
+
+
+/**
+ * Adapt presentation data to be used by a elmtCreator.
+ */
+function templateListAdapter(templateUrl){
+	return {
+		stylesheet : templateUrl,
+		content : "<h1>Example</h1><p class='author'>Author<p>",
+		targetState : {
+			data : {
+				name : "createNewPresentation",
+				template : templateUrl
+			},
+			title : "Creating your presentation - SlideZ",
+			url : "/new/presentation/"
+		}
 	};
 }
 
