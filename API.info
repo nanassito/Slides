@@ -165,3 +165,44 @@ http200
 ```
 http500  
 ```
+
+
+
+
+
+
+
+
+################################################################################
+
+User visible calls :
+GET  /
+GET  /list/presentations
+GET  /presentation/?id=presentationId
+GET  /presentation/?id=presentationId&mode=edit                     [restricted]
+GET  /new/presentation
+
+API calls :
+POST /api/user/auth
+    Login a user
+    request : { certificate }
+    response : { email, audience, expires, issuer }
+    failure : { reason }
+POST /api/user/logout
+GET  /api/presentation/?id=presentationId                           [restricted]
+    Return the content of the presentation
+    response : { title, templateUrl, [slides] }
+POST /api/slide/:slide_id                                           [restricted]
+    Save a slide
+    request : { content*, position* }
+POST /api/new/slide                                                 [restricted]
+    Create a new slide
+    request : { presentationId, position* }
+POST /api/new/presentation                                          [restricted]
+    Create a new presentation
+    request : { title, templateUrl }
+    response : { id }
+
+
+
+

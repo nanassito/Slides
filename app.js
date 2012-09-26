@@ -1,3 +1,17 @@
+// Testing only
+function updateRevNumber(){
+	var fs = require('fs'),
+		info = JSON.parse(fs.readFileSync("package.json").toString());
+	
+	version = info.version.split('.', 3);
+	info.version = version[0]+'.'+version[1]+'.'+(new Date()).toJSON();
+
+	console.log("Using version "+info.version);
+	
+	fs.writeFileSync("package.json", JSON.stringify(info, undefined, 4));
+}
+
+
 // Configuration
 var nconf = require('nconf');
 
@@ -38,6 +52,7 @@ app.configure(function(){
 
 app.configure('development', function(){
 	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+	updateRevNumber();
 });
 
 app.configure('production', function(){

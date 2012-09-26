@@ -151,9 +151,7 @@ function openOverview(presentation_id){
 						openEdit(this.getAttribute("data-slide"));
 					}).bind(slide));
 				}
-				// TODO :
-				// - change title
-				// - add back button
+				setAutoSave();
 			}else if (httpRequest.status === 500) {
 				console.error("Something went wrong on the server.");
 			}else {
@@ -302,4 +300,16 @@ function iframeCreator(node, elmt){
 		window.History.pushState(elmt.targetState.data, elmt.targetState.title,
 														elmt.targetState.url);
 	});
+}
+
+
+function setAutoSave(){
+	var slides = document.querySelectorAll("[data-slide]");
+	for (var i=0, slide; slide = slides[i]; i++){
+		slide.addEventListener("blur", function(){
+
+			alert("saved slide content : "+slide.innerHTML);
+		}); // FIXME : we'll need to pass in the slide
+	}
+
 }

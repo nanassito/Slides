@@ -1,7 +1,12 @@
 1 - When creating a new presentation, add a button to actually create the 
-	presentation
+	presentation.
 2 - When creating a new presentation, set focus on the title and style so that 
 	it's obvious the user should edit that.
 3 - New iteration of the API (keep backward compatibility)
 	- separate api url pattern from browser's one using /api/
-	
+4 - The server should be able to serve pre-rendered files.
+5 - Add a ?next=/url/ functionnality in case the user is not connected when 
+	landing on a restricted mode.
+6 - Add an abstraction layer on the client. We should have something like a
+	PresentationProvider and SlideProvider, that take care of serving content
+	whether from the server if we are online or from localstorage if offline.
