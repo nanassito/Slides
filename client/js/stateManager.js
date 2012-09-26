@@ -303,13 +303,52 @@ function iframeCreator(node, elmt){
 }
 
 
+/**
+ * Add event handler to automatically save the slide after modification
+ */
 function setAutoSave(){
 	var slides = document.querySelectorAll("[data-slide]");
 	for (var i=0, slide; slide = slides[i]; i++){
-		slide.addEventListener("blur", function(){
-
-			alert("saved slide content : "+slide.innerHTML);
-		}); // FIXME : we'll need to pass in the slide
+		slide.addEventListener("blur", (function(){
+			// saving the content
+			saveSlide(this);
+		}).bind(slide));
 	}
 
+}
+
+
+/**
+ * Save the slide
+ */
+function saveSlide(slide){
+	var httpRequest = new XMLHttpRequest();
+	var formData = new FormData();
+	formData.append("slideId", slide.getAttribute("data-slide"));
+	formData.append("content", slide.innerHTML);
+	formData.append("classes", slide.getAttribute("class"));
+	
+	// get the response from the server
+	httpRequest.onreadystatechange = function(){
+		// state 4 means that we have the full response.
+		if (httpRequest.readyState === 4) {
+			if (httpRequest.status === 200) {
+				console.log("Slide saved");
+			} else if(httpRequest.status === 403){
+				console.log("You new to be connected to create a presentation");
+			} else if(httpRequest.status === 404){
+				console.log("Presentation cannot be found (slide NOT saved)");
+			} else if(httpRequest.status === 500){
+				console.log(
+						"Slide not saved, something went wrong on the server.");
+			}else {
+				console.error("Failed to create the presentation");
+				alert("Failed to create the presentation");
+			}
+		}
+	}
+	
+	// Send the assertion for server-side verification and login
+	httpRequest.open("POST", location.pathname);
+	httpRequest.send(formData);
 }
