@@ -1,0 +1,62 @@
+// All /////////////////////////////////////////////////////////////////////////
+body section#body[data-view="splash"]{
+	h1{
+		font-family: @logoFont;
+		font-size: 4em;
+		margin:0.5em;
+		color: @blueDark;
+	}
+}
+
+// phones and tablet (portrait) ////////////////////////////////////////////////
+@media 	(max-width: @phone-max-width),
+		(orientation: portrait){
+	body section#body[data-view="splash"]{
+		display:table;
+		width:100%;
+		height:100%;
+
+		.login{
+			position:relative;
+			display:table-cell;
+			vertical-align:middle;
+			text-align:center;
+			margin:auto;
+	
+			width:100%;
+			height:100%;
+		}
+
+		.image{
+			display:none;
+		}
+	}
+}
+
+// desktop /////////////////////////////////////////////////////////////////////
+@media 	(min-width: @desktop-min-width){
+	body section#body[data-view="splash"]{
+		display:table;
+		width:90%;
+		height:100%;
+		margin-left: 5%;
+		margin-right: 5%;
+
+		.login{
+			position:relative;
+			display:table-cell;
+			vertical-align:middle;
+			text-align:center;
+			margin:auto;
+	
+			width:50%;
+			height:100%;
+		}
+
+		.image{
+			display:table-cell;
+			width:50%;
+			height:100%; 
+		}
+	}
+}

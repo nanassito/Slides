@@ -1,0 +1,48 @@
+.toolbar(@_){
+	article{
+		position: fixed;
+		top: @toolbarHeight + 1px;
+	}
+
+	header{
+		position:fixed;
+		top:0;
+		height:@toolbarHeight;
+		width:100%;
+		overflow:hidden;
+
+		#gradient > .vertical(@orangeDrab, @orangeDark);
+	    .box-shadow(0 0 1px @grayDarker);
+
+	    & > *{
+	    	display:inline-block;
+	    }
+
+		h1 {
+			max-height:100%;
+			color:@white;
+			-webkit-margin-before:8px;
+			height:100%;
+			right: @buttonHeight;
+			position: absolute;
+			left: 10px;
+			overflow: hidden;
+			line-height:@toolbarHeight + 5px;
+		}
+
+		button {
+			position:fixed;
+			top:0;
+			right:1px;
+			border-left:solid 1px @orangeDark;
+		}
+	}
+}
+
+
+.toolbar(phone){
+}
+
+
+.toolbar(desktop){
+}

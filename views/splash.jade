@@ -1,0 +1,13 @@
+extends layout
+
+block title
+	title Login to SlideZ
+
+block body
+	section(id="body", data-view="splash")
+		section.image
+		section.login
+			h1 SlideZ
+			button(onclick="navigator.id.request();") login With Persona
+
+block append scripts

@@ -1,0 +1,24 @@
+// All /////////////////////////////////////////////////////////////////////////
+body section#body[data-view="home"]{
+	article{
+		overflow:auto;
+		min-width:100%;
+	}
+}
+
+// phones and tablet (portrait) ////////////////////////////////////////////////
+@media 	(max-width: @phone-max-width),
+		(orientation: portrait){
+	body section#body[data-view="home"]{
+		.toolbar(phone);
+		.footer(phone);
+	}
+}
+
+// desktop /////////////////////////////////////////////////////////////////////
+@media 	(min-width: @desktop-min-width){
+	body section#body[data-view="home"]{
+		.toolbar(desktop);
+		.footer(phone);
+	}
+}

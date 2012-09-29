@@ -1,0 +1,23 @@
+doctype 5
+block variables
+	- var title=""
+html(lang="en")
+	head
+		block head
+			meta(charset='utf-8')
+			link(	rel="stylesheet", 
+					href="/static/css/Slidez.css", 
+					type="text/css", 
+					media="screen")
+			| <meta content='width=device-width; 
+			|				initial-scale=1.0; 
+			|				maximum-scale=1.0; 
+			|				user-scalable=0;' 
+			|		name='viewport' />
+			| <meta name="viewport" 
+			|		content="width=device-width" />
+
+			title #{title} - SlideZ
+	body 
+		block body
+		block scripts

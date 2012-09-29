@@ -1,0 +1,41 @@
+h1{
+	font-weight: 300;
+	font-size: 23px;
+	line-height:24px;
+	font-family:sans-serif;
+}
+
+html{
+	height:100%;
+	padding:0;
+	margin:0;
+}
+
+body{
+	margin:0;
+	height:100%;
+	width:100%;
+}
+
+a{
+	color: inherit;
+}
+
+button{
+	background:none;
+	border: none;
+	height:@buttonHeight;
+	min-width:40px;
+	
+	//&:hover{
+	//	background-color:@white;
+	//}
+	
+	&:active:hover{
+		.box-shadow(inset 0 0 10px @grayLighter);
+	}
+	
+	*{
+		display:inline;
+	}
+}
