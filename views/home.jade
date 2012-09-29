@@ -13,7 +13,7 @@ block body
 			each presentation in presentations
 				section(class="presentationElmt")
 					mixin presentationIframe(presentation)
-					section#presentationInfo
+					section.presentationInfo
 						h2 #{presentation.title}
 						p #{presentation.lastEdit}
 					a(	href="/presentation/#{presentation.id}", 
