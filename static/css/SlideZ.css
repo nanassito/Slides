@@ -275,10 +275,23 @@ body section#body[data-view="home"] article {
   overflow: auto;
   min-width: 100%;
 }
+body section#body[data-view="home"] .presentationElmt {
+  position: relative;
+  border-bottom: solid 1px #f4f4f4;
+}
+body section#body[data-view="home"] .presentationElmt a {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+body section#body[data-view="home"] .presentationElmt a h1 {
+  display: none;
+}
 @media (max-height: 699px) and (orientation: portrait) {
   body section#body[data-view="home"] .presentationElmt {
-    position: relative;
-    border-bottom: solid 1px #f4f4f4;
     display: inline-block;
     position: relative;
     width: 100%;
@@ -298,17 +311,6 @@ body section#body[data-view="home"] article {
     height: 100%;
   }
   body section#body[data-view="home"] .presentationElmt .presentationInfo {
-    display: none;
-  }
-  body section#body[data-view="home"] .presentationElmt a {
-    float: left;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  body section#body[data-view="home"] .presentationElmt a h1 {
     display: none;
   }
 }
