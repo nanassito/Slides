@@ -12,7 +12,7 @@ block body
 		article
 			each presentation in presentations
 				section(class="presentationElmt")
-					iframe
+					mixin presentationIframe(presentation)
 					section#presentationInfo
 						h2 #{presentation.title}
 						p #{presentation.lastEdit}
@@ -21,12 +21,25 @@ block body
 						h1 Open
 		include footer
 
-//mixin presentationIframe(presentation)
-//	iframe(src="
-//		link(	rel="stylesheet", 
-//				href=#{presentation.template}, 
-//				type="text/css", 
-//				media="screen")
-//		section
-//			| #{presentation.firstSlide}
-//	")
+
+
+mixin presentationIframe(presentation)
+	- var iframeContent = "";
+	- iframeContent += "<link 	rel='stylesheet'";
+	- iframeContent += "		href='"+presentation.templateUrl+"'";
+	- iframeContent += "		type='text/css'";
+	- iframeContent += "		media='screen'/>";
+	- iframeContent += "<section data-slide='unknown'>";
+	- iframeContent += 		presentation.firstSlide;
+	- iframeContent += "</section>";
+
+	- iframeContent = escape(iframeContent);
+
+	iframe(src="data:text/html;charset=utf-8,#{iframeContent}")
+		link(	rel="stylesheet", 
+				href=#{presentation.template}, 
+				type="text/css", 
+				media="screen")
+		section
+			| #{presentation.firstSlide}
+	
