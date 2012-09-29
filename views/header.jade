@@ -1,4 +1,12 @@
 block variables
 header
-	h1 #{title}
-	button.iconBuddy
+	each elmt in header
+		case elmt
+			when "title"
+				h1.alignLeft #{title}
+
+			when "buddy"
+				button(class=["iconBuddy", "alignRight"])
+
+			when default
+				p failure #{elmt}
