@@ -1,4 +1,3 @@
-/* HTML5 display-role reset for older browsers */
 * {
   margin: 0;
   padding: 0;
@@ -149,26 +148,29 @@ button * {
 .alignLeft {
   float: left;
 }
+body section#body[data-view="splash"] {
+  background-image: url(/static/img/app-texture.png);
+  display: table;
+  width: 100%;
+  height: 100%;
+}
 body section#body[data-view="splash"] h1 {
   font-family: 'Nothing You Could Do', sans-serif;
   font-size: 4em;
   margin: 0.5em;
   color: #008caa;
 }
+body section#body[data-view="splash"] .login {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  height: 100%;
+}
 @media (max-width: 699px), (orientation: portrait) {
-  body section#body[data-view="splash"] {
-    display: table;
-    width: 100%;
-    height: 100%;
-  }
   body section#body[data-view="splash"] .login {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    margin: auto;
     width: 100%;
-    height: 100%;
   }
   body section#body[data-view="splash"] .image {
     display: none;
@@ -176,20 +178,11 @@ body section#body[data-view="splash"] h1 {
 }
 @media (min-width: 700px) {
   body section#body[data-view="splash"] {
-    display: table;
-    width: 90%;
-    height: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   body section#body[data-view="splash"] .login {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    margin: auto;
     width: 50%;
-    height: 100%;
   }
   body section#body[data-view="splash"] .image {
     display: table-cell;
@@ -278,6 +271,7 @@ body section#body[data-view="home"] article {
 body section#body[data-view="home"] .presentationElmt {
   position: relative;
   border-bottom: solid 1px #f4f4f4;
+  background-color: #ffffff;
 }
 body section#body[data-view="home"] .presentationElmt a {
   float: left;
