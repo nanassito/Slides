@@ -1,11 +1,10 @@
 block variables
 
-case headerType
-	when "home"
-		header.home
+header
+	case headerType
+		when "home"
 			h1 #{title}
 			button(class=['menu', 'iconBuddy'])
 
-	when default
-		header
+		when default
 			p Unkown header : #{headerType}

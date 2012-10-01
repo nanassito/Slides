@@ -1,56 +1,23 @@
-.toolbarBackground{
+article{
+	position: fixed;
+	top: @toolbarHeight + 1px;
+}
+
+header{
+	position:fixed;
+	top:0;
+	height:@toolbarHeight;
+	width:100%;
+	overflow:hidden;
+
 	#gradient > .vertical(@orangeDrab, @orangeDark);
 	.box-shadow(0 0 1px @grayDarker);
-}
 
-.toolbar(@_){
-	article{
-		position: fixed;
-		top: @toolbarHeight + 1px;
+	h1{
+		color:@white;
+
+		max-height:100%;
+		height:100%;
+		line-height:@toolbarHeight + 5px;
 	}
-
-	header{
-		position:fixed;
-		top:0;
-		height:@toolbarHeight;
-		width:100%;
-		overflow:hidden;
-
-		.toolbarBackground();
-
-		h1{
-			color:@white;
-
-			max-height:100%;
-			height:100%;
-			line-height:@toolbarHeight + 5px;
-		}
-
-		&.home{
-			& > * {
-				position:absolute;
-			}
-
-			h1{
-				left:10px;
-				right:@buttonHeight;
-				overflow:hidden;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-			}
-
-			button {
-				right:0;
-				border-left:solid 1px @orangeDark;
-			}
-		}
-	}
-}
-
-
-.toolbar(phone){
-}
-
-
-.toolbar(desktop){
 }

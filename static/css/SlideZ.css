@@ -144,7 +144,16 @@ button:active:hover {
 button * {
   display: inline;
 }
-.toolbarBackground {
+article {
+  position: fixed;
+  top: 40px;
+}
+header {
+  position: fixed;
+  top: 0;
+  height: 39px;
+  width: 100%;
+  overflow: hidden;
   background-color: #c75a27;
   background-image: -moz-linear-gradient(top, #cd6723, #be462d);
   background-image: -ms-linear-gradient(top, #cd6723, #be462d);
@@ -157,6 +166,12 @@ button * {
   -webkit-box-shadow: 0 0 1px #333333;
   -moz-box-shadow: 0 0 1px #333333;
   box-shadow: 0 0 1px #333333;
+}
+header h1 {
+  color: #ffffff;
+  max-height: 100%;
+  height: 100%;
+  line-height: 44px;
 }
 .footerBackground {
   background-color: #333333;
@@ -182,140 +197,19 @@ body section#body[data-view="splash"] .login {
   margin: auto;
   height: 100%;
 }
-body section#body[data-view="home"] article {
-  position: fixed;
-  top: 40px;
-}
-body section#body[data-view="home"] header {
-  position: fixed;
-  top: 0;
-  height: 39px;
-  width: 100%;
-  overflow: hidden;
-  background-color: #c75a27;
-  background-image: -moz-linear-gradient(top, #cd6723, #be462d);
-  background-image: -ms-linear-gradient(top, #cd6723, #be462d);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#cd6723), to(#be462d));
-  background-image: -webkit-linear-gradient(top, #cd6723, #be462d);
-  background-image: -o-linear-gradient(top, #cd6723, #be462d);
-  background-image: linear-gradient(top, #cd6723, #be462d);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd6723', endColorstr='#be462d', GradientType=0);
-  -webkit-box-shadow: 0 0 1px #333333;
-  -moz-box-shadow: 0 0 1px #333333;
-  box-shadow: 0 0 1px #333333;
-}
-body section#body[data-view="home"] header h1 {
-  color: #ffffff;
-  max-height: 100%;
-  height: 100%;
-  line-height: 44px;
-}
-body section#body[data-view="home"] header.home  > * {
+body section#body[data-view="home"] header  > * {
   position: absolute;
 }
-body section#body[data-view="home"] header.home h1 {
+body section#body[data-view="home"] header h1 {
   left: 10px;
   right: 39px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-body section#body[data-view="home"] header.home button {
+body section#body[data-view="home"] header button {
   right: 0;
   border-left: solid 1px #be462d;
-}
-body section#body[data-view="home"] article {
-  position: fixed;
-  bottom: 40px;
-}
-body section#body[data-view="home"] footer {
-  position: fixed;
-  bottom: 0;
-  height: 39px;
-  width: 100%;
-  background-color: #333333;
-  -webkit-box-shadow: 0 0 1px #333333;
-  -moz-box-shadow: 0 0 1px #333333;
-  box-shadow: 0 0 1px #333333;
-  /*
-        input{
-            .footerBackground();
-            width:0;
-
-            height:@buttonHeight - 4px;
-            margin:2px;
-            border-radius:5px;
-
-            &:hover,
-            &:focus{
-                color:@grayDarker;
-                background-color:@backgroundColor;
-
-                padding-left:10px;
-                padding-right:10px;
-                width:auto;
-            }
-        }
-
-
-
-  	    input[type="text"]{
-  	    	background-color: @grayDarker;
-  	    	.box-shadow(0 0 1px @grayDarker);
-  	    	background-position:left;
-  	    	color:transparent;
-
-  	    	height:@buttonHeight - 4px;
-  	    	width:@buttonHeight - 4px;
-    		min-width:@buttonHeight - 4px;
-  	    	margin:2px;
-
-  	    	border-radius:5px;
-
-  	    	&:hover,
-  	    	&:focus{
-  	    		color:@grayDarker;
-  	    		background-color:@backgroundColor;
-
-  	    		padding-left:10px;
-  	    		padding-right:10px;
-  	    		width:auto;
-  	    	}
-  	    }
-        */
-
-}
-body section#body[data-view="home"] footer  > * {
-  position: absolute;
-}
-body section#body[data-view="home"] footer button.iconSearch {
-  left: 0;
-}
-body section#body[data-view="home"] footer button.iconNew {
-  right: 0;
-}
-body section#body[data-view="home"] footer div.search {
-  left: 0;
-  right: 39px;
-  height: 100%;
-}
-body section#body[data-view="home"] footer div.search input {
-  background-color: #333333;
-  -webkit-box-shadow: 0 0 1px #333333;
-  -moz-box-shadow: 0 0 1px #333333;
-  box-shadow: 0 0 1px #333333;
-  width: 0;
-  height: 35px;
-  margin: 2px;
-  border-radius: 5px;
-}
-body section#body[data-view="home"] footer div.search:hover input input,
-body section#body[data-view="home"] footer div.search:focus input input {
-  color: #333333;
-  background-color: #ffffff;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 body section#body[data-view="home"] article {
   overflow: auto;
