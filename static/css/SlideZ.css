@@ -179,6 +179,20 @@ header h1 {
   -moz-box-shadow: 0 0 1px #333333;
   box-shadow: 0 0 1px #333333;
 }
+article {
+  position: fixed;
+  bottom: 40px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 39px;
+  width: 100%;
+  background-color: #333333;
+  -webkit-box-shadow: 0 0 1px #333333;
+  -moz-box-shadow: 0 0 1px #333333;
+  box-shadow: 0 0 1px #333333;
+}
 body section#body[data-view="splash"] {
   display: table;
   height: 100%;
@@ -210,6 +224,43 @@ body section#body[data-view="home"] header h1 {
 body section#body[data-view="home"] header button {
   right: 0;
   border-left: solid 1px #be462d;
+}
+body section#body[data-view="home"] footer  > * {
+  position: absolute;
+}
+body section#body[data-view="home"] footer button.iconNew {
+  right: 0;
+}
+body section#body[data-view="home"] footer label {
+  padding-left: 39px;
+  left: 5px;
+  width: auto;
+  right: 64px;
+  background-position: left center;
+  height: 100%;
+}
+body section#body[data-view="home"] footer label input {
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  -ms-transition: width 0.5s;
+  -o-transition: width 0.5s;
+  transition: width 0.5s;
+  height: 35px;
+  margin: 2px;
+  border-radius: 5px;
+  padding-left: 1px;
+  padding-right: 1px;
+  width: 0;
+  background-color: #333333;
+  -webkit-box-shadow: 0 0 1px #333333;
+  -moz-box-shadow: 0 0 1px #333333;
+  box-shadow: 0 0 1px #333333;
+}
+body section#body[data-view="home"] footer label input:focus {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ffffff;
 }
 body section#body[data-view="home"] article {
   overflow: auto;
