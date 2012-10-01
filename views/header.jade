@@ -1,12 +1,11 @@
 block variables
-header
-	each elmt in header
-		case elmt
-			when "title"
-				h1.alignLeft #{title}
 
-			when "buddy"
-				button(class=["iconBuddy", "alignRight"])
+case headerType
+	when "home"
+		header.home
+			h1.alignLeft #{title}
+			button#accountManager.iconBuddy
 
-			when default
-				p failure #{elmt}
+	when default
+		header
+			p Unkown header : #{headerType}
