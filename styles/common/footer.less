@@ -1,0 +1,115 @@
+.footerBackground{
+    background-color: @grayDarker;
+    .box-shadow(0 0 1px @grayDarker);
+}
+
+.footer(@_){
+    article{
+		position: fixed;
+		bottom: @footerHeight + 1px;
+	}
+
+	footer{
+		position:fixed;
+		bottom:0;
+		height:@footerHeight;
+		width:100%;
+
+        .footerBackground();
+
+        & > * {
+            position:absolute;
+        }
+
+        button.iconSearch{
+            left:0;
+        }
+
+        button.iconNew {
+            right:0;
+        }
+
+        div.search {
+            left:0;
+            right:@buttonHeight;
+
+            height:100%;
+
+            input{
+                .footerBackground();
+                width:0;
+
+                height:@buttonHeight - 4px;
+                margin:2px;
+                border-radius:5px;
+            }
+
+            &:hover input,
+            &:focus input{
+                input{
+                    color:@grayDarker;
+                    background-color:@backgroundColor;
+
+                    padding-left:10px;
+                    padding-right:10px;
+                }
+            }
+        }
+
+
+/*
+        input{
+            .footerBackground();
+            width:0;
+
+            height:@buttonHeight - 4px;
+            margin:2px;
+            border-radius:5px;
+
+            &:hover,
+            &:focus{
+                color:@grayDarker;
+                background-color:@backgroundColor;
+
+                padding-left:10px;
+                padding-right:10px;
+                width:auto;
+            }
+        }
+
+
+
+  	    input[type="text"]{
+  	    	background-color: @grayDarker;
+  	    	.box-shadow(0 0 1px @grayDarker);
+  	    	background-position:left;
+  	    	color:transparent;
+
+  	    	height:@buttonHeight - 4px;
+  	    	width:@buttonHeight - 4px;
+    		min-width:@buttonHeight - 4px;
+  	    	margin:2px;
+
+  	    	border-radius:5px;
+
+  	    	&:hover,
+  	    	&:focus{
+  	    		color:@grayDarker;
+  	    		background-color:@backgroundColor;
+
+  	    		padding-left:10px;
+  	    		padding-right:10px;
+  	    		width:auto;
+  	    	}
+  	    }
+        */
+	}
+}
+
+
+.footer(phone){
+}
+
+
+.footer(desktop){
+}

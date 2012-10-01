@@ -1,4 +1,5 @@
-/* HTML5 display-role reset for older browsers */
+/* Common styles */
+/* Common styles */
 * {
   margin: 0;
   padding: 0;
@@ -105,20 +106,6 @@ ol {
   background-position: center;
   background-repeat: no-repeat;
 }
-.toolbarBackground {
-  background-color: #c75a27;
-  background-image: -moz-linear-gradient(top, #cd6723, #be462d);
-  background-image: -ms-linear-gradient(top, #cd6723, #be462d);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#cd6723), to(#be462d));
-  background-image: -webkit-linear-gradient(top, #cd6723, #be462d);
-  background-image: -o-linear-gradient(top, #cd6723, #be462d);
-  background-image: linear-gradient(top, #cd6723, #be462d);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd6723', endColorstr='#be462d', GradientType=0);
-  -webkit-box-shadow: 0 0 1px #333333;
-  -moz-box-shadow: 0 0 1px #333333;
-  box-shadow: 0 0 1px #333333;
-}
 h1 {
   font-weight: 300;
   font-size: 23px;
@@ -157,11 +144,29 @@ button:active:hover {
 button * {
   display: inline;
 }
-.alignRight {
-  float: right;
+.toolbarBackground {
+  background-color: #c75a27;
+  background-image: -moz-linear-gradient(top, #cd6723, #be462d);
+  background-image: -ms-linear-gradient(top, #cd6723, #be462d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#cd6723), to(#be462d));
+  background-image: -webkit-linear-gradient(top, #cd6723, #be462d);
+  background-image: -o-linear-gradient(top, #cd6723, #be462d);
+  background-image: linear-gradient(top, #cd6723, #be462d);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd6723', endColorstr='#be462d', GradientType=0);
+  -webkit-box-shadow: 0 0 1px #333333;
+  -moz-box-shadow: 0 0 1px #333333;
+  box-shadow: 0 0 1px #333333;
 }
-.alignLeft {
-  float: left;
+.footerBackground {
+  background-color: #333333;
+  -webkit-box-shadow: 0 0 1px #333333;
+  -moz-box-shadow: 0 0 1px #333333;
+  box-shadow: 0 0 1px #333333;
+}
+body section#body[data-view="splash"] {
+  display: table;
+  height: 100%;
 }
 body section#body[data-view="splash"] h1 {
   font-family: 'Nothing You Could Do', sans-serif;
@@ -169,47 +174,13 @@ body section#body[data-view="splash"] h1 {
   margin: 0.5em;
   color: #008caa;
 }
-@media (max-width: 699px), (orientation: portrait) {
-  body section#body[data-view="splash"] {
-    display: table;
-    width: 100%;
-    height: 100%;
-  }
-  body section#body[data-view="splash"] .login {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-  }
-  body section#body[data-view="splash"] .image {
-    display: none;
-  }
-}
-@media (min-width: 700px) {
-  body section#body[data-view="splash"] {
-    display: table;
-    width: 90%;
-    height: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
-  body section#body[data-view="splash"] .login {
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    margin: auto;
-    width: 50%;
-    height: 100%;
-  }
-  body section#body[data-view="splash"] .image {
-    display: table-cell;
-    width: 50%;
-    height: 100%;
-  }
+body section#body[data-view="splash"] .login {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  margin: auto;
+  height: 100%;
 }
 body section#body[data-view="home"] article {
   position: fixed;
@@ -250,7 +221,7 @@ body section#body[data-view="home"] header.home h1 {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-body section#body[data-view="home"] header.home button#accountManager {
+body section#body[data-view="home"] header.home button {
   right: 0;
   border-left: solid 1px #be462d;
 }
@@ -267,27 +238,84 @@ body section#body[data-view="home"] footer {
   -webkit-box-shadow: 0 0 1px #333333;
   -moz-box-shadow: 0 0 1px #333333;
   box-shadow: 0 0 1px #333333;
+  /*
+        input{
+            .footerBackground();
+            width:0;
+
+            height:@buttonHeight - 4px;
+            margin:2px;
+            border-radius:5px;
+
+            &:hover,
+            &:focus{
+                color:@grayDarker;
+                background-color:@backgroundColor;
+
+                padding-left:10px;
+                padding-right:10px;
+                width:auto;
+            }
+        }
+
+
+
+  	    input[type="text"]{
+  	    	background-color: @grayDarker;
+  	    	.box-shadow(0 0 1px @grayDarker);
+  	    	background-position:left;
+  	    	color:transparent;
+
+  	    	height:@buttonHeight - 4px;
+  	    	width:@buttonHeight - 4px;
+    		min-width:@buttonHeight - 4px;
+  	    	margin:2px;
+
+  	    	border-radius:5px;
+
+  	    	&:hover,
+  	    	&:focus{
+  	    		color:@grayDarker;
+  	    		background-color:@backgroundColor;
+
+  	    		padding-left:10px;
+  	    		padding-right:10px;
+  	    		width:auto;
+  	    	}
+  	    }
+        */
+
 }
-body section#body[data-view="home"] footer input[type="text"] {
+body section#body[data-view="home"] footer  > * {
+  position: absolute;
+}
+body section#body[data-view="home"] footer button.iconSearch {
+  left: 0;
+}
+body section#body[data-view="home"] footer button.iconNew {
+  right: 0;
+}
+body section#body[data-view="home"] footer div.search {
+  left: 0;
+  right: 39px;
+  height: 100%;
+}
+body section#body[data-view="home"] footer div.search input {
   background-color: #333333;
   -webkit-box-shadow: 0 0 1px #333333;
   -moz-box-shadow: 0 0 1px #333333;
   box-shadow: 0 0 1px #333333;
-  background-position: left;
-  color: transparent;
+  width: 0;
   height: 35px;
-  width: 35px;
-  min-width: 35px;
   margin: 2px;
   border-radius: 5px;
 }
-body section#body[data-view="home"] footer input[type="text"]:hover,
-body section#body[data-view="home"] footer input[type="text"]:focus {
+body section#body[data-view="home"] footer div.search:hover input input,
+body section#body[data-view="home"] footer div.search:focus input input {
   color: #333333;
   background-color: #ffffff;
   padding-left: 10px;
   padding-right: 10px;
-  width: auto;
 }
 body section#body[data-view="home"] article {
   overflow: auto;
@@ -309,30 +337,106 @@ body section#body[data-view="home"] .presentationElmt a {
 body section#body[data-view="home"] .presentationElmt a h1 {
   display: none;
 }
-@media (max-height: 699px) and (orientation: portrait) {
-  body section#body[data-view="home"] .presentationElmt {
-    display: inline-block;
-    position: relative;
-    width: 100%;
+/*/ phones (portrait) ////////////////////////////////////////////////
+@media 	(max-height: @phone-max-width) and (orientation: portrait){
+	body section#body[data-view="home"]{
+		.presentationElmt{
+			// handle aspect ratio
+		    display: inline-block;
+		    position: relative;
+		    width: 100%;    
+			&:after {
+			    content: '';
+			    display: block;
+			    margin-top: 66%;
+			}
+			* {
+			    position: absolute;
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			}
+
+			.presentationInfo{
+				display:none;
+			}
+		}
+	}
+}
+
+// desktop /////////////////////////////////////////////////////////////////////
+@media 	(min-width: @desktop-min-width){
+	body section#body[data-view="home"]{
+	}
+}*//* Shared styles */
+/* styles for wide screens */
+@media all and (min-width: 1025px) {
+  body section#body[data-view="splash"] {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
-  body section#body[data-view="home"] .presentationElmt:after {
-    content: '';
-    display: block;
-    margin-top: 66%;
+  body section#body[data-view="splash"] .login {
+    width: 50%;
   }
-  body section#body[data-view="home"] .presentationElmt * {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  body section#body[data-view="splash"] .image {
+    display: table-cell;
+    width: 50%;
     height: 100%;
   }
-  body section#body[data-view="home"] .presentationElmt .presentationInfo {
+}
+/* styles for tablet landscape */
+@media all and (min-width: 769px) and (max-width: 1024px) {
+  body section#body[data-view="splash"] {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  body section#body[data-view="splash"] .login {
+    width: 50%;
+  }
+  body section#body[data-view="splash"] .image {
+    display: table-cell;
+    width: 50%;
+    height: 100%;
+  }
+}
+/* styles for tablet portrait */
+@media all and (min-width: 481px) and (max-width: 768px) {
+  body section#body[data-view="splash"] {
+    width: 100%;
+  }
+  body section#body[data-view="splash"] .login {
+    width: 100%;
+  }
+  body section#body[data-view="splash"] .image {
     display: none;
   }
 }
-@media (min-width: 700px) {
-  
+/* styles for smartphones landscape  */
+@media all and (min-width: 321px) and (max-width: 480px) {
+  body section#body[data-view="splash"] {
+    width: 100%;
+  }
+  body section#body[data-view="splash"] .login {
+    width: 100%;
+  }
+  body section#body[data-view="splash"] .image {
+    display: none;
+  }
+}
+/* styles for smartphones portrait */
+@media all and (max-width: 320px) {
+  body section#body[data-view="splash"] {
+    width: 100%;
+  }
+  body section#body[data-view="splash"] .login {
+    width: 100%;
+  }
+  body section#body[data-view="splash"] .image {
+    display: none;
+  }
 }

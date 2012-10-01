@@ -1,12 +1,12 @@
 block variables
-footer
-	each elmt in footer
-		case elmt
-			when "search"
+
+case footerType
+	when "home"
+		footer.home
+			label.iconSearch Search
 				input(	type="text", 
-						name="search", 
-						class=["iconSearch", "alignLeft"])
-			when "new"
-				button(class=["iconNew", "alignRight"])
-			when default
-				p failure #{elmt}
+						name="search")
+			button.iconNew
+
+	when default
+		p Unkown footer : #{footerType}

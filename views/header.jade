@@ -3,8 +3,8 @@ block variables
 case headerType
 	when "home"
 		header.home
-			h1.alignLeft #{title}
-			button#accountManager.iconBuddy
+			h1 #{title}
+			button(class=['menu', 'iconBuddy'])
 
 	when default
 		header
