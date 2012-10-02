@@ -82,7 +82,7 @@ app.get('/test', function(rer, res){res.render('splash')});
 app.get('/test/list/presentation', function(rer, res){res.render('home', 
 	{ presentations: [
 		{	id: "presentationID1", 
-			title: "Title of the presentation 1",
+			title: "Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1",
 			templateUrl: "/template/test1.css",
 			lastEdit: "Thu Sep 27 2012", 
 			firstSlide: "<h1>Title 1</h1><p>test</p>"},

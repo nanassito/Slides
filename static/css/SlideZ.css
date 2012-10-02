@@ -106,11 +106,18 @@ ol {
   background-position: center;
   background-repeat: no-repeat;
 }
-h1 {
+h1,
+h2 {
   font-weight: 300;
+  font-family: sans-serif;
+}
+h1 {
   font-size: 23px;
   line-height: 24px;
-  font-family: sans-serif;
+}
+h2 {
+  font-size: 18px;
+  line-height: 22px;
 }
 html {
   height: 100%;
@@ -282,41 +289,7 @@ body section#body[data-view="home"] .presentationElmt a {
 body section#body[data-view="home"] .presentationElmt a h1 {
   display: none;
 }
-/*/ phones (portrait) ////////////////////////////////////////////////
-@media 	(max-height: @phone-max-width) and (orientation: portrait){
-	body section#body[data-view="home"]{
-		.presentationElmt{
-			// handle aspect ratio
-		    display: inline-block;
-		    position: relative;
-		    width: 100%;    
-			&:after {
-			    content: '';
-			    display: block;
-			    margin-top: 66%;
-			}
-			* {
-			    position: absolute;
-			    top: 0;
-			    right: 0;
-			    bottom: 0;
-			    left: 0;
-			    width: 100%;
-			    height: 100%;
-			}
-
-			.presentationInfo{
-				display:none;
-			}
-		}
-	}
-}
-
-// desktop /////////////////////////////////////////////////////////////////////
-@media 	(min-width: @desktop-min-width){
-	body section#body[data-view="home"]{
-	}
-}*//* Shared styles */
+/* Shared styles */
 /* styles for wide screens */
 @media all and (min-width: 1025px) {
   body section#body[data-view="splash"] {
@@ -372,6 +345,32 @@ body section#body[data-view="home"] .presentationElmt a h1 {
   body section#body[data-view="splash"] .image {
     display: none;
   }
+  body section#body[data-view="home"] .presentationElmt {
+    display: table;
+    height: 200px;
+  }
+  body section#body[data-view="home"] .presentationElmt  > * {
+    vertical-align: top;
+  }
+  body section#body[data-view="home"] .presentationElmt iframe {
+    display: table-cell;
+    height: 200px;
+    width: 300px;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo {
+    display: table-cell;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo  > p {
+    position: absolute;
+    bottom: 10px;
+    color: #a6a6a6;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo h2 {
+    margin-top: 10px;
+    max-height: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 /* styles for smartphones portrait */
 @media all and (max-width: 320px) {
@@ -382,6 +381,28 @@ body section#body[data-view="home"] .presentationElmt a h1 {
     width: 100%;
   }
   body section#body[data-view="splash"] .image {
+    display: none;
+  }
+  body section#body[data-view="home"] .presentationElmt {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+  }
+  body section#body[data-view="home"] .presentationElmt:after {
+    content: '';
+    display: block;
+    margin-top: 66%;
+  }
+  body section#body[data-view="home"] .presentationElmt * {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo {
     display: none;
   }
 }

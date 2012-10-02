@@ -1,6 +1,6 @@
 {
     "name": "SlideZ",
-    "version": "0.2.2012-10-01T18:01:47.548Z",
+    "version": "0.2.2012-10-02T17:13:29.977Z",
     "private": false,
     "dependencies": {
         "express": "2.5.8",
