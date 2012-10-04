@@ -1,0 +1,57 @@
+/* Common style for everyone */
+body section#body[data-view="splash"]{
+    display:table;
+    height:100%;
+
+    h1{
+        font-family: @logoFont;
+        font-size: 4em;
+        margin:0.5em;
+        color: @blueDark;
+    }
+
+    .login{
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        text-align:center;
+        margin:auto;
+        height:100%;
+    }
+}
+
+
+/* Large sreens : 2 columns page */
+@media all and (min-width: 901px) {
+    body section#body[data-view="splash"]{
+        width:90%;
+        margin-left: 5%;
+        margin-right: 5%;
+
+        .login{
+            width:50%;
+        }
+
+        .image{
+            display:table-cell;
+            width:50%;
+            height:100%; 
+        }
+    }
+}
+
+
+/* Small screens : 1 column page */
+@media all and (max-width: 900px) {
+    body section#body[data-view="splash"]{
+        width:100%;
+
+        .login{
+            width:100%;
+        }
+
+        .image{
+            display:none;
+        }
+    }
+}

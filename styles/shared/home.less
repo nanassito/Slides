@@ -1,3 +1,34 @@
-body section#body[data-view="home"]{
-	
+.PresentationTile(@height){
+	.presentationElmt{
+		display:table;
+		height:@height;
+
+		& > * {
+			vertical-align:top;
+		}
+
+		iframe{
+			display:table-cell;
+			height:@height;
+			width:@height * 3 / 2;
+		}
+
+		.presentationInfo{
+			display:table-cell;
+
+			& > p {
+				position:absolute;
+				bottom:10px;
+				color:@grayLight;
+			}
+
+			h2 {
+				margin-top:10px;
+				max-height: @height - 50px;
+				text-overflow:ellipsis;
+				overflow: hidden;
+			}
+		}
+
+	}
 }
