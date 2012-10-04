@@ -319,74 +319,84 @@ body section#body[data-view="splash"] .login {
     display: none;
   }
 }
-/* styles for wide screens */
-@media all and (min-width: 1025px) {
-  
+/******************************** Common Style ********************************/
+body section#body[data-view="home"] header  > * {
+  position: absolute;
 }
-/* styles for tablet landscape */
-@media all and (min-width: 769px) and (max-width: 1024px) {
-  
+body section#body[data-view="home"] header h1 {
+  left: 10px;
+  right: 39px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-/* styles for tablet portrait */
-@media all and (min-width: 481px) and (max-width: 768px) {
-  body section#body[data-view="home"] .presentationElmt {
-    display: table;
-    height: 300px;
-  }
-  body section#body[data-view="home"] .presentationElmt  > * {
-    vertical-align: top;
-  }
-  body section#body[data-view="home"] .presentationElmt iframe {
-    display: table-cell;
-    height: 300px;
-    width: 450px;
-  }
-  body section#body[data-view="home"] .presentationElmt .presentationInfo {
-    display: table-cell;
-  }
-  body section#body[data-view="home"] .presentationElmt .presentationInfo  > p {
-    position: absolute;
-    bottom: 10px;
-    color: #a6a6a6;
-  }
-  body section#body[data-view="home"] .presentationElmt .presentationInfo h2 {
-    margin-top: 10px;
-    max-height: 250px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+body section#body[data-view="home"] header button {
+  right: 0;
+  border-left: solid 1px #be462d;
 }
-/* styles for smartphones landscape  */
-@media all and (min-width: 321px) and (max-width: 480px) {
-  body section#body[data-view="home"] .presentationElmt {
-    display: table;
-    height: 200px;
-  }
-  body section#body[data-view="home"] .presentationElmt  > * {
-    vertical-align: top;
-  }
-  body section#body[data-view="home"] .presentationElmt iframe {
-    display: table-cell;
-    height: 200px;
-    width: 300px;
-  }
-  body section#body[data-view="home"] .presentationElmt .presentationInfo {
-    display: table-cell;
-  }
-  body section#body[data-view="home"] .presentationElmt .presentationInfo  > p {
-    position: absolute;
-    bottom: 10px;
-    color: #a6a6a6;
-  }
-  body section#body[data-view="home"] .presentationElmt .presentationInfo h2 {
-    margin-top: 10px;
-    max-height: 150px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+body section#body[data-view="home"] footer  > * {
+  position: absolute;
 }
-/* styles for smartphones portrait */
-@media all and (max-width: 320px) {
+body section#body[data-view="home"] footer button.iconNew {
+  right: 0;
+}
+body section#body[data-view="home"] footer label {
+  padding-left: 39px;
+  left: 5px;
+  width: auto;
+  right: 64px;
+  background-position: left center;
+  height: 100%;
+}
+body section#body[data-view="home"] footer label input {
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  -ms-transition: width 0.5s;
+  -o-transition: width 0.5s;
+  transition: width 0.5s;
+  height: 35px;
+  margin: 2px;
+  border-radius: 5px;
+  padding-left: 1px;
+  padding-right: 1px;
+  width: 0;
+  background-color: #333333;
+  -webkit-box-shadow: 0 0 1px #333333;
+  -moz-box-shadow: 0 0 1px #333333;
+  box-shadow: 0 0 1px #333333;
+}
+body section#body[data-view="home"] footer label input:focus {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ffffff;
+}
+body section#body[data-view="home"] article {
+  overflow: auto;
+  min-width: 100%;
+}
+body section#body[data-view="home"] .presentationElmt {
+  position: relative;
+  border-bottom: solid 1px #f4f4f4;
+  background-color: #ffffff;
+}
+body section#body[data-view="home"] .presentationElmt a {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+body section#body[data-view="home"] .presentationElmt a h1 {
+  display: none;
+}
+/** 
+ * Very small screens :
+ * - preview size is proportional
+ * - No other information is displayed
+ */
+@media all and (max-width: 469px) {
   body section#body[data-view="home"] .presentationElmt {
     display: inline-block;
     position: relative;
@@ -410,3 +420,125 @@ body section#body[data-view="splash"] .login {
     display: none;
   }
 }
+/**
+ * Screens a little bigger such as a phone in landscape o the galaxy tab
+ * - Preview size is fixed
+ * - side display of meta information
+ */
+@media all and (min-width: 470px) and (max-width: 599px) {
+  body section#body[data-view="home"] .presentationElmt {
+    display: table;
+    height: 200px;
+  }
+  body section#body[data-view="home"] .presentationElmt  > * {
+    vertical-align: top;
+  }
+  body section#body[data-view="home"] .presentationElmt iframe {
+    height: 200px;
+    width: 300px;
+  }
+  body section#body[data-view="home"] .presentationElmt iframe {
+    display: table-cell;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo {
+    display: table-cell;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo  > p {
+    position: absolute;
+    bottom: 10px;
+    color: #a6a6a6;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo h2 {
+    margin-top: 10px;
+    max-height: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+/**
+ * Screens larger enough to fit 2 presentations on a line.
+ * - 2 column layout
+ * - No additional informations displayed
+ */
+@media all and (min-width: 600px) and (max-width: 939px) {
+  body section#body[data-view="home"] .presentationElmt {
+    display: inline-block;
+    height: 200px;
+    margin: 5px;
+    border: solid 1px #f4f4f4;
+  }
+  body section#body[data-view="home"] .presentationElmt  > * {
+    vertical-align: top;
+  }
+  body section#body[data-view="home"] .presentationElmt iframe {
+    height: 200px;
+    width: 300px;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo {
+    display: none;
+  }
+}
+/**
+ * From now on the screen is big
+ * - Display everything in tiles.
+ */
+@media all and (min-width: 940px) {
+  body section#body[data-view="home"] .presentationElmt {
+    display: inline-block;
+    height: 200px;
+    width: 450px;
+    margin: 5px;
+    border: solid 1px #f4f4f4;
+  }
+  body section#body[data-view="home"] .presentationElmt  > * {
+    vertical-align: top;
+  }
+  body section#body[data-view="home"] .presentationElmt iframe {
+    height: 200px;
+    width: 300px;
+  }
+  body section#body[data-view="home"] .presentationElmt iframe {
+    display: inline-block;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo {
+    display: inline-block;
+    width: 150px;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo  > p {
+    position: absolute;
+    bottom: 10px;
+    color: #a6a6a6;
+  }
+  body section#body[data-view="home"] .presentationElmt .presentationInfo h2 {
+    margin-top: 10px;
+    max-height: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+/*
+/ * styles for wide screens * /
+@media all and (min-width: 1025px) {
+    @import "wide/home";
+}
+
+/ * styles for tablet landscape * /
+@media all and (min-width: 769px) and (max-width: 1024px) {
+    @import "tablet-landscape/home";
+}
+
+/ * styles for tablet portrait * /
+@media all and (min-width: 481px) and (max-width: 768px) {
+    @import "tablet-portrait/home";
+}
+
+/ * styles for smartphones landscape  * /
+@media all and (min-width: 321px) and (max-width: 480px) {
+    @import "phone-landscape/home";
+}
+
+/ * styles for smartphones portrait * /
+@media all and (max-width: 320px) {
+    @import "phone-portrait/home";
+}
+*/

@@ -1,0 +1,240 @@
+/******************************** Common Style ********************************/
+body section#body[data-view="home"]{
+	// Styling of the header elements
+	header{
+		& > * {
+			position:absolute;
+		}
+
+		h1{
+			left:10px;
+			right:@buttonHeight;
+			overflow:hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		button {
+			right:0;
+			border-left:solid 1px @orangeDark;
+		}
+	}
+
+
+	// Styling of the footer elements.
+	footer{
+		& > * {
+			position:absolute;
+		}
+
+		button.iconNew {
+			right:0;
+		}
+
+		label{
+			padding-left:@buttonHeight;
+			left:5px;
+			width:auto;
+			right:@buttonHeight + 5px + 20px;
+			background-position: left center;
+			height:100%;
+
+			input{
+				.transition(width 0.5s);
+
+				height:@buttonHeight - 4px;
+				margin:2px;
+				border-radius:5px;
+
+				padding-left:1px;
+				padding-right:1px;
+				width:0;
+				.footerBackground();
+
+				&:focus{
+					width:100%;
+					padding-left:10px;
+					padding-right:10px;
+					background-color:@white;
+				}
+			}
+		}
+	}
+
+	// Styling of the content
+	article{
+		overflow:auto;
+		min-width:100%;
+	}
+
+	.presentationElmt{
+		position:relative;
+		border-bottom:solid 1px @grayLighter;
+		background-color:@white;
+
+		a{
+			float:left;
+			position:absolute;
+			top:0;
+			left:0;
+
+			width:100%;
+			height:100%;
+
+			h1{
+				display:none;
+			}
+		}
+	}
+}
+
+
+/** 
+ * Very small screens :
+ * - preview size is proportional
+ * - No other information is displayed
+ */
+@media all and (max-width: 469px) {
+    body section#body[data-view="home"]{
+		.presentationElmt{
+			// handle aspect ratio
+		    display: inline-block;
+		    position: relative;
+		    width: 100%;
+			&:after {
+			    content: '';
+			    display: block;
+			    margin-top: 66%;
+			}
+			* {
+			    position: absolute;
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			}
+
+			.hidePresentationInfo();
+		}
+	}
+}
+
+
+/**
+ * Screens a little bigger such as a phone in landscape o the galaxy tab
+ * - Preview size is fixed
+ * - side display of meta information
+ */
+ @media all and (min-width: 470px) and (max-width: 599px) {
+	 body section#body[data-view="home"]{
+		.presentationElmt{
+			display:table;
+			height:200px;
+
+			& > * {
+				vertical-align:top;
+			}
+
+			.resizeIframe();
+			iframe{
+				display:table-cell;
+			}
+
+			.presentationInfo{
+				display:table-cell;
+
+				.presentationInfoChildStyling();
+			}
+
+		}
+	}
+}
+
+
+/**
+ * Screens larger enough to fit 2 presentations on a line.
+ * - 2 column layout
+ * - No additional informations displayed
+ */
+@media all and (min-width: 600px) and (max-width: 939px) {
+    body section#body[data-view="home"]{
+		.presentationElmt{
+		    display:inline-block;
+			height:200px;
+			margin:5px;
+			border:solid 1px @grayLighter;
+
+			& > * {
+				vertical-align:top;
+			}
+
+			.resizeIframe();
+
+			.hidePresentationInfo();
+		}
+	}
+}
+
+
+/**
+ * From now on the screen is big
+ * - Display everything in tiles.
+ */
+ @media all and (min-width: 940px) {
+	 body section#body[data-view="home"]{
+		.presentationElmt{
+			display:inline-block;
+			height:200px;
+			width:450px;
+			margin:5px;
+			border:solid 1px @grayLighter;
+
+			& > * {
+				vertical-align:top;
+			}
+
+			.resizeIframe();
+			iframe{
+				display:inline-block;
+			}
+
+			.presentationInfo{
+				display:inline-block;
+				width:150px;
+
+				.presentationInfoChildStyling();
+			}
+
+		}
+	}
+}
+
+.hidePresentationInfo(){
+	.presentationInfo{
+		display:none;
+	}
+}
+
+.presentationInfoChildStyling(){
+	& > p {
+		position:absolute;
+		bottom:10px;
+		color:@grayLight;
+	}
+
+	h2 {
+		margin-top:10px;
+		max-height: 150px;
+		text-overflow:ellipsis;
+		overflow: hidden;
+	}
+}
+
+.resizeIframe(){
+	iframe{
+		height:200px;
+		width:300px;
+	}
+}
