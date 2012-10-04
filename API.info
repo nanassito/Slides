@@ -196,7 +196,7 @@ GET  /api/presentation/?id=presentationId                           [restricted]
     response : { title, templateUrl, [slides] }
 POST /api/slide/:slide_id                                           [restricted]
     Save a slide
-    request : { content*, position* }
+    request : { content*, classes*, position* }
 POST /api/new/slide                                                 [restricted]
     Create a new slide
     request : { presentationId, position* }

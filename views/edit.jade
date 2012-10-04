@@ -1,0 +1,17 @@
+extends layout
+
+block append variables
+	- var title = title
+	- var headerType = "edit"
+	- var footerType = "edit"
+
+
+block body
+	section(id="body", data-view="edit")
+		include header
+		article
+			each slide in slides
+				section(data-slide="#{slide.slideId}",
+						class="#{slide.classes}")
+					!= slide.content
+		include footer
