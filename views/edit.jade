@@ -5,6 +5,11 @@ block append variables
 	- var headerType = "edit"
 	- var footerType = "edit"
 
+block append head
+			link(	rel="stylesheet", 
+					href="#{templateUrl}", 
+					type="text/css", 
+					media="screen")
 
 block body
 	section(id="body", data-view="edit")
