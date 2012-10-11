@@ -1,5 +1,4 @@
 /* Common styles */
-/* Common styles */
 * {
   margin: 0;
   padding: 0;
@@ -443,4 +442,19 @@ body section#body[data-view="home"] .presentationElmt a h1 {
     text-overflow: ellipsis;
     overflow: hidden;
   }
+}
+/******************************** Common Style ********************************/
+body section#body[data-view="edit"] header  > * {
+  position: absolute;
+}
+body section#body[data-view="edit"] header h1 {
+  left: 10px;
+  right: 39px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+body section#body[data-view="edit"] header button {
+  right: 0;
+  border-left: solid 1px #be462d;
 }

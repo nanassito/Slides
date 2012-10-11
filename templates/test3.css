@@ -1,0 +1,7 @@
+section[data-slide]{
+	background-color:blue;
+}
+
+section[data-slide] h1{
+	color:green;
+}

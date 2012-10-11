@@ -6,5 +6,9 @@ header
 			h1 #{title}
 			button(class=['menu', 'iconBuddy'])
 
+		when "edit"
+			h1(contenteditable='true') #{title}
+			button(class=['menu', 'iconBuddy'])
+
 		when default
 			p Unkown header : #{headerType}

@@ -1,0 +1,22 @@
+/******************************** Common Style ********************************/
+body section#body[data-view="edit"]{
+	// Styling of the header elements
+	header{
+		& > * {
+			position:absolute;
+		}
+
+		h1{
+			left:10px;
+			right:@buttonHeight;
+			overflow:hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		button {
+			right:0;
+			border-left:solid 1px @orangeDark;
+		}
+	}
+}
