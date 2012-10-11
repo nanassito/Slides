@@ -1,13 +1,13 @@
 block variables
 
-case footerType
-	when "home"
-		footer.home
+footer
+	case footerType
+		when "home"
 			label.iconSearch
 				input(	type="text", 
 						name="search"
 						placeholder="Search a presentation…")
 			button.iconNew
 
-	when default
-		p Unkown footer : #{footerType}
+		when default
+			p Unkown footer : #{footerType}

@@ -151,8 +151,7 @@ button * {
   display: inline;
 }
 article {
-  position: fixed;
-  top: 40px;
+  margin-top: 39px;
 }
 header {
   position: fixed;
@@ -186,8 +185,7 @@ header h1 {
   box-shadow: 0 0 1px #333333;
 }
 article {
-  position: fixed;
-  bottom: 40px;
+  margin-bottom: 39px;
 }
 footer {
   position: fixed;
@@ -457,4 +455,11 @@ body section#body[data-view="edit"] header h1 {
 body section#body[data-view="edit"] header button {
   right: 0;
   border-left: solid 1px #be462d;
+}
+body section#body[data-view="edit"] footer  > * {
+  position: absolute;
+}
+body section#body[data-view="edit"] article {
+  overflow: auto;
+  min-width: 100%;
 }
