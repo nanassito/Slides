@@ -8,9 +8,12 @@ block append variables
 
 block append head
 			link(	rel="stylesheet", 
-					href="#{templateUrl}", 
-					type="text/css", 
-					media="screen")
+						href="#{templateUrl}", 
+						type="text/css", 
+						media="screen")
+			link(href="/static/css/dzslide.css", rel="stylesheet", type="text/css")
+			//TO REMOVE
+			script(type="text/javascript", src="/static/js/dzslide.js")
 
 block body
 	section(id="body", data-view="edit")
@@ -18,6 +21,6 @@ block body
 		article
 			each slide in slides
 				section(data-slide="#{slide.slideId}",
-						class="#{slide.classes}")
+								class="#{slide.classes}")
 					!= slide.content
 		include footer
