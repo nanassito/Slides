@@ -82,20 +82,14 @@ app.get('/test', function(req, res){res.render('splash')});
 app.get('/test/list/presentations', function(req, res){res.render('home', 
 	{ presentations: [
 		{	id: "presentationID1", 
-			title: "Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1Title of the presentation 1",
-			templateUrl: "/template/test1.css",
-			lastEdit: "Thu Sep 27 2012", 
-			firstSlide: "<h1>Title 1</h1><p>test</p>"},
+			title: "Introduction to DZSlides",
+			url: "http://paulrouget.com/slides/dzslides-introduction.html"},
 		{	id: "presentationID2", 
-			title: "Title of the presentation 2",
-			templateUrl: "/template/test2.css",
-			lastEdit: "Thu Sep 27 2012", 
-			firstSlide: "<h1>Title 2</h1><p>test</p>"},
+			title: "The nija turtles",
+			url: "http://paulrouget.com/slides/tmnt/slides.html"},
 		{	id: "presentationID3", 
-			title: "Title of the presentation 3",
-			templateUrl: "/template/simple.css",
-			lastEdit: "Thu Sep 27 2012", 
-			firstSlide: "<h1>Title 3</h1><p>test</p>"},
+			title: "Html5 in the wild",
+			url: "http://paulrouget.com/slides/html5inthewild/slides.html"},
 ]});});
 app.get('/test/presentation/:presentationId', function(req, res){
 	res.render('edit', {

@@ -1,7 +1,7 @@
 /******************************** Common Style ********************************/
 body section#body[data-view="edit"]{
 	// Styling of the header elements
-	header{
+	header#appHeader{
 		& > * {
 			position:absolute;
 		}
@@ -22,15 +22,19 @@ body section#body[data-view="edit"]{
 
 
 	// Styling of the footer elements.
-	footer{
+	footer#appFooter{
 		& > * {
 			position:absolute;
 		}
 	}
 
 	// Styling of the content
-	article{
-		overflow:auto;
-		min-width:100%;
+	.wrapper{
+		position:fixed;
+		top:@toolbarHeight;
+		bottom:@toolbarHeight;
+		left:0;
+		right:0;
+		overflow:hidden;
 	}
 }

@@ -1,4 +1,5 @@
 /* Common styles */
+/* Common styles */
 * {
   margin: 0;
   padding: 0;
@@ -153,7 +154,8 @@ button * {
 article {
   margin-top: 39px;
 }
-header {
+header#appHeader {
+  z-index: 10;
   position: fixed;
   top: 0;
   height: 39px;
@@ -172,7 +174,7 @@ header {
   -moz-box-shadow: 0 0 1px #333333;
   box-shadow: 0 0 1px #333333;
 }
-header h1 {
+header#appHeader h1 {
   color: #ffffff;
   max-height: 100%;
   height: 100%;
@@ -187,11 +189,13 @@ header h1 {
 article {
   margin-bottom: 39px;
 }
-footer {
+footer#appFooter {
+  z-index: 10;
   position: fixed;
   bottom: 0;
   height: 39px;
   width: 100%;
+  padding: 0;
   background-color: #333333;
   -webkit-box-shadow: 0 0 1px #333333;
   -moz-box-shadow: 0 0 1px #333333;
@@ -245,27 +249,27 @@ body section#body[data-view="splash"] .login {
   }
 }
 /******************************** Common Style ********************************/
-body section#body[data-view="home"] header  > * {
+body section#body[data-view="home"] header#appHeader  > * {
   position: absolute;
 }
-body section#body[data-view="home"] header h1 {
+body section#body[data-view="home"] header#appHeader h1 {
   left: 10px;
   right: 39px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-body section#body[data-view="home"] header button {
+body section#body[data-view="home"] header#appHeader button {
   right: 0;
   border-left: solid 1px #be462d;
 }
-body section#body[data-view="home"] footer  > * {
+body section#body[data-view="home"] footer#appFooter  > * {
   position: absolute;
 }
-body section#body[data-view="home"] footer button.iconNew {
+body section#body[data-view="home"] footer#appFooter button.iconNew {
   right: 0;
 }
-body section#body[data-view="home"] footer label {
+body section#body[data-view="home"] footer#appFooter label {
   padding-left: 39px;
   left: 5px;
   width: auto;
@@ -273,7 +277,7 @@ body section#body[data-view="home"] footer label {
   background-position: left center;
   height: 100%;
 }
-body section#body[data-view="home"] footer label input {
+body section#body[data-view="home"] footer#appFooter label input {
   -webkit-transition: width 0.5s;
   -moz-transition: width 0.5s;
   -ms-transition: width 0.5s;
@@ -290,7 +294,7 @@ body section#body[data-view="home"] footer label input {
   -moz-box-shadow: 0 0 1px #333333;
   box-shadow: 0 0 1px #333333;
 }
-body section#body[data-view="home"] footer label input:focus {
+body section#body[data-view="home"] footer#appFooter label input:focus {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
@@ -442,24 +446,28 @@ body section#body[data-view="home"] .presentationElmt a h1 {
   }
 }
 /******************************** Common Style ********************************/
-body section#body[data-view="edit"] header  > * {
+body section#body[data-view="edit"] header#appHeader  > * {
   position: absolute;
 }
-body section#body[data-view="edit"] header h1 {
+body section#body[data-view="edit"] header#appHeader h1 {
   left: 10px;
   right: 39px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-body section#body[data-view="edit"] header button {
+body section#body[data-view="edit"] header#appHeader button {
   right: 0;
   border-left: solid 1px #be462d;
 }
-body section#body[data-view="edit"] footer  > * {
+body section#body[data-view="edit"] footer#appFooter  > * {
   position: absolute;
 }
-body section#body[data-view="edit"] article {
-  overflow: auto;
-  min-width: 100%;
+body section#body[data-view="edit"] .wrapper {
+  position: fixed;
+  top: 39px;
+  bottom: 39px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
 }

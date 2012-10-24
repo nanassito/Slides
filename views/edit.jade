@@ -11,16 +11,15 @@ block append head
 						href="#{templateUrl}", 
 						type="text/css", 
 						media="screen")
-			link(href="/static/css/dzslide.css", rel="stylesheet", type="text/css")
-			//TO REMOVE
-			script(type="text/javascript", src="/static/js/dzslide.js")
+			
 
 block body
 	section(id="body", data-view="edit")
 		include header
-		article
-			each slide in slides
-				section(data-slide="#{slide.slideId}",
-								class="#{slide.classes}")
-					!= slide.content
+		section.wrapper
+			article.view
+				each slide in slides
+					section(data-slide="#{slide.slideId}",
+									class="#{slide.classes}")
+						!= slide.content
 		include footer
