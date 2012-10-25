@@ -101,28 +101,3 @@ transition: none;
 .view section[aria-selected] {
 border: 5px red solid;
 }
-
-/* Before */
-section { left: -150%; }
-/* Now */
-section[aria-selected] { left: 0; }
-/* After */
-section[aria-selected] ~ section { left: +150%; }
-
-/* Incremental elements */
-
-/* By default, visible */
-.incremental > * { opacity: 1; }
-
-/* The current item */
-.incremental > *[aria-selected] { opacity: 1; }
-
-/* The items to-be-selected */
-.incremental > *[aria-selected] ~ * { opacity: 0; }
-
-/* The progressbar, at the bottom of the slides, show the global
- progress of the presentation. */
-#progress-bar {
-height: 2px;
-background: #AAA;
-}

@@ -471,3 +471,7 @@ body section#body[data-view="edit"] .wrapper {
   right: 0;
   overflow: hidden;
 }
+body section#body[data-view="edit"] .wrapper [data-slide] {
+  height: 600px;
+  width: 800px;
+}
