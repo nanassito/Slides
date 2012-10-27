@@ -1,103 +1,94 @@
-.view body { background-color: black; counter-reset: slideidx; }
-.view section { background-color: white; border-radius: 12px }
-/* A section is a slide. It's size is 800x600, and this will never change */
-section, .view head > title {
-  /* The font from Google */
-  font-family: 'Oswald', arial, serif;
-  font-size: 30px;
-}
 
-.view section:after {
-counter-increment: slideidx;
-content: counter(slideidx, decimal-leading-zero);
-position: absolute; bottom: -80px; right: 100px;
-color: white;
-}
+  html, .view body { 
+    background-color: black; 
+    counter-reset: slideidx; 
+  }
 
-.view head > title {
-color: white;
-text-align: center;
-margin: 1em 0 1em 0;
-}
+  body, 
+  .view section[role='slide']  { 
+    background-color: white; 
+    border-radius: 12px;
+  }
 
-h1, h2 {
-margin-top: 200px;
-text-align: center;
-font-size: 80px;
-}
-h3 {
-margin: 100px 0 50px 100px;
-}
+  /* A section is a slide. It's size is 800x600, and this will never change */
+  section[role='slide'], 
+  .view section[role='slide'] head > title {
+      /* The font from Google */
+      font-family: 'Oswald', arial, serif;
+      font-size: 30px;
+  }
 
-ul {
-  margin: 50px 200px;
-}
+  .view section[role='slide']:after {
+    counter-increment: slideidx;
+    content: counter(slideidx, decimal-leading-zero);
+    position: absolute; bottom: -80px; right: 100px;
+    color: white;
+  }
 
-p {
-margin: 75px;
-font-size: 50px;
-}
+  .view section[role='slide'] head > title {
+    color: white;
+    text-align: center;
+    margin: 1em 0 1em 0;
+  }
 
-blockquote {
-height: 100%;
-background-color: black;
-color: white;
-font-size: 60px;
-padding: 50px;
-}
-blockquote:before {
-content: open-quote;
-}
-blockquote:after {
-content: close-quote;
-}
+  section[role='slide'] h1,
+  section[role='slide'] h2 {
+    margin-top: 200px;
+    text-align: center;
+    font-size: 80px;
+  }
+  section[role='slide'] h3 {
+    margin: 100px 0 50px 100px;
+  }
 
-/* Figures are displayed full-page, with the caption
- on top of the image/video */
-figure {
-background-color: black;
-width: 100%;
-height: 100%;
-}
-figure > * {
-position: absolute;
-}
-figure > img, figure > video {
-width: 100%; height: 100%;
-}
-figcaption {
-margin: 70px;
-font-size: 50px;
-}
+  section[role='slide'] ul {
+      margin: 50px 200px;
+  }
 
-footer {
-position: absolute;
-bottom: 0;
-width: 100%;
-padding: 40px;
-text-align: right;
-background-color: #F3F4F8;
-border-top: 1px solid #CCC;
-}
+  section[role='slide'] p {
+    margin: 75px;
+    font-size: 50px;
+  }
 
-/* Transition effect */
-/* Feel free to change the transition effect for original
- animations. See here:
- https://developer.mozilla.org/en/CSS/CSS_transitions
- How to use CSS3 Transitions: */
-section {
--moz-transition: left 400ms linear 0s;
--webkit-transition: left 400ms linear 0s;
--ms-transition: left 400ms linear 0s;
-transition: left 400ms linear 0s;
-}
-.view section {
--moz-transition: none;
--webkit-transition: none;
--ms-transition: none;
-transition: none;
-}
+  section[role='slide'] blockquote {
+    height: 100%;
+    background-color: black;
+    color: white;
+    font-size: 60px;
+    padding: 50px;
+  }
+  section[role='slide'] blockquote:before {
+    content: open-quote;
+  }
+  section[role='slide'] blockquote:after {
+    content: close-quote;
+  }
 
-.view section[aria-selected] {
-border: 5px red solid;
-}
+  /* Figures are displayed full-page, with the caption
+     on top of the image/video */
+  section[role='slide'] figure {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+  }
+  section[role='slide'] figure > * {
+    position: absolute;
+  }
+  section[role='slide'] figure > img, 
+  section[role='slide'] figure > video {
+    width: 100%; height: 100%;
+  }
+  section[role='slide'] figcaption {
+    margin: 70px;
+    font-size: 50px;
+  }
+
+  section[role='slide'] footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: right;
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
+  }
