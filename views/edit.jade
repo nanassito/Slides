@@ -20,6 +20,7 @@ block body
 			article.view
 				each slide in slides
 					section(data-slide="#{slide.slideId}",
+									role='slide',
 									class="#{slide.classes}")
 						!= slide.content
 		include footer
