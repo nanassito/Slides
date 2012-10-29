@@ -28,6 +28,34 @@ body section#body[data-view="edit"]{
 		}
 	}
 
-	
+	article{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:@sidebarWidth + 5px;
+
+		& > iframe{
+    	width:100%;
+    	height:100%;   
+    }
+	}
+
+
+	aside{
+    position:fixed;
+    top:@toolbarHeight;
+    bottom:@footerHeight;
+    right:0;
+    width:@sidebarWidth;
+    overflow:auto;
+		
+		& > section{
+
+			& > iframe {
+	    	width:100%;
+			}
+		}
+	}
 
 }
