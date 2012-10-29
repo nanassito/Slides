@@ -4,23 +4,15 @@ block append variables
 	- var title = title
 	- var headerType = "edit"
 	- var footerType = "edit"
-
-
-block append head
-			link(	rel="stylesheet", 
-						href="#{templateUrl}", 
-						type="text/css", 
-						media="screen")
 			
 
 block body
 	section(id="body", data-view="edit")
 		include header
-		section.wrapper
-			article.view
-				each slide in slides
-					section(data-slide="#{slide.slideId}",
-									role='slide',
-									class="#{slide.classes}")
-						!= slide.content
+		article
+			iframe
+		aside
+			each slide in slides
+				section
+					iframe
 		include footer
