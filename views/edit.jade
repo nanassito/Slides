@@ -12,7 +12,18 @@ block body
 		article
 			iframe
 		aside
+			- var index = 0;
 			each slide in slides
+				- index = index + 1
+				case index
+					when 2
+						// TODO : change back to 1
+						section(aria-selected='true')
+							- first = false;
+							iframe
+					default
+						section
+							iframe
 				section
 					iframe
 		include footer

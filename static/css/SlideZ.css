@@ -481,7 +481,69 @@ body section#body[data-view="edit"] aside {
   right: 0;
   width: 200px;
   overflow: auto;
+  background-color: #333333;
+}
+body section#body[data-view="edit"] aside  > section {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+body section#body[data-view="edit"] aside  > section[aria-selected] {
+  background-color: white;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 body section#body[data-view="edit"] aside  > section  > iframe {
-  width: 100%;
+  max-width: 150px;
+  height: 100px;
+  margin: auto;
+  display: block;
 }
+/*
+
+
+aside > section {
+    position:relative;
+}
+
+aside > section[aria-selected]:before,
+aside > section[aria-selected]:after {
+    content:'';
+    position:absolute;
+    left:0;
+    width:25px;
+    height:25px;
+    background-color:#333333;
+    z-index:2;
+}
+
+aside > section[aria-selected]:before {
+    top:-25px;
+    border-bottom-left-radius:25px;
+}
+
+aside > section[aria-selected]:after {
+    bottom:-25px;
+    border-top-left-radius:25px;
+}
+
+aside > section:before,
+aside > section:after{
+    content:'';
+    background-color:white;
+    width:25px;
+    height:25px;
+    position:absolute;
+    z-index:1;
+}
+
+aside > section:after{
+    bottom:0;
+}
+
+aside > section:before{
+    top:0;
+}
+
+*/
