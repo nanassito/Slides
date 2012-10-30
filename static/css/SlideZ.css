@@ -489,14 +489,54 @@ body section#body[data-view="edit"] aside  > section.wrapper {
   height: 100px;
 }
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] {
+  position: relative;
   background-color: white;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  margin-right: 15px;
 }
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] iframe {
   display: none;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:before,
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:after {
+  content: '';
+  width: 25px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  background-color: #ffffff;
+  z-index: 1;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:before {
+  top: -25px;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:after {
+  bottom: -25px;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section {
+  height: 100%;
+  position: relative;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:before,
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:after {
+  content: '';
+  width: 25px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  background-color: #5f5f5f;
+  z-index: 2;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:before {
+  top: -25px;
+  border-bottom-left-radius: 25px;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:after {
+  bottom: -25px;
+  border-top-left-radius: 25px;
 }
 body section#body[data-view="edit"] aside  > section.wrapper iframe {
   width: 150px;

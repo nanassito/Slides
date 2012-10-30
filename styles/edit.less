@@ -60,14 +60,59 @@ body section#body[data-view="edit"]{
 	    height:100px;
 
 			&[aria-selected]{
+				position:relative;
 		    background-color:white;
 		    border-top-right-radius:@slideSeparator;
 		    border-bottom-right-radius:@slideSeparator;
 		    border-top-left-radius:0;
 		    border-bottom-left-radius:0;
+		    margin-right:15px;
 
 		    iframe{
 		    	display:none;
+		    }
+
+		    &:before,
+		    &:after{
+		    	content:'';
+		    	width:@slideSeparator;
+		    	height:@slideSeparator;
+		    	display:block;
+		    	position:absolute;
+		    	background-color:@backgroundColor;
+		    	z-index:1;
+		    }
+
+		    &:before{
+		    	top:-@slideSeparator;
+		    }
+		    &:after{
+		    	bottom:-@slideSeparator;
+		    }
+
+		    section{
+		    	height:100%;
+		    	position:relative;
+
+			    &:before,
+			    &:after{
+			    	content:'';
+			    	width:@slideSeparator;
+			    	height:@slideSeparator;
+			    	display:block;
+			    	position:absolute;
+			    	background-color:@grayDark;
+			    	z-index:2;
+			    }
+
+			    &:before{
+			    	top:-@slideSeparator;
+			    	border-bottom-left-radius:@slideSeparator;
+			    }
+			    &:after{
+			    	bottom:-@slideSeparator;
+			    	border-top-left-radius:@slideSeparator;
+			    }
 		    }
 			}
 
