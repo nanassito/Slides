@@ -18,12 +18,13 @@ block body
 				case index
 					when 2
 						// TODO : change back to 1
-						section.wrapper(aria-selected='true', id=index)
+						section.wrapper(aria-selected='true')
 							section
-								- first = false;
+								h1 #{index}
 								iframe
 					default
-						section.wrapper(id=index)
+						section.wrapper
 							section
+								h1 #{index}
 								iframe
 		include footer

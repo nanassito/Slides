@@ -488,6 +488,14 @@ body section#body[data-view="edit"] aside  > section.wrapper {
   margin-bottom: 25px;
   height: 100px;
 }
+body section#body[data-view="edit"] aside  > section.wrapper h1 {
+  float: left;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  display: none;
+}
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] {
   position: relative;
   background-color: white;
@@ -496,6 +504,9 @@ body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   margin-right: 15px;
+}
+body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] h1 {
+  display: inline;
 }
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] iframe {
   display: none;
