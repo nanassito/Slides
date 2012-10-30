@@ -2,6 +2,26 @@
 @slideSeparator: 25px;
 
 body section#body[data-view="edit"]{
+	// Styling of the footer elements.
+	footer#appFooter{
+		& > * {
+			position:absolute;
+		}
+
+		button.iconNew {
+			right:0;
+		}
+
+		button.iconMenu{
+			left:0;
+		}
+
+		button.iconInsert{
+			left:50%;
+			margin-left:-@buttonHeight /2;
+		}
+	}
+
 	// Styling of the header elements
 	header#appHeader{
 		& > * {
