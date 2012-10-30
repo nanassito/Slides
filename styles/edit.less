@@ -1,27 +1,6 @@
 /******************************** Common Style ********************************/
-@slideSeparator: 25px;
 
 body section#body[data-view="edit"]{
-	// Styling of the footer elements.
-	footer#appFooter{
-		& > * {
-			position:absolute;
-		}
-
-		button.iconNew {
-			right:0;
-		}
-
-		button.iconMenu{
-			left:0;
-		}
-
-		button.iconInsert{
-			left:50%;
-			margin-left:-@buttonHeight /2;
-		}
-	}
-
 	// Styling of the header elements
 	header#appHeader{
 		& > * {
@@ -48,14 +27,25 @@ body section#body[data-view="edit"]{
 		& > * {
 			position:absolute;
 		}
+
+		button.iconNew {
+			right:0;
+		}
+
+		button.iconMenu{
+			left:0;
+		}
+
+		button.iconInsert{
+			left:50%;
+			margin-left:-@buttonHeight /2;
+		}
 	}
 
 	article{
     position:fixed;
     top:0;
-    bottom:0;
     left:0;
-    right:@sidebarWidth + 5px;
 
 		& > iframe{
     	width:100%;
@@ -66,17 +56,11 @@ body section#body[data-view="edit"]{
 
 	aside{
     position:fixed;
-    top:@toolbarHeight;
-    bottom:@footerHeight;
-    right:0;
-    width:@sidebarWidth;
     overflow:auto;
 		
 		background-color: @grayDark;
 
 		& > section.wrapper{
-	    margin-top:@slideSeparator;
-	    margin-bottom:@slideSeparator;
 	    height:100px;
 
 	    h1{
@@ -91,11 +75,6 @@ body section#body[data-view="edit"]{
 			&[aria-selected]{
 				position:relative;
 		    background-color:white;
-		    border-top-right-radius:@slideSeparator;
-		    border-bottom-right-radius:@slideSeparator;
-		    border-top-left-radius:0;
-		    border-bottom-left-radius:0;
-		    margin-right:15px;
 
 		    h1{
 		    	display:inline;
@@ -116,15 +95,9 @@ body section#body[data-view="edit"]{
 		    	z-index:1;
 		    }
 
-		    &:before{
-		    	top:-@slideSeparator;
-		    }
-		    &:after{
-		    	bottom:-@slideSeparator;
-		    }
-
 		    section{
 		    	height:100%;
+		    	width:100%;
 		    	position:relative;
 
 			    &:before,
@@ -136,15 +109,6 @@ body section#body[data-view="edit"]{
 			    	position:absolute;
 			    	background-color:@grayDark;
 			    	z-index:2;
-			    }
-
-			    &:before{
-			    	top:-@slideSeparator;
-			    	border-bottom-left-radius:@slideSeparator;
-			    }
-			    &:after{
-			    	bottom:-@slideSeparator;
-			    	border-top-left-radius:@slideSeparator;
 			    }
 		    }
 			}
@@ -160,4 +124,72 @@ body section#body[data-view="edit"]{
 		}
 	}
 
+}
+
+
+/******************************* Horizontal only ******************************/
+@media (orientation: landscape) {
+	body section#body[data-view="edit"]{
+
+		article{
+	    bottom:0;
+	    right:@sidebarWidth + 5px;
+		}
+
+		aside{
+	    top:@toolbarHeight;
+	    bottom:@footerHeight;
+	    right:0;
+	    width:@sidebarWidth;
+			
+			& > section.wrapper{
+		    margin-top:@slideSeparator;
+		    margin-bottom:@slideSeparator;
+
+				&[aria-selected]{
+			    border-top-right-radius:@slideSeparator;
+			    border-bottom-right-radius:@slideSeparator;
+			    border-top-left-radius:0;
+			    border-bottom-left-radius:0;
+			    margin-right:15px;
+
+			    &:before{
+			    	top:-@slideSeparator;
+			    }
+			    &:after{
+			    	bottom:-@slideSeparator;
+			    }
+
+			    section{
+				    &:before{
+				    	top:-@slideSeparator;
+				    	border-bottom-left-radius:@slideSeparator;
+				    }
+				    &:after{
+				    	bottom:-@slideSeparator;
+				    	border-top-left-radius:@slideSeparator;
+				    }
+			    }
+				}
+
+			}
+		}
+	}
+}
+
+
+/******************************** Vertical only *******************************/
+@media (orientation: portrait) {
+	body section#body[data-view="edit"]{
+
+		article{
+	    bottom:0;
+	    right:0;
+		}
+
+		aside{
+			display:none;
+		}
+
+	}
 }

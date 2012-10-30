@@ -456,19 +456,6 @@ body section#body[data-view="home"] .presentationElmt a h1 {
   }
 }
 /******************************** Common Style ********************************/
-body section#body[data-view="edit"] footer#appFooter  > * {
-  position: absolute;
-}
-body section#body[data-view="edit"] footer#appFooter button.iconNew {
-  right: 0;
-}
-body section#body[data-view="edit"] footer#appFooter button.iconMenu {
-  left: 0;
-}
-body section#body[data-view="edit"] footer#appFooter button.iconInsert {
-  left: 50%;
-  margin-left: -19.5px;
-}
 body section#body[data-view="edit"] header#appHeader  > * {
   position: absolute;
 }
@@ -486,12 +473,20 @@ body section#body[data-view="edit"] header#appHeader button {
 body section#body[data-view="edit"] footer#appFooter  > * {
   position: absolute;
 }
+body section#body[data-view="edit"] footer#appFooter button.iconNew {
+  right: 0;
+}
+body section#body[data-view="edit"] footer#appFooter button.iconMenu {
+  left: 0;
+}
+body section#body[data-view="edit"] footer#appFooter button.iconInsert {
+  left: 50%;
+  margin-left: -19.5px;
+}
 body section#body[data-view="edit"] article {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 205px;
 }
 body section#body[data-view="edit"] article  > iframe {
   width: 100%;
@@ -499,16 +494,10 @@ body section#body[data-view="edit"] article  > iframe {
 }
 body section#body[data-view="edit"] aside {
   position: fixed;
-  top: 39px;
-  bottom: 39px;
-  right: 0;
-  width: 200px;
   overflow: auto;
   background-color: #5f5f5f;
 }
 body section#body[data-view="edit"] aside  > section.wrapper {
-  margin-top: 25px;
-  margin-bottom: 25px;
   height: 100px;
 }
 body section#body[data-view="edit"] aside  > section.wrapper h1 {
@@ -522,11 +511,6 @@ body section#body[data-view="edit"] aside  > section.wrapper h1 {
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] {
   position: relative;
   background-color: white;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  margin-right: 15px;
 }
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] h1 {
   display: inline;
@@ -544,14 +528,9 @@ body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:afte
   background-color: #ffffff;
   z-index: 1;
 }
-body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:before {
-  top: -25px;
-}
-body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:after {
-  bottom: -25px;
-}
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section {
   height: 100%;
+  width: 100%;
   position: relative;
 }
 body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:before,
@@ -564,18 +543,58 @@ body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] sect
   background-color: #5f5f5f;
   z-index: 2;
 }
-body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:before {
-  top: -25px;
-  border-bottom-left-radius: 25px;
-}
-body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:after {
-  bottom: -25px;
-  border-top-left-radius: 25px;
-}
 body section#body[data-view="edit"] aside  > section.wrapper iframe {
   width: 150px;
   height: 100px;
   margin: auto;
   display: block;
   background-color: #ffffff;
+}
+/******************************* Horizontal only ******************************/
+@media (orientation: landscape) {
+  body section#body[data-view="edit"] article {
+    bottom: 0;
+    right: 205px;
+  }
+  body section#body[data-view="edit"] aside {
+    top: 39px;
+    bottom: 39px;
+    right: 0;
+    width: 200px;
+  }
+  body section#body[data-view="edit"] aside  > section.wrapper {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-right: 15px;
+  }
+  body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:before {
+    top: -25px;
+  }
+  body section#body[data-view="edit"] aside  > section.wrapper[aria-selected]:after {
+    bottom: -25px;
+  }
+  body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:before {
+    top: -25px;
+    border-bottom-left-radius: 25px;
+  }
+  body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] section:after {
+    bottom: -25px;
+    border-top-left-radius: 25px;
+  }
+}
+/******************************** Vertical only *******************************/
+@media (orientation: portrait) {
+  body section#body[data-view="edit"] article {
+    bottom: 0;
+    right: 0;
+  }
+  body section#body[data-view="edit"] aside {
+    display: none;
+  }
 }

@@ -11,20 +11,21 @@ block body
 		include header
 		article
 			iframe
-		aside
-			- var index = 0;
-			each slide in slides
-				- index = index + 1
-				case index
-					when 2
-						// TODO : change back to 1
-						section.wrapper(aria-selected='true')
-							section
-								h1 #{index}
-								iframe
-					default
-						section.wrapper
-							section
-								h1 #{index}
-								iframe
+		section#outline
+			aside
+				- var index = 0;
+				each slide in slides
+					- index = index + 1
+					case index
+						when 2
+							// TODO : change back to 1
+							section.wrapper(aria-selected='true')
+								section
+									h1 #{index}
+									iframe
+						default
+							section.wrapper
+								section
+									h1 #{index}
+									iframe
 		include footer
