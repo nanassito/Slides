@@ -168,6 +168,8 @@ button[aria-selected="true"]  + .dropdown {
 }
 .dropdown {
   display: none;
+  position: absolute;
+  background-color: #5f5f5f;
 }
 .dropdown button {
   display: block;
@@ -187,7 +189,6 @@ header#appHeader {
   top: 0;
   height: 39px;
   width: 100%;
-  overflow: hidden;
   background-color: #c75a27;
   background-image: -moz-linear-gradient(top, #cd6723, #be462d);
   background-image: -ms-linear-gradient(top, #cd6723, #be462d);
@@ -206,6 +207,12 @@ header#appHeader h1 {
   max-height: 100%;
   height: 100%;
   line-height: 44px;
+}
+header#appHeader .dropdown {
+  top: 39px;
+}
+header#appHeader .iconBuddy + .dropdown {
+  right: 0;
 }
 .footerBackground {
   background-color: #333333;
@@ -229,9 +236,7 @@ footer#appFooter {
   box-shadow: 0 0 1px #333333;
 }
 footer#appFooter .dropdown {
-  position: absolute;
   bottom: 39px;
-  background-color: #5f5f5f;
 }
 /* Common style for everyone */
 body section#body[data-view="splash"] {

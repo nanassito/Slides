@@ -5,10 +5,15 @@ header#appHeader
 		when "home"
 			h1 #{title}
 			button(class=['menu', 'iconBuddy'])
+			div.dropdown
+				button Logout
 
 		when "edit"
 			h1(contenteditable='true') #{title}
 			button(class=['menu', 'iconBuddy'])
+			div.dropdown
+				button Logout
+				button Share
 
 		when default
 			p Unkown header : #{headerType}

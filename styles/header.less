@@ -9,7 +9,6 @@ header#appHeader{
 	top:0;
 	height:@toolbarHeight;
 	width:100%;
-	overflow:hidden;
 
 	#gradient > .vertical(@orangeDrab, @orangeDark);
 	.box-shadow(0 0 1px @grayDarker);
@@ -20,5 +19,13 @@ header#appHeader{
 		max-height:100%;
 		height:100%;
 		line-height:@toolbarHeight + 5px;
+	}
+
+	.dropdown {
+		top:@footerHeight;
+	}
+
+	.iconBuddy + .dropdown {
+		right:0;
 	}
 }
