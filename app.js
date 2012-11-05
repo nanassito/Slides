@@ -75,11 +75,11 @@ app.post('/presentation/:presentation_id', verifiedUser,
 												routes.presentation.saveSlide);
 app.post('/new/presentation',verifiedUser, routes.presentation.newPresentation);
 
-app.get('/list/presentations', verifiedUser, routes.presentation.getList);
+//app.get('/list/presentations', verifiedUser, routes.presentation.getList);
 app.get('/list/templates', routes.template.getList);
 
 app.get('/', function(req, res){res.render('splash')});
-app.get('/test/list/presentations', function(req, res){res.render('home', 
+app.get('/list/presentations', verifiedUser, function(req, res){res.render('home', 
 	{ presentations: [
 		{	id: "presentationID1", 
 			title: "Introduction to DZSlides",
