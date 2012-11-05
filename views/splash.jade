@@ -3,6 +3,10 @@ extends layout
 block title
 	title Login to SlideZ
 
+block append head
+	script(src="https://login.persona.org/include.js")
+	script(src="/static/js/identity.js")
+
 block body
 	section(id="body", data-view="splash")
 		section.image
