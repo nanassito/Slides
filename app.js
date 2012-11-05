@@ -66,7 +66,7 @@ app.configure('production', function(){
 // Routes
 var verifiedUser = routes.persona.verifiedUser;
 
-app.get('/', routes.index);
+//app.get('/', routes.index);
 app.post('/user/auth', routes.persona.auth);
 app.get('/user/logout', routes.persona.logout);
 
@@ -78,7 +78,7 @@ app.post('/new/presentation',verifiedUser, routes.presentation.newPresentation);
 app.get('/list/presentations', verifiedUser, routes.presentation.getList);
 app.get('/list/templates', routes.template.getList);
 
-app.get('/test', function(req, res){res.render('splash')});
+app.get('/', function(req, res){res.render('splash')});
 app.get('/test/list/presentations', function(req, res){res.render('home', 
 	{ presentations: [
 		{	id: "presentationID1", 
