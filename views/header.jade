@@ -6,14 +6,18 @@ header#appHeader
 			h1 #{title}
 			button(class=['menu', 'iconBuddy'])
 			div.dropdown
-				button Logout
+				mixin logout
 
 		when "edit"
 			h1(contenteditable='true') #{title}
 			button(class=['menu', 'iconBuddy'])
 			div.dropdown
-				button Logout
+				mixin logout
 				button Share
 
 		when default
 			p Unkown header : #{headerType}
+
+
+mixin logout
+	button(onclick="navigator.id.logout();") Logout
