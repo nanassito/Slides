@@ -6,17 +6,31 @@ html(lang="en")
 		block head
 			meta(charset='utf-8')
 			link(	rel="stylesheet", 
-					href="/static/css/Slidez.css", 
-					type="text/css", 
-					media="screen")
-			| <meta content='width=device-width; 
-			|				initial-scale=1.0; 
-			|				maximum-scale=1.0; 
-			|				user-scalable=0;' 
-			|		name='viewport' />
-			| <meta name="viewport" 
-			|		content="width=device-width" />
+						href="/static/css/Slidez.css", 
+						type="text/css", 
+						media="screen")
+			meta(	content=	'width=device-width; 																			\
+											initial-scale=1.0; 																				\
+											maximum-scale=1.0; 																				\
+											user-scalable=0;', 
+						name='viewport')
+			meta(name="viewport", content="width=device-width")
+
 			script(src="/static/js/dropdown.js")
+
+			//script(src="/static/js/libs/underscore.js")
+			//script(src="/static/js/libs/backbone.js")
+
+			//script(src="/static/js/models/presentation.js")
+			//script(src="/static/js/models/slide.js")
+			//script(src="/static/js/models/User.js")
+
+			//script(src="/static/js/collections/presentations.js")
+			//script(src="/static/js/collections/overview.js")
+
+			//script(src="/static/js/views/start.js")
+			//script(src="/static/js/views/home.js")
+			//script(src="/static/js/views/edit.js")
 
 			title #{title} - SlideZ
 	body 
