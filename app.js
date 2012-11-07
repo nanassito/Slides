@@ -136,9 +136,6 @@ app.get('/preview/:presentationId/:slideId', function(req, res){
  */
 app.get('/edit/:presentationId', function(req, res){
 	Presentation.get(req.params.presentationId, function(presentation){
-		var PresentationRenderer = jade.compile(
-												fs.readFileSync('views/presentation.jade').utf8Slice());
-
 		res.render('edit', {
 			'_id' : presentation._id,
 			'title': presentation.title,
@@ -147,15 +144,8 @@ app.get('/edit/:presentationId', function(req, res){
 			'url': 'http://'+nconf.get('audience')+'/view/'+presentation._id,
 			'template': presentation.template,
 			'slides': presentation.slides.map(function(elmt, idx, array){
-				var data = PresentationRenderer({
-					'_id': presentation._id,
-					'title': presentation.title,
-					'author': presentation.author,
-					'creationDate': presentation.creationDate,
-					'template': presentation.template,
-					'slides': [elmt]
-				});
-				elmt.url = "data:text/html;charset=utf-8,"+escape(data);
+				elmt.url = 'http://'+nconf.get('audience')+'/preview/'+presentation._id+
+																																	 '/'+elmt._id;
 				return elmt;
 			})
 		});
