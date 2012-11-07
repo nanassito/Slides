@@ -67,13 +67,13 @@ app.configure('production', function(){
 // Routes
 var verifiedUser = routes.persona.verifiedUser;
 
-app.get('/presentation/:presentation_id', routes.presentation.getPresentation);
-app.post('/presentation/:presentation_id', verifiedUser, 
-												routes.presentation.saveSlide);
-app.post('/new/presentation',verifiedUser, routes.presentation.newPresentation);
-
+//app.get('/presentation/:presentation_id', routes.presentation.getPresentation);
+//app.post('/presentation/:presentation_id', verifiedUser, 
+//												routes.presentation.saveSlide);
+//app.post('/new/presentation',verifiedUser, routes.presentation.newPresentation);
+//
 //app.get('/list/presentations', verifiedUser, routes.presentation.getList);
-app.get('/list/templates', routes.template.getList);
+//app.get('/list/templates', routes.template.getList);
 
 
 
@@ -87,6 +87,16 @@ app.get('/list/presentations', verifiedUser, function(req, res){
 		res.render( 'home', { 'presentations' : presentationList } );
 	});
 });
+
+app.get('/view/:presentationId', function(req, res){
+	Presentation.get(req.params.presentationId, function(presentation){
+		res.render('presentation', presentation);
+	})
+})
+
+
+
+
 
 app.get('/test/presentation/:presentationId', function(req, res){
 	res.render('edit', {
