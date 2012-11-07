@@ -4,8 +4,8 @@ title #{title}
 meta(charset="uft8")
 meta(name="presentationId", content="#{_id}")
 link(href="/template/#{template}", rel="stylesheet", type="text/css")
-link(href="/static/css/dzslide.css", rel="stylesheet", type="text/css")
-script(type="text/javascript", src="/static/js/dzslide.js")
+link(href="/static/css/dzslides.css", rel="stylesheet", type="text/css")
+script(type="text/javascript", src="/static/js/dzslides.js")
 
 each slide in slides
   section(class="#{slide.classes}", data-slide="#{slide._id}")!= slide.content
