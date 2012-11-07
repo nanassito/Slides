@@ -34,8 +34,9 @@ nconf.defaults({
  * Module dependencies.
  */
 
-var express = require('express'),
-    routes = require('./routes');
+var express = require('express')
+  , routes = require('./routes')
+  , Presentation = require('./models/presentation.js');
 
 var app = module.exports = express.createServer();
 
@@ -66,9 +67,6 @@ app.configure('production', function(){
 // Routes
 var verifiedUser = routes.persona.verifiedUser;
 
-app.post('/user/auth', routes.persona.auth);
-app.get('/user/logout', routes.persona.logout);
-
 app.get('/presentation/:presentation_id', routes.presentation.getPresentation);
 app.post('/presentation/:presentation_id', verifiedUser, 
 												routes.presentation.saveSlide);
@@ -79,20 +77,16 @@ app.get('/list/templates', routes.template.getList);
 
 
 
+app.post('/user/auth', routes.persona.auth);
+app.get('/user/logout', routes.persona.logout);
+
 app.get('/', function(req, res){res.render('splash')});
 
-app.get('/list/presentations', verifiedUser, function(req, res){res.render('home', 
-	{ presentations: [
-		{	id: "presentationID1", 
-			title: "Introduction to DZSlides",
-			url: "http://paulrouget.com/slides/dzslides-introduction.html"},
-		{	id: "presentationID2", 
-			title: "The nija turtles",
-			url: "http://paulrouget.com/slides/tmnt/slides.html"},
-		{	id: "presentationID3", 
-			title: "Html5 in the wild",
-			url: "http://paulrouget.com/slides/html5inthewild/slides.html"},
-]});});
+app.get('/list/presentations', verifiedUser, function(req, res){
+		res.render('home', Presentation.getList(session.email));
+	}
+);
+
 app.get('/test/presentation/:presentationId', function(req, res){
 	res.render('edit', {
 		title:"Titre de la présentation",

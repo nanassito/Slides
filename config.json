@@ -1,3 +1,4 @@
 {
-	"audience":"localhost:3000"
+	"audience":"localhost:3000",
+	"mongoUrl" : "mongodb://localhost/Slides"
 }

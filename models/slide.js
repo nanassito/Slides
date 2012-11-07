@@ -1,8 +1,10 @@
 var nconf = require('nconf')
-	, mongoose = require('mongoose');
+	, mongoose = require('../utils/db.js')
+	;
 
-var db = mongoose.connect(nconf.get("mongoUrl"))
-	, Schema = mongoose.Schema;
+var db = mongoose.db
+	, Schema = mongoose.Schema
+	;
 
 var slideSchema = new Schema({
 	lastEdit: Date,
