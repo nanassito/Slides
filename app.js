@@ -83,9 +83,10 @@ app.get('/user/logout', routes.persona.logout);
 app.get('/', function(req, res){res.render('splash')});
 
 app.get('/list/presentations', verifiedUser, function(req, res){
-		res.render('home', Presentation.getList(session.email));
-	}
-);
+	Presentation.getList(req.session.email, function(presentationList){
+		res.render( 'home', { 'presentations' : presentationList } );
+	});
+});
 
 app.get('/test/presentation/:presentationId', function(req, res){
 	res.render('edit', {
