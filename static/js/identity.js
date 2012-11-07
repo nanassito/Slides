@@ -15,7 +15,7 @@ Slidez.User = {};
  * Triggered after a successfull login
  */
 Slidez.User.afterLogin = function(userData){
-	localStorage.Slidez_User_email = userData.email;
+	localStorage.setItem('Slidez_User_email', userData.email);
 	window.location.replace("/list/presentations");
 }
 
@@ -26,10 +26,10 @@ Slidez.User.afterLogin = function(userData){
 Slidez.User.handleLogin = function(assertion){
 	console.log("A user has just logged in (browser-side only) ");
 
-	if (localStorage.Slidez_User_email != undefined){
+	if (localStorage.getItem('Slidez_User_email') != undefined){
 		// The user is already looged in, we don't need to do anything with the 
 		// server. If we are on the splash, we need to send the user the the home.
-		console.log(localStorage.Slidez_User_email + " was already logged in.");
+		console.log(localStorage.getItem('Slidez_User_email') + " was already logged in.");
 		if (window.location.pathname == "/"){
 			window.location.replace("/list/presentations");
 		}
@@ -69,7 +69,7 @@ Slidez.User.handleLogin = function(assertion){
  * Triggered after a logout
  */
 Slidez.User.afterLogout = function(){
-	localStorage.Slidez_User_email = undefined;
+	localStorage.removeItem('Slidez_User_email');
 	if (window.location.pathname != "/"){
 		window.location.replace("/");
 	}
