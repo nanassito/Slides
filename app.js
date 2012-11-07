@@ -36,7 +36,10 @@ nconf.defaults({
 
 var express = require('express')
   , routes = require('./routes')
-  , Presentation = require('./models/presentation.js');
+  , jade = require('jade')
+  , fs = require('fs')
+  , Presentation = require('./models/presentation.js')
+  ;
 
 var app = module.exports = express.createServer();
 
@@ -76,21 +79,86 @@ var verifiedUser = routes.persona.verifiedUser;
 //app.get('/list/templates', routes.template.getList);
 
 
-
+/**
+ * Login a user
+ */
 app.post('/user/auth', routes.persona.auth);
+
+/**
+ * Logout the user
+ */
 app.get('/user/logout', routes.persona.logout);
 
+/**
+ * Serve the main screen where the user log in.
+ */
 app.get('/', function(req, res){res.render('splash')});
 
+/**
+ * Serve the page displaying the list of all user's presentations.
+ */
 app.get('/list/presentations', verifiedUser, function(req, res){
 	Presentation.getList(req.session.email, function(presentationList){
 		res.render( 'home', { 'presentations' : presentationList } );
 	});
 });
 
+/**
+ * Serve the presentation for everyone to see
+ */
 app.get('/view/:presentationId', function(req, res){
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('presentation', presentation);
+	})
+})
+
+/**
+ * Serve a preview to the presentation with a defined slide.
+ */
+app.get('/preview/:presentationId/:slideId', function(req, res){
+	Presentation.get(req.params.presentationId, function(presentation){
+		res.render('presentation', {
+			'_id' : presentation._id,
+			'title': presentation.title,
+			'author': presentation.author,
+			'creationDate': presentation.creationDate,
+			'url': 'http://'+nconf.get('audience')+'/view/'+presentation._id,
+			'template': presentation.template,
+			'slides': presentation.slides.filter(function(elmt, idx, array){
+				return elmt._id == req.params.slideId;
+			})
+		});
+	})
+})
+
+/**
+ * Serve the edit mode of a presentation
+ */
+app.get('/edit/:presentationId', function(req, res){
+	Presentation.get(req.params.presentationId, function(presentation){
+		var PresentationRenderer = jade.compile(
+												fs.readFileSync('views/presentation.jade').utf8Slice());
+
+		res.render('edit', {
+			'_id' : presentation._id,
+			'title': presentation.title,
+			'author': presentation.author,
+			'creationDate': presentation.creationDate,
+			'url': 'http://'+nconf.get('audience')+'/view/'+presentation._id,
+			'template': presentation.template,
+			'slides': presentation.slides.map(function(elmt, idx, array){
+				var data = PresentationRenderer({
+					'_id': presentation._id,
+					'title': presentation.title,
+					'author': presentation.author,
+					'creationDate': presentation.creationDate,
+					'template': presentation.template,
+					'slides': [elmt]
+				});
+				elmt.url = "data:text/html;charset=utf-8,"+escape(data);
+				return elmt;
+			})
+		});
 	})
 })
 

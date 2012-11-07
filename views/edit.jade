@@ -10,7 +10,7 @@ block body
 	section(id="body", data-view="edit")
 		include header
 		article
-			iframe
+			iframe(src="#{url}")
 		section#outline
 			aside
 				- var index = 0;
@@ -21,10 +21,10 @@ block body
 							section.wrapper(aria-selected='true')
 								section
 									h1 #{index}
-									iframe
+									iframe(src="#{slide.url}")
 						default
 							section.wrapper
 								section
 									h1 #{index}
-									iframe
+									iframe(src="#{slide.url}")
 		include footer

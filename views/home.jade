@@ -18,7 +18,7 @@ block body
 					section.presentationInfo
 						h2 #{presentation.title}
 						p #{presentation.lastEdit}
-					a(	href="/presentation/#{presentation.id}", 
+					a(	href="/edit/#{presentation.id}", 
 						onclick="editPresentation(#{presentation.id});")
 						h1 Open
 		include footer
