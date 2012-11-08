@@ -25,7 +25,7 @@ exports.schema = presentationSchema;
 /**
  * List all presentation for a given user
  */
-exports.getList = function(user, callback){
+var list = exports.list = function(user, callback){
 	logger.trace("internal call : models/presentation/getList");
 	Presentation.find({'author': user}, "title _id", function(err, docs){
 		if (err){
@@ -43,11 +43,16 @@ exports.getList = function(user, callback){
 		}
 	});
 }
+var getList = exports.getList = function(user, callback){
+	logger.trace("internal call : models/presentation/getList");
+	logger.warn("deprecated call : models/presentation/getList");
+	list(user, callback);
+}
 
 /**
  * Get a specific presentation given its Id
  */
-exports.get = function(presentationId, callback){
+var get = exports.get = function(presentationId, callback){
 	logger.trace("internal call : models/presentation/get");
 	Presentation.findById(presentationId, function(err, presentation){
 		if (err){
@@ -66,7 +71,7 @@ exports.get = function(presentationId, callback){
 /**
  * Create a new presentation given its author, title and template
  */
-exports.new = function(data, callback){
-	logger.trace("internal call : models/presentation/new");
+var create = exports.create = function(data, callback){
+	logger.trace("internal call : models/presentation/create");
 
 }
