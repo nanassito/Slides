@@ -12,7 +12,7 @@ var Dz = {
 
 Dz.init = function() {
   document.body.className = "loaded";
-  this.slides = Array.prototype.slice.call($$("body > section"));
+  this.listSlides();
   this.progressBar = $("#progress-bar");
   this.html = document.body.parentNode;
   this.setupParams();
@@ -20,6 +20,10 @@ Dz.init = function() {
   this.setupTouchEvents();
   this.onresize();
   this.setupView();
+}
+
+Dz.listSlides = function(){
+  this.slides = Array.prototype.slice.call($$("body > section"));
 }
 
 Dz.setupParams = function() {
