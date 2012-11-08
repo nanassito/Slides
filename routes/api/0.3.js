@@ -71,7 +71,7 @@ exports.setUp = function(app){
 
 	/**
 	 * List all presentations form a specific user.
-	 * /
+	 */
 	app.get(route+'/list/presentations', persona.verifiedUser, function(req, res){
 		logger.url(route+'/list/presentations');
 		Presentation.getList(req.session.email, function(presentationList){
@@ -85,13 +85,14 @@ exports.setUp = function(app){
 
 	/**
 	 * return a presentation
-	 * /
+	 */
 	app.get(route+'/view/:presentationId', function(req, res){
 		logger.url(route+'/view/:presentationId');
 		Presentation.get(req.params.presentationId, function(presentation){
+			logger.debug('callback called with '+presentation);
 			res.contentType('application/json');
 			res.writeHead(200);
-			res.write(presentation);
+			res.write(JSON.stringify(presentation));
 			res.end();
 		});
 	});//*/
@@ -99,13 +100,14 @@ exports.setUp = function(app){
 
 	/**
 	 * Serve a preview to the presentation with a defined slide.
-	 * /
+	 */
 	app.get(route+'/preview/:presentationId/:slideId', function(req, res){
 		logger.url(route+'/preview/:presentationId/:slideId');
 		preview(req.params.presentationId, req.params.slideId, function(preview){
+			logger.debug('callback called with '+preview);
 			res.contentType('application/json');
 			res.writeHead(200);
-			res.write(preview);
+			res.write(JSON.stringify(preview));
 			res.end();
 		});
 	});//*/
