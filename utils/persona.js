@@ -1,8 +1,3 @@
-/******************************************************************************
- *                                 Deprecated                                 *
- ******************************************************************************/
-
-
 // Configuration
 var nconf = require('nconf'),
 	https = require('https'),
@@ -15,7 +10,6 @@ var nconf = require('nconf'),
  *	- req.body.assertion : Persona assertion
  */
 exports.auth = function(req, resp){
-	console.warn("Deprecated module");
 
 	/**
 	 * Receive the response from browserid.org to tell whether 
@@ -71,7 +65,6 @@ exports.auth = function(req, resp){
  *	The logout function.
  */
 exports.logout = function (req, resp) {
-	console.warn("Deprecated module");
 	console.info("Signing out "+ req.session.email);
 	req.session.destroy();
 	// TODO : Verify that destroying the session does not prevent from logging 
@@ -85,7 +78,6 @@ exports.logout = function (req, resp) {
  *	Prevent anonymous access to an other function
  */
 exports.verifiedUser = function (req, resp, next) {
-	console.warn("Deprecated module");
 	if (!req.session.email){
 		resp.send(403);
 	}else{
