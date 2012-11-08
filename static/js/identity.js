@@ -59,7 +59,7 @@ Slidez.User.handleLogin = function(assertion){
 		}
 		
 		// Send the assertion for server-side verification and login
-		httpRequest.open("POST", "/user/auth");
+		httpRequest.open("POST", "/api/0.3/user/auth");
 		httpRequest.send(formData);
   }
 }
@@ -99,7 +99,7 @@ Slidez.User.handleLogout = function(){
 	}
 	
 	// Send the assertion for server-side verification and login
-	httpRequest.open("GET", "/user/logout");
+	httpRequest.open("GET", "/api/0.3/user/logout");
 	httpRequest.send();
 }
 
