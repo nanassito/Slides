@@ -6,7 +6,8 @@ var route = "/api/0.3";
 
 var persona = require('../../utils/persona.js')
 	, Presentation = require('../../models/presentation.js')
-	. nconf = require('nconf')
+	, nconf = require('nconf')
+	, logger = require('../../utils/logger.js')
 	;
 
 
@@ -18,7 +19,7 @@ var persona = require('../../utils/persona.js')
  * Return the presentation with only the selected slide.
  */
 function preview(presentationId, slideId, callback){
-	console.log("internal call : api/0.3/preview");
+	logger.trace("internal call : api/0.3/preview");
 	Presentation.get(presentationId, function(presentation){
 		callback({
 			'_id' : presentation._id,
@@ -48,7 +49,7 @@ exports.setUp = function(app){
 	app.post(
 		route+'/user/auth', 
 		function(req, res, next){
-			console.info(route+'/user/auth');
+			logger.url(route+'/user/auth');
 			next();
 		}, 
 		persona.auth
@@ -61,7 +62,7 @@ exports.setUp = function(app){
 	app.get(
 		route+'/user/logout', 
 		function(req, res, next){
-			console.info(route+'/user/logout');
+			logger.url(route+'/user/logout');
 			next();
 		},
 		persona.logout
@@ -72,7 +73,7 @@ exports.setUp = function(app){
 	 * List all presentations form a specific user.
 	 * /
 	app.get(route+'/list/presentations', persona.verifiedUser, function(req, res){
-		console.info(route+'/list/presentations');
+		logger.url(route+'/list/presentations');
 		Presentation.getList(req.session.email, function(presentationList){
 			res.contentType('application/json');
 			res.writeHead(200);
@@ -86,7 +87,7 @@ exports.setUp = function(app){
 	 * return a presentation
 	 * /
 	app.get(route+'/view/:presentationId', function(req, res){
-		console.info(route+'/view/:presentationId');
+		logger.url(route+'/view/:presentationId');
 		Presentation.get(req.params.presentationId, function(presentation){
 			res.contentType('application/json');
 			res.writeHead(200);
@@ -100,7 +101,7 @@ exports.setUp = function(app){
 	 * Serve a preview to the presentation with a defined slide.
 	 * /
 	app.get(route+'/preview/:presentationId/:slideId', function(req, res){
-		console.info(route+'/preview/:presentationId/:slideId');
+		logger.url(route+'/preview/:presentationId/:slideId');
 		preview(req.params.presentationId, req.params.slideId, function(preview){
 			res.contentType('application/json');
 			res.writeHead(200);

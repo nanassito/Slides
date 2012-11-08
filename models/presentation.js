@@ -1,6 +1,7 @@
 var nconf = require('nconf')
 	, mongoose = require('../utils/db.js')
 	, Slide = require('./slide')
+	, logger = require('../utils/logger.js')
 	;
 
 var db = mongoose.db
@@ -25,6 +26,7 @@ exports.schema = presentationSchema;
  * List all presentation for a given user
  */
 exports.getList = function(user, callback){
+	logger.trace("internal call : models/presentation/getList");
 	Presentation.find({'author': user}, "title _id", function(err, docs){
 		if (err){
 			console.error("presentation.getList got an error fetching datas.");
@@ -46,6 +48,7 @@ exports.getList = function(user, callback){
  * Get a specific presentation given its Id
  */
 exports.get = function(presentationId, callback){
+	logger.trace("internal call : models/presentation/get");
 	Presentation.findById(presentationId, function(err, presentation){
 		if (err){
 			console.error("presentation.get got an error fetching the presentation.");
@@ -64,5 +67,6 @@ exports.get = function(presentationId, callback){
  * Create a new presentation given its author, title and template
  */
 exports.new = function(data, callback){
+	logger.trace("internal call : models/presentation/new");
 
 }

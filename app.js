@@ -12,6 +12,7 @@ function updateRevNumber(){
 }
 
 
+
 // Configuration
 var nconf = require('nconf');
 
@@ -39,6 +40,7 @@ var express = require('express')
   , jade = require('jade')
   , fs = require('fs')
   , Presentation = require('./models/presentation.js')
+  , logger = require('./utils/logger')
   ;
 
 var app = module.exports = express.createServer();
@@ -111,7 +113,7 @@ API0_3.setUp(app);
  * Serve the main screen where the user log in.
  */
 app.get('/', function(req, res){
-	console.info('/');
+	logger.url('/');
 	res.render('splash')
 });
 
@@ -120,7 +122,7 @@ app.get('/', function(req, res){
  * Serve the page displaying the list of all user's presentations.
  */
 app.get('/list/presentations', verifiedUser, function(req, res){
-	console.info('/list/presentations');
+	logger.url('/list/presentations');
 	Presentation.getList(req.session.email, function(presentationList){
 		res.render( 'home', { 'presentations' : presentationList } );
 	});
@@ -131,7 +133,7 @@ app.get('/list/presentations', verifiedUser, function(req, res){
  * Serve the presentation for everyone to see
  */
 app.get('/view/:presentationId', function(req, res){
-	console.info('/view/:presentationId');
+	logger.url('/view/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('presentation', presentation);
 	});
@@ -142,7 +144,7 @@ app.get('/view/:presentationId', function(req, res){
  * Serve a preview to the presentation with a defined slide.
  */
 app.get('/preview/:presentationId/:slideId', function(req, res){
-	console.info('/preview/:presentationId/:slideId');
+	logger.url('/preview/:presentationId/:slideId');
 	API0_3.preview(req.params.presentationId,req.params.slideId,function(preview){
 		res.render('presentation', preview);
 	});
@@ -153,7 +155,7 @@ app.get('/preview/:presentationId/:slideId', function(req, res){
  * Serve the edit mode of a presentation
  */
 app.get('/edit/:presentationId', verifiedUser, function(req, res){
-	console.info('/edit/:presentationId');
+	logger.url('/edit/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('edit', {
 			'_id' : presentation._id,
@@ -178,5 +180,5 @@ app.get('/edit/:presentationId', verifiedUser, function(req, res){
  ******************************************************************************/
 
 app.listen(3000); // FIXME : use nconf 
-console.log("Express server listening on port %d in %s mode", 
-										app.address().port, app.settings.env);
+logger.info("Express server listening on port %d in %s mode", 
+																					app.address().port, app.settings.env);
