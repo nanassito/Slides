@@ -21,6 +21,9 @@ exports.model = Presentation;
 
 exports.schema = presentationSchema;
 
+/**
+ * List all presentation for a given user
+ */
 exports.getList = function(user, callback){
 	Presentation.find({'author': user}, "title _id", function(err, docs){
 		if (err){
@@ -39,14 +42,27 @@ exports.getList = function(user, callback){
 	});
 }
 
+/**
+ * Get a specific presentation given its Id
+ */
 exports.get = function(presentationId, callback){
 	Presentation.findById(presentationId, function(err, presentation){
 		if (err){
 			console.error("presentation.get got an error fetching the presentation.");
 			throw err;
 
+		}else if(!presentation){
+			throw "presentation.get could not find the presentation."+presentationId;
+
 		}else{
 			callback( presentation );
 		}
 	});
+}
+
+/**
+ * Create a new presentation given its author, title and template
+ */
+exports.new = function(data, callback){
+
 }

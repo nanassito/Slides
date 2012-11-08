@@ -110,49 +110,50 @@ API0_3.setUp(app);
 /**
  * Serve the main screen where the user log in.
  */
-app.get('/', function(req, res){res.render('splash')});
+app.get('/', function(req, res){
+	console.info('/');
+	res.render('splash')
+});
+
 
 /**
  * Serve the page displaying the list of all user's presentations.
  */
 app.get('/list/presentations', verifiedUser, function(req, res){
-	API0_3.methods.list_presentations(req.session.email, function(presentationList){
+	console.info('/list/presentations');
+	Presentation.getList(req.session.email, function(presentationList){
 		res.render( 'home', { 'presentations' : presentationList } );
 	});
 });
+
 
 /**
  * Serve the presentation for everyone to see
  */
 app.get('/view/:presentationId', function(req, res){
+	console.info('/view/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('presentation', presentation);
 	});
 });
 
+
 /**
  * Serve a preview to the presentation with a defined slide.
  */
 app.get('/preview/:presentationId/:slideId', function(req, res){
-	Presentation.get(req.params.presentationId, function(presentation){
-		res.render('presentation', {
-			'_id' : presentation._id,
-			'title': presentation.title,
-			'author': presentation.author,
-			'creationDate': presentation.creationDate,
-			'url': 'http://'+nconf.get('audience')+'/view/'+presentation._id,
-			'template': presentation.template,
-			'slides': presentation.slides.filter(function(elmt, idx, array){
-				return elmt._id == req.params.slideId;
-			})
-		});
+	console.info('/preview/:presentationId/:slideId');
+	API0_3.preview(req.params.presentationId,req.params.slideId,function(preview){
+		res.render('presentation', preview);
 	});
 });
+
 
 /**
  * Serve the edit mode of a presentation
  */
 app.get('/edit/:presentationId', verifiedUser, function(req, res){
+	console.info('/edit/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('edit', {
 			'_id' : presentation._id,
