@@ -89,6 +89,24 @@ app.post('/user/auth', routes.persona.auth);
  */
 app.get('/user/logout', routes.persona.logout);
 
+
+
+
+/******************************************************************************
+ *                                 Public API                                 * 
+ ******************************************************************************/
+
+/**
+ * setup API 0.3
+ */
+var API0_3 = require("./routes/api/0.3.js");
+API0_3.setUp(app);
+
+
+/******************************************************************************
+ *                              Rendering calls                               * 
+ ******************************************************************************/
+
 /**
  * Serve the main screen where the user log in.
  */
@@ -98,7 +116,7 @@ app.get('/', function(req, res){res.render('splash')});
  * Serve the page displaying the list of all user's presentations.
  */
 app.get('/list/presentations', verifiedUser, function(req, res){
-	Presentation.getList(req.session.email, function(presentationList){
+	API0_3.methods.list_presentations(req.session.email, function(presentationList){
 		res.render( 'home', { 'presentations' : presentationList } );
 	});
 });
@@ -109,8 +127,8 @@ app.get('/list/presentations', verifiedUser, function(req, res){
 app.get('/view/:presentationId', function(req, res){
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('presentation', presentation);
-	})
-})
+	});
+});
 
 /**
  * Serve a preview to the presentation with a defined slide.
@@ -128,13 +146,13 @@ app.get('/preview/:presentationId/:slideId', function(req, res){
 				return elmt._id == req.params.slideId;
 			})
 		});
-	})
-})
+	});
+});
 
 /**
  * Serve the edit mode of a presentation
  */
-app.get('/edit/:presentationId', function(req, res){
+app.get('/edit/:presentationId', verifiedUser, function(req, res){
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('edit', {
 			'_id' : presentation._id,
@@ -149,46 +167,14 @@ app.get('/edit/:presentationId', function(req, res){
 				return elmt;
 			})
 		});
-	})
-})
-
-
-
-
-
-app.get('/test/presentation/:presentationId', function(req, res){
-	res.render('edit', {
-		title:"Titre de la présentation",
-		templateUrl:"/template/simple.css",
-		slides:[
-			{	slideId:'slide1',
-				classes:"",
-				content:"<h1>My Presentation</h1><footer>by John Doe</footer>"},
-			{	slideId:'slide2',
-				classes:"",
-				content:"<p>Some random text: But I've never been to the moon! You can see how I lived before I met you. Also Zoidberg. I could if you hadn't turned on the light and shut off my stereo.</p>"},
-			{	slideId:'slide3',
-				classes:"",
-				content:"<h3>An incremental list</h3><ul class=\"incremental\"><li>Item 1<li>Item 2<li>Item 3</ul><div role=\"note\">Some notes. They are only visible using onstage shell.</div>"},
-			{	slideId:'slide4',
-				classes:"",
-				content:"<blockquote>Who's brave enough to fly into something we all keep calling a death sphere?</blockquote><details><p>In the onstage shell, notes scroll rather than overflow:</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac dui eu est feugiat lacinia sit amet nec leo. Mauris eu ipsum leo. Nulla mi odio, cursus sed sollicitudin non, fringilla id magna. Suspendisse sit amet posuere elit. Maecenas iaculis, turpis a placerat imperdiet, libero lorem feugiat nisi, nec tincidunt diam nibh sit amet massa. Vestibulum quis adipiscing tellus. Maecenas sollicitudin sodales pulvinar. Donec dui ipsum, bibendum facilisis consequat interdum, tempus ut mauris. Aliquam ut dolor nec odio scelerisque bibendum quis in neque. Aliquam dui dui, pulvinar quis fermentum quis, gravida eu augue. Nunc tristique dolor a urna pulvinar bibendum. Curabitur mollis cursus neque, in scelerisque metus porta non. Donec tempor enim in nibh vestibulum et convallis nisi malesuada. Duis ut lectus sed metus venenatis porttitor id pharetra quam. Suspendisse sapien turpis, ornare in molestie et, gravida eget turpis.</p></details>"},
-			{	slideId:'slide5',
-				classes:"",
-				content:"<h2>Part two</h2>"},
-			{	slideId:'slide6',
-				classes:"",
-				content:"<figure><img src=\"http://placekitten.com/g/800/600\"><figcaption>An image</figcaption></figure><div role=\"note\">Kittens are so cute!</div>"},
-			{	slideId:'slide7',
-				classes:"",
-				content:"<figure><video src=\"http://videos-cdn.mozilla.net/brand/Mozilla_Firefox_Manifesto_v0.2_640.webm\" poster=\"http://www.mozilla.org/images/about/poster.jpg\"></video><figcaption>A video</figcaption></figure>"},
-			{	slideId:'slide8',
-				classes:"",
-				content:"<h2>End!</h2>"},
-		]
 	});
 });
 
+
+
+/******************************************************************************
+ *                              Start the server                              * 
+ ******************************************************************************/
 
 app.listen(3000); // FIXME : use nconf 
 console.log("Express server listening on port %d in %s mode", 
