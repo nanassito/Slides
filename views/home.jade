@@ -14,7 +14,7 @@ block body
 			each presentation in presentations
 				section(class="presentationElmt view")
 					//mixin presentationIframe(presentation)
-					iframe(src="#{presentation.url}")
+					iframe(src="#{presentation.previewUrl}")
 					section.presentationInfo
 						h2 #{presentation.title}
 						p #{presentation.lastEdit}

@@ -26,8 +26,8 @@ exports.schema = presentationSchema;
  * List all presentation for a given user
  */
 var list = exports.list = function(user, callback){
-	logger.trace("internal call : models/presentation/getList");
-	Presentation.find({'author': user}, "title _id", function(err, docs){
+	logger.trace("internal call : models/presentation/list");
+	Presentation.find({'author': user}, "title _id slides", function(err, docs){
 		if (err){
 			console.error("presentation.getList got an error fetching datas.");
 			throw err;
@@ -37,7 +37,9 @@ var list = exports.list = function(user, callback){
 				return {
 					id: elmt._id,
 					title: elmt.title,
-					url: 'http://'+nconf.get('audience')+'/view/'+elmt._id
+					url: 'http://'+nconf.get('audience')+'/view/'+elmt._id,
+					previewUrl: 'http://'+nconf.get('audience')+'/preview/'+elmt._id+'/'
+																														 +elmt.slides[0]._id
 					};
 			}));
 		}
