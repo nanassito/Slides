@@ -18,7 +18,7 @@ var persona = require('../../utils/persona.js')
 /**
  * Return the presentation with only the selected slide.
  */
-function preview(presentationId, slideId, callback){
+var preview = exports.preview = function (presentationId, slideId, callback){
 	logger.trace("internal call : api/0.3/preview");
 	Presentation.get(presentationId, function(presentation){
 		callback({
@@ -34,7 +34,6 @@ function preview(presentationId, slideId, callback){
 		});
 	});
 };
-exports.preview = preview;
 
 
 /******************************************************************************
@@ -49,7 +48,7 @@ exports.setUp = function(app){
 	app.post(
 		route+'/user/auth', 
 		function(req, res, next){
-			logger.url(route+'/user/auth');
+			logger.url('POST '+route+'/user/auth');
 			next();
 		}, 
 		persona.auth
@@ -62,7 +61,7 @@ exports.setUp = function(app){
 	app.get(
 		route+'/user/logout', 
 		function(req, res, next){
-			logger.url(route+'/user/logout');
+			logger.url('GET '+route+'/user/logout');
 			next();
 		},
 		persona.logout
@@ -73,7 +72,7 @@ exports.setUp = function(app){
 	 * List all presentations form a specific user.
 	 */
 	app.get(route+'/list/presentations', persona.verifiedUser, function(req, res){
-		logger.url(route+'/list/presentations');
+		logger.url('GET '+route+'/list/presentations');
 		Presentation.getList(req.session.email, function(presentationList){
 			res.contentType('application/json');
 			res.writeHead(200);
@@ -87,7 +86,7 @@ exports.setUp = function(app){
 	 * return a presentation
 	 */
 	app.get(route+'/view/:presentationId', function(req, res){
-		logger.url(route+'/view/:presentationId');
+		logger.url('GET '+route+'/view/:presentationId');
 		Presentation.get(req.params.presentationId, function(presentation){
 			logger.debug('callback called with '+presentation);
 			res.contentType('application/json');
@@ -102,7 +101,7 @@ exports.setUp = function(app){
 	 * Serve a preview to the presentation with a defined slide.
 	 */
 	app.get(route+'/preview/:presentationId/:slideId', function(req, res){
-		logger.url(route+'/preview/:presentationId/:slideId');
+		logger.url('GET '+route+'/preview/:presentationId/:slideId');
 		preview(req.params.presentationId, req.params.slideId, function(preview){
 			logger.debug('callback called with '+preview);
 			res.contentType('application/json');
@@ -111,6 +110,31 @@ exports.setUp = function(app){
 			res.end();
 		});
 	});//*/
+
+
+	/**
+	 * Create a new presentation
+	 */
+	app.put(route+'/presentation', persona.verifiedUser, function(req, res){
+		logger.url('PUT '+route+'/presentation');
+
+		if (!req.body.title || !req.body.template){
+			logger.error("missing parameters.")
+			res.writeHead(400);
+			res.send("To create a presentation we need a title and a template");
+			return;
+		}
+
+		Presentation.create(req.body.title, req.body.template, req.session.email, 
+			function(presentation){
+				logger.debug('callback called with '+presentation);
+				res.contentType('application/json');
+				res.writeHead(200);
+				res.write(JSON.stringify(presentation));
+				res.end();
+			}
+		);
+	});
 
 
 };

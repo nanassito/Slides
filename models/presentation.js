@@ -8,7 +8,7 @@ var db = mongoose.db
 	, Schema = mongoose.Schema
 	;
 
-var presentationSchema = new Schema({
+var presentationSchema = exports.schema = new Schema({
 	title: String,
 	author: String,
 	creationDate: Date,
@@ -16,11 +16,9 @@ var presentationSchema = new Schema({
 	template: String
 });
 
-var Presentation = db.model('Presentation', presentationSchema);
+var Presentation = exports.model = db.model('Presentation', presentationSchema);
 
-exports.model = Presentation;
 
-exports.schema = presentationSchema;
 
 /**
  * List all presentation for a given user
@@ -73,7 +71,62 @@ var get = exports.get = function(presentationId, callback){
 /**
  * Create a new presentation given its author, title and template
  */
-var create = exports.create = function(data, callback){
+var create = exports.create = function(title, template, author, callback){
 	logger.trace("internal call : models/presentation/create");
+
+	// Create the objects
+	var presentation = new Presentation({
+			'title': title,
+			'author': author,
+			'creationDate': new Date,
+			'template': template,
+			'slides': [
+				new Slide.model({
+					'lastEdit': new Date,
+					'classes':"First",
+					'content': "<h1>"+title+"</h1><footer>"+author+"</footer>"
+				})
+			]
+		});
+
+	presentation.save(function(err, presentation){
+		if (err){
+			logger.error('Something went wrong while saving a new presentation');
+			throw err;
+		
+		}else if(!presentation){
+			var e = "Can't find the recently created presentation";
+			logger.error(e);
+			throw e;
+		
+		}else{
+			callback(presentation);
+		}
+	});
+
+	/*/ Save the slide in the database
+	presentation.slides[0].save(function(err){
+		if(err){
+			console.error("Creation of a new slide failed.");
+			resp.send(500);
+		}else{
+			console.log("New Slide created");
+			// now save, render and return the presentation
+			
+			presentation.save(function(err){
+				if(err){
+					console.error("Creation of a new presentation failed.");
+					resp.send(500);
+				}else{
+					console.log("New presentation created : %s",
+														presentation.title);
+					resp.contentType('text/html');
+					resp.writeHead(200);
+					resp.write(render(presentation));
+					resp.end();
+				}
+			});
+		}
+	});//*/
 
 }
