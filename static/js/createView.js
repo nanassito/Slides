@@ -9,8 +9,40 @@ console.log("createView is starting");
  * Fetch all infos, create a new presentation and redirect to edit mode.
  */
 Slidez.CreateView.create = function(){
-//	var title = document.querySelector("header input").value;
-//	var template = 
+	console.log("creating a new presentation");
+	var title = document.querySelector("header input").value;
+	var template = document.querySelectorAll(".templateElmt[aria-selected]")[0]
+												 .getAttribute('data-templateUrl');
+
+	var httpRequest = new XMLHttpRequest();
+	var formData = new FormData();
+	formData.append("title", title);
+	formData.append("template", template);
+	
+	// get the response from the server
+	httpRequest.onreadystatechange = function(){
+		// state 4 means that we have the full response.
+		if (httpRequest.readyState === 4) {
+			if (httpRequest.status === 200) {
+				console.log("Presentation created");
+				var presentation = JSON.parse(httpRequest.responseText);
+				window.location.replace('/edit/'+presentation._id);
+
+			} else if(httpRequest.status === 403){
+				console.log("You new to be connected to create a presentation");
+				alert("Failed to create the presentation");
+
+			}else {
+				console.error("Failed to create the presentation");
+				alert("Failed to create the presentation");
+			}
+		}
+	}
+	
+	// Send the assertion for server-side verification and login
+	console.log("sending the creation request");
+	httpRequest.open("PUT", "/api/0.3/presentation");
+	httpRequest.send(formData);
 };//*/
 
 

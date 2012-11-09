@@ -14,9 +14,9 @@ block body
 		include header
 		article
 			each template in templates
-				section(class="templateElmt")
+				section(class="templateElmt", data-templateUrl="#{template.name}")
 					iframe(src="#{template.previewUrl}")
-					section(data-templateUrl="#{template.name}")
+					section
 						div.left
 						div.top
 						div.right

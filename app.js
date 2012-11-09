@@ -198,8 +198,7 @@ app.get('/edit/:presentationId', persona.verifiedUser, function(req, res){
 /**
  * Serve a preview to the presentation with a defined slide.
  */
-// FIXME : , persona.verifiedUser
-app.get('/create/presentation', function(req, res){
+app.get('/create/presentation', persona.verifiedUser, function(req, res){
 	logger.url('GET /create/presentation');
 	Template.list(function(templateList){
 		res.render('create', {templates : templateList});
