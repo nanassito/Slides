@@ -117,7 +117,7 @@ API0_3.setUp(app);
  * Serve the main screen where the user log in.
  */
 app.get('/', function(req, res){
-	logger.url('/');
+	logger.url('GET /');
 	res.render('splash')
 });
 
@@ -126,7 +126,7 @@ app.get('/', function(req, res){
  * Serve the page displaying the list of all user's presentations.
  */
 app.get('/list/presentations', verifiedUser, function(req, res){
-	logger.url('/list/presentations');
+	logger.url('GET /list/presentations');
 	Presentation.getList(req.session.email, function(presentationList){
 		res.render( 'home', { 'presentations' : presentationList } );
 	});
@@ -137,7 +137,7 @@ app.get('/list/presentations', verifiedUser, function(req, res){
  * Serve the presentation for everyone to see
  */
 app.get('/view/:presentationId', function(req, res){
-	logger.url('/view/:presentationId');
+	logger.url('GET /view/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('presentation', presentation);
 	});
@@ -148,7 +148,7 @@ app.get('/view/:presentationId', function(req, res){
  * Serve a preview to the presentation with a defined slide.
  */
 app.get('/preview/:presentationId/:slideId', function(req, res){
-	logger.url('/preview/:presentationId/:slideId');
+	logger.url('GET /preview/:presentationId/:slideId');
 	API0_3.preview(req.params.presentationId,req.params.slideId,function(preview){
 		res.render('presentation', preview);
 	});
@@ -159,7 +159,7 @@ app.get('/preview/:presentationId/:slideId', function(req, res){
  * Serve the edit mode of a presentation
  */
 app.get('/edit/:presentationId', persona.verifiedUser, function(req, res){
-	logger.url('/edit/:presentationId');
+	logger.url('GET /edit/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('edit', {
 			'_id' : presentation._id,
@@ -181,8 +181,9 @@ app.get('/edit/:presentationId', persona.verifiedUser, function(req, res){
 /**
  * Serve a preview to the presentation with a defined slide.
  */
-app.get('/create/presentation', persona.verifiedUser, function(req, res){
-	logger.url('/create/presentation');
+// FIXME : , persona.verifiedUser
+app.get('/create/presentation', function(req, res){
+	logger.url('GET /create/presentation');
 	Template.list(function(templateList){
 		res.render('create', {templates : templateList});
 	});

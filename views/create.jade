@@ -1,0 +1,17 @@
+extends layout
+
+block append variables
+	- var title = "Create a new presentation"
+	- var headerType = "create"
+	- var footerType = "create"
+
+block body
+	section(id="body", data-view="create")
+		include header
+		article
+			each template in templates
+				section(class="templateElmt")
+					iframe(src="#{template.previewUrl}")
+					section(data-templateUrl="#{template.name}")
+						h1 Use this template
+		include footer

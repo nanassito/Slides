@@ -7,7 +7,7 @@ footer#appFooter
 				input(	type="text", 
 								name="search"
 								placeholder="Search a presentation…")
-			button.iconNew
+			button.iconNew(onclick="window.location.replace('/create/presentation')")
 
 		when "edit"
 			button.iconMenu
@@ -18,6 +18,9 @@ footer#appFooter
 				button delete
 			button.iconInsert
 			button.iconNew
+
+		when "create"
+			button.iconDone
 
 		when default
 			p Unkown footer : #{footerType}

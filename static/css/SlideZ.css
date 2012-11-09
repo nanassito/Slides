@@ -116,6 +116,11 @@ ol {
   background-position: center;
   background-repeat: no-repeat;
 }
+.iconDone {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAC+ElEQVR4nOXWz2vbZhjA8a/mNsSQpDvk0oshsNC/ID31H9h6zwYZdg1h5JSGBEOhdCBYGey24047NGyBdmOH4SC3FNNBBiHO2cSIuGReTVga7HhyFOl5tEOsojpS0jh0OfQFH/RKej5+3l96jCAIuIz20aWoHyR8pb/DMIz3jrqumz4BAxweHt4H7gEjFzQ6wPfDw8MPgKAXOxMEwTdG/6o2DAPHcfaAa41Go+S6rjeIODY25o6Pj3+qqv7IyMgnwJ7jOBmgLCKvYjNW1VSr1fpzcnLyAdAO/+05mgHsdjqdH1T1M6Dd6XQyqloGJrrd7l4STBAEPtAEGudEo3EE0Ha7fT1EATzPSyXCqgrnz/REHGAIeIMGQaBra2u/xcIigohcxHwTB0hHUcuyHs7MzDx5b/Du7m5GRG6F1yGazWZXgJdnDfVArdlshgspE6KlUulhLpdbAV4C/yZmPCjcaDQyIlKmN7yAlEolM5/P/xKiEHNyweAZ7+zsZKKrtxfLyefzv0ZRSDirk+a4Xq/fTkLr9XpGRMoiMtF7XzzP+6sXx42i54Jt2/5RRH63bfte//O2bb+F+r6v6+vrhaOjo7WkRRoL9w91rVa7q6p3ev3f1mq1QuReRlXLqjqhqoiIFotFc3p6+lEqlfKDhErjXTK+YprmT67rPgv7ReS7arVqVqvVW/2ZFotFc35+/jHwz2nb8l1gf3l5uZ3L5bKO4zyP4F+LyB9RdHV11VxYWHjM8UI69TxIHOq+EXIrlcrr2dnZL7vd7tNwKsKfiKhlWebi4mKIOmGcpN1xGtw/N+7m5ubrubm57MHBwbMI6lmWZS4tLb2FngUn7uOhoSEf+Lsf39jYaKbT6dv7+/tfeJ53Y2tr63mhUHgBnPhuq2oqqYqNLQQqlcoecA14BBzFvnl2SwGfq6o/NTV1E6hFb8ZlfLXVav08Ojr6lWEYdwZEgeMzent7e4WYz2tcxleBj4HrwOhFYEA4rmBeAfunwv9X+/AK+kuD/wPoNlCuWlAoKQAAAABJRU5ErkJggg==);
+  background-position: center;
+  background-repeat: no-repeat;
+}
 h1,
 h2 {
   font-weight: 300;
@@ -623,5 +628,104 @@ body section#body[data-view="edit"] aside  > section.wrapper iframe {
   }
   body section#body[data-view="edit"] aside {
     display: none;
+  }
+}
+/******************************** Common Style ********************************/
+body section#body[data-view="create"] header#appHeader  > * {
+  position: absolute;
+}
+body section#body[data-view="create"] header#appHeader label {
+  left: 10px;
+  width: auto;
+  right: 59px;
+  height: 100%;
+}
+body section#body[data-view="create"] header#appHeader label input {
+  height: 33px;
+  margin: 3px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+  font-weight: 300;
+  font-family: sans-serif;
+  font-size: 23px;
+  line-height: 44px;
+}
+body section#body[data-view="create"] header#appHeader button {
+  right: 0;
+  border-left: solid 1px #be462d;
+}
+body section#body[data-view="create"] footer#appFooter  > * {
+  position: absolute;
+}
+body section#body[data-view="create"] footer#appFooter button.iconDone {
+  left: 50%;
+  margin-left: -19.5px;
+}
+body section#body[data-view="create"] article {
+  overflow: auto;
+  min-width: 100%;
+}
+body section#body[data-view="create"] .templateElmt {
+  position: relative;
+  border-bottom: solid 1px #f4f4f4;
+  background-color: #ffffff;
+}
+body section#body[data-view="create"] .templateElmt section {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+body section#body[data-view="create"] .templateElmt section h1 {
+  display: none;
+}
+/*****************************************************************************
+ *																																					 *
+ *                            Very small screens                             *
+ *																																					 *
+ * - preview size is proportional																						 *
+ *																																					 *
+ *****************************************************************************/
+@media all and (max-width: 320px) {
+  body section#body[data-view="create"] .templateElmt {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+  }
+  body section#body[data-view="create"] .templateElmt:after {
+    content: '';
+    display: block;
+    margin-top: 66%;
+  }
+  body section#body[data-view="create"] .templateElmt * {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+/*****************************************************************************
+ *																																					 *
+ *                               Other screens                               *
+ *																																					 *
+ * - multi-column layout																						 				 *
+ *																																					 *
+ *****************************************************************************/
+@media all and (min-width: 321px) {
+  body section#body[data-view="create"] .templateElmt {
+    display: inline-block;
+    height: 200px;
+    margin: 5px;
+    border: solid 1px #f4f4f4;
+  }
+  body section#body[data-view="create"] .templateElmt  > * {
+    vertical-align: top;
   }
 }
