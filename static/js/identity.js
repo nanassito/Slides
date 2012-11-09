@@ -5,8 +5,9 @@
  * state.
  */
 
-
-var Slidez = window.Slidez || {};
+if (typeof(Slidez) === "undefined"){
+	window.Slidez = {};
+}
 
 Slidez.User = {};
 

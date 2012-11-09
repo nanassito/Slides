@@ -20,7 +20,10 @@ footer#appFooter
 			button.iconNew
 
 		when "create"
-			button.iconDone
+			button.iconDone(
+				disabled="disabled",
+				onclick="Slidez.CreateView.create();"
+			)
 
 		when default
 			p Unkown footer : #{footerType}

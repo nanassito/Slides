@@ -663,6 +663,9 @@ body section#body[data-view="create"] footer#appFooter button.iconDone {
   left: 50%;
   margin-left: -19.5px;
 }
+body section#body[data-view="create"] footer#appFooter button.iconDone[disabled] {
+  opacity: 0.5;
+}
 body section#body[data-view="create"] article {
   overflow: auto;
   min-width: 100%;

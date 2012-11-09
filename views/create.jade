@@ -5,6 +5,10 @@ block append variables
 	- var headerType = "create"
 	- var footerType = "create"
 
+block append head
+	script(src="/static/js/createView.js")
+
+
 block body
 	section(id="body", data-view="create")
 		include header
