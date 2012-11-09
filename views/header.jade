@@ -15,6 +15,15 @@ header#appHeader
 				mixin logout
 				button Share
 
+		when "create"
+			label
+				input(	type="text", 
+								name="title"
+								placeholder="Title of the new presentation")
+			button(class=['menu', 'iconBuddy'])
+			div.dropdown
+				mixin logout
+
 		when default
 			p Unkown header : #{headerType}
 

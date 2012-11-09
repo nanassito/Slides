@@ -1,0 +1,49 @@
+/******************************** Common Style ********************************/
+body section#body[data-view="create"]{
+	// Styling of the header elements
+	header#appHeader{
+		& > * {
+			position:absolute;
+		}
+
+		label{
+			left:10px;
+			width:auto;
+			right:@buttonHeight + 20px;
+			height:100%;
+
+			input{
+				height:@buttonHeight - 6px;
+				margin:3px;
+				border-radius:5px;
+
+				padding-left:5px;
+				padding-right:5px;
+				width:100%;
+
+				font-weight: 300;
+				font-family:sans-serif;
+				font-size: 23px;
+				line-height:@toolbarHeight + 5px;
+			}
+		}
+
+		button {
+			right:0;
+			border-left:solid 1px @orangeDark;
+		}
+	}
+
+
+	// Styling of the footer elements.
+	footer#appFooter{
+		& > * {
+			position:absolute;
+		}
+
+		button.iconDone{
+			left:50%;
+			margin-left:-@buttonHeight /2;
+		}
+	}
+}
