@@ -39,8 +39,12 @@ var express = require('express')
   , routes = require('./routes')
   , jade = require('jade')
   , fs = require('fs')
+
   , Presentation = require('./models/presentation.js')
+  , Template = require('./models/template.js')
+
   , logger = require('./utils/logger')
+  , persona = require('./utils/persona')
   ;
 
 var app = module.exports = express.createServer();
@@ -154,7 +158,7 @@ app.get('/preview/:presentationId/:slideId', function(req, res){
 /**
  * Serve the edit mode of a presentation
  */
-app.get('/edit/:presentationId', verifiedUser, function(req, res){
+app.get('/edit/:presentationId', persona.verifiedUser, function(req, res){
 	logger.url('/edit/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
 		res.render('edit', {
@@ -170,6 +174,17 @@ app.get('/edit/:presentationId', verifiedUser, function(req, res){
 				return elmt;
 			})
 		});
+	});
+});
+
+
+/**
+ * Serve a preview to the presentation with a defined slide.
+ */
+app.get('/create/presentation', persona.verifiedUser, function(req, res){
+	logger.url('/create/presentation');
+	Template.list(function(templateList){
+		res.render('create', {templates : templateList});
 	});
 });
 
