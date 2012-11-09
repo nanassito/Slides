@@ -675,13 +675,15 @@ body section#body[data-view="create"] .templateElmt {
   border-bottom: solid 1px #f4f4f4;
   background-color: #ffffff;
 }
+body section#body[data-view="create"] .templateElmt * {
+  width: 100%;
+  height: 100%;
+}
 body section#body[data-view="create"] .templateElmt section {
   float: left;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
 }
 body section#body[data-view="create"] .templateElmt section div {
   background-color: #00c8f0;
@@ -694,26 +696,38 @@ body section#body[data-view="create"] .templateElmt section div {
 }
 body section#body[data-view="create"] .templateElmt section div.left {
   right: auto;
-  width: 3px;
+  width: 5px;
   height: 100%;
 }
 body section#body[data-view="create"] .templateElmt section div.right {
   left: auto;
-  width: 3px;
+  width: 5px;
   height: 100%;
 }
 body section#body[data-view="create"] .templateElmt section div.top {
   bottom: auto;
   width: 100%;
-  height: 3px;
+  height: 5px;
 }
 body section#body[data-view="create"] .templateElmt section div.bottom {
   top: auto;
   width: 100%;
-  height: 3px;
+  height: 5px;
 }
 body section#body[data-view="create"] .templateElmt[aria-selected] section div {
   opacity: 1;
+}
+body section#body[data-view="create"] .templateElmt:focus section {
+  opacity: 0.3;
+  background-color: #00c8f0;
+}
+body section#body[data-view="create"] .templateElmt:hover section {
+  opacity: 0.3;
+  background-color: #00c8f0;
+}
+body section#body[data-view="create"] .templateElmt:active:hover section {
+  opacity: 0.3;
+  background-color: #008caa;
 }
 /*****************************************************************************
  *																																					 *

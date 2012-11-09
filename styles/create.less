@@ -63,14 +63,16 @@ body section#body[data-view="create"]{
 		border-bottom:solid 1px @grayLighter;
 		background-color:@white;
 
+		*{
+			width:100%;
+			height:100%;
+		}
+
 		section{
 			float:left;
 			position:absolute;
 			top:0;
 			left:0;
-
-			width:100%;
-			height:100%;
 
 			div{
 				background-color: @blueBright;
@@ -84,32 +86,47 @@ body section#body[data-view="create"]{
 
 				&.left{
 					right: auto;
-					width: 3px;
+					width: 5px;
 					height: 100%;
 				}
 
 				&.right{
 					left: auto;
-					width: 3px;
+					width: 5px;
 					height: 100%;
 				}
 
 				&.top{
 					bottom: auto;
 					width: 100%;
-					height: 3px;
+					height: 5px;
 				}
 
 				&.bottom{
 					top: auto;
 					width: 100%;
-					height: 3px;
+					height: 5px;
 				}
 			}
 		}
 
 		&[aria-selected] section div{
 			opacity:1;
+		}
+
+		&:focus section{
+			opacity:0.3;
+			background-color:@blueBright;
+		}
+		
+		&:hover section{
+			opacity:0.3;
+			background-color:@blueBright;
+		}
+		
+		&:active:hover section{
+			opacity:0.3;
+			background-color:@blueDark;
 		}
 	}
 }
