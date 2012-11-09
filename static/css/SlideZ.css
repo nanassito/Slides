@@ -680,8 +680,37 @@ body section#body[data-view="create"] .templateElmt section {
   width: 100%;
   height: 100%;
 }
-body section#body[data-view="create"] .templateElmt section h1 {
-  display: none;
+body section#body[data-view="create"] .templateElmt section div {
+  background-color: #00c8f0;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+body section#body[data-view="create"] .templateElmt section div.left {
+  right: auto;
+  width: 3px;
+  height: 100%;
+}
+body section#body[data-view="create"] .templateElmt section div.right {
+  left: auto;
+  width: 3px;
+  height: 100%;
+}
+body section#body[data-view="create"] .templateElmt section div.top {
+  bottom: auto;
+  width: 100%;
+  height: 3px;
+}
+body section#body[data-view="create"] .templateElmt section div.bottom {
+  top: auto;
+  width: 100%;
+  height: 3px;
+}
+body section#body[data-view="create"] .templateElmt[aria-selected] section div {
+  opacity: 1;
 }
 /*****************************************************************************
  *																																					 *

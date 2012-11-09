@@ -68,9 +68,44 @@ body section#body[data-view="create"]{
 			width:100%;
 			height:100%;
 
-			h1{
-				display:none;
+			div{
+				background-color: @blueBright;
+				opacity:0;
+				position:absolute;
+
+				left:0;
+				top:0;
+				right:0;
+				bottom:0;
+
+				&.left{
+					right: auto;
+					width: 3px;
+					height: 100%;
+				}
+
+				&.right{
+					left: auto;
+					width: 3px;
+					height: 100%;
+				}
+
+				&.top{
+					bottom: auto;
+					width: 100%;
+					height: 3px;
+				}
+
+				&.bottom{
+					top: auto;
+					width: 100%;
+					height: 3px;
+				}
 			}
+		}
+
+		&[aria-selected] section div{
+			opacity:1;
 		}
 	}
 }
