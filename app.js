@@ -73,6 +73,10 @@ app.configure('production', function(){
 	app.use(express.errorHandler());
 });
 
+
+
+
+
 // Routes
 var verifiedUser = routes.persona.verifiedUser;
 
@@ -94,6 +98,8 @@ app.post('/user/auth', routes.persona.auth);
  * Logout the user
  */
 app.get('/user/logout', routes.persona.logout);
+
+
 
 
 
@@ -151,6 +157,17 @@ app.get('/preview/:presentationId/:slideId', function(req, res){
 	logger.url('GET /preview/:presentationId/:slideId');
 	API0_3.preview(req.params.presentationId,req.params.slideId,function(preview){
 		res.render('presentation', preview);
+	});
+});
+
+
+/**
+ * Serve a preview of a presentation using the template.
+ */
+app.get('/preview/:template', function(req, res){
+	logger.url('GET /preview/:template');
+	Template.get(req.params.template, function(presentation){
+		res.render('presentation', presentation);
 	});
 });
 
