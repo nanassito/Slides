@@ -6,12 +6,10 @@ var db = mongoose.db
 	, Schema = mongoose.Schema
 	;
 
-var slideSchema = new Schema({
+var slideSchema = exports.schema = new Schema({
 	lastEdit: Date,
 	content: String,
 	classes: String
 });
 
-var Slide = db.model('Slide', slideSchema);
-
-exports.schema = slideSchema;
+var Slide = exports.model = db.model('Slide', slideSchema);
