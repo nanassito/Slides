@@ -5,20 +5,16 @@ block append variables
 	- var headerType = "home"
 	- var footerType = "home"
 
-// TODO : the href MUST use the configuration
-
 block body
 	section(id="body", data-view="home")
 		include header
 		article
 			each presentation in presentations
-				section(class="presentationElmt view")
-					//mixin presentationIframe(presentation)
+				section(class="presentationElmt")
 					iframe(src="#{presentation.previewUrl}")
 					section.presentationInfo
 						h2 #{presentation.title}
 						p #{presentation.lastEdit}
-					a(	href="/edit/#{presentation.id}", 
-						onclick="editPresentation(#{presentation.id});")
+					a(href="/edit/#{presentation.id}")
 						h1 Open
 		include footer
