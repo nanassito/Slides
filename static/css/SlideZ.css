@@ -301,7 +301,7 @@ body section#body[data-view="home"] header#appHeader h1 {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-body section#body[data-view="home"] header#appHeader button {
+body section#body[data-view="home"] header#appHeader button.menu {
   right: 0;
   border-left: solid 1px #be462d;
 }
@@ -498,7 +498,7 @@ body section#body[data-view="edit"] header#appHeader h1 {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-body section#body[data-view="edit"] header#appHeader button {
+body section#body[data-view="edit"] header#appHeader button.menu {
   right: 0;
   border-left: solid 1px #be462d;
 }
@@ -652,7 +652,7 @@ body section#body[data-view="create"] header#appHeader label input {
   font-size: 23px;
   line-height: 44px;
 }
-body section#body[data-view="create"] header#appHeader button {
+body section#body[data-view="create"] header#appHeader button.menu {
   right: 0;
   border-left: solid 1px #be462d;
 }
