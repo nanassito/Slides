@@ -27,7 +27,7 @@ var list = exports.list = function(user, callback){
 	logger.trace("internal call : models/presentation/list");
 	Presentation.find({'author': user}, "title _id slides", function(err, docs){
 		if (err){
-			console.error("presentation.getList got an error fetching datas.");
+			console.error("presentation.list got an error fetching datas.");
 			throw err;
 
 		}else{
@@ -74,19 +74,12 @@ var get = exports.get = function(presentationId, callback){
 var create = exports.create = function(title, template, author, callback){
 	logger.trace("internal call : models/presentation/create");
 
-	// Create the objects
 	var presentation = new Presentation({
 			'title': title,
 			'author': author,
 			'creationDate': new Date,
 			'template': template,
-			'slides': [
-				new Slide.model({
-					'lastEdit': new Date,
-					'classes':"First",
-					'content': "<h1>"+title+"</h1><footer>"+author+"</footer>"
-				})
-			]
+			'slides': []
 		});
 
 	presentation.save(function(err, presentation){
@@ -100,33 +93,16 @@ var create = exports.create = function(title, template, author, callback){
 			throw e;
 		
 		}else{
-			callback(presentation);
+			// Add a default slide to the presentation
+			Slide.create(
+				presentation, 
+				0, 
+				{content:"<h1>"+title+"</h1><footer>"+author+"</footer>"}, 
+				function(slide){
+					// Presentation created, slide added, we send it back
+					callback(presentation);
+				}
+			);
 		}
 	});
-
-	/*/ Save the slide in the database
-	presentation.slides[0].save(function(err){
-		if(err){
-			console.error("Creation of a new slide failed.");
-			resp.send(500);
-		}else{
-			console.log("New Slide created");
-			// now save, render and return the presentation
-			
-			presentation.save(function(err){
-				if(err){
-					console.error("Creation of a new presentation failed.");
-					resp.send(500);
-				}else{
-					console.log("New presentation created : %s",
-														presentation.title);
-					resp.contentType('text/html');
-					resp.writeHead(200);
-					resp.write(render(presentation));
-					resp.end();
-				}
-			});
-		}
-	});//*/
-
 }
