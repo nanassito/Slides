@@ -79,6 +79,7 @@
 			newPreview.querySelector('iframe').setAttribute('src', previewUrl);
 
 			// Tell DzSlides that there is a new slide
+			presWindow.Dz.listSlides();
 
 			// Go to the new slide
 		});
