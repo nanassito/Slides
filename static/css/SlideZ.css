@@ -515,6 +515,10 @@ body section#body[data-view="edit"] footer#appFooter button.iconInsert {
   left: 50%;
   margin-left: -19.5px;
 }
+body section#body[data-view="edit"] footer#appFooter button.iconInsert  + .dropdown {
+  left: 50%;
+  margin-left: -19.5px;
+}
 body section#body[data-view="edit"] article {
   position: fixed;
   top: 0;
