@@ -4,10 +4,13 @@
 
 var route = "/api/0.3";
 
-var persona = require('../../utils/persona.js')
-	, Presentation = require('../../models/presentation.js')
-	, nconf = require('nconf')
+var nconf = require('nconf')
+
+	, persona = require('../../utils/persona.js')
 	, logger = require('../../utils/logger.js')
+
+	, Presentation = require('../../models/presentation.js')
+	, Slide = require('../../models/slide.js')
 	;
 
 
@@ -121,7 +124,8 @@ exports.setUp = function(app){
 		if (!req.body.title || !req.body.template){
 			logger.error("missing parameters.")
 			res.writeHead(400);
-			res.send("To create a presentation we need a title and a template");
+			res.write("To create a presentation we need a title and a template");
+			res.end();
 			return;
 		}
 
@@ -134,6 +138,35 @@ exports.setUp = function(app){
 				res.end();
 			}
 		);
+	});
+
+
+	/**
+	 * Create a new slide
+	 */
+	//, persona.verifiedUser
+	app.put(route+'/slide', function(req, res){
+		logger.url('PUT '+route+'/slide');
+
+		if (!req.body.presentationId || !req.body.position){
+			logger.error("missing parameters.")
+			logger.debug('req.body.presentationId : '+req.body.presentationId);
+			logger.debug('req.body.position : '+req.body.position);
+			res.writeHead(400);
+			res.write("To create a slide we need a presentation and a position");
+			res.end();
+			return;
+		}
+
+		// Retrieve the presentation that will contain the new slide.
+		Presentation.get(req.body.presentationId, function(presentation){
+			Slide.create(presentation, req.body.position, {}, function(slide){
+				res.contentType('application/json');
+				res.writeHead(200);
+				res.write(JSON.stringify(slide));
+				res.end();
+			});
+		});
 	});
 
 
