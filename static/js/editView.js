@@ -54,7 +54,7 @@
 																	 .getAttribute('content');
 
 		// Find where we are in the presentation
-		var currentSlideIdx = presWindow.location.hash.substr(1) /1;
+		var currentSlideIdx = presWindow.Dz.idx -1;
 
 		// Create a new slide
 		requestNewSlide(currentSlideIdx+1, presentationId, function(slide){
@@ -90,6 +90,7 @@
 			presWindow.Dz.listSlides();
 
 			// Go to the new slide
+			Slidez.EditView.changeToSlide(newPreview.querySelector('section'));
 		});
 	};
 
