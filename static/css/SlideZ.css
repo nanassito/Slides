@@ -538,6 +538,7 @@ body section#body[data-view="edit"] aside  > section.wrapper {
 }
 body section#body[data-view="edit"] aside  > section.wrapper h1 {
   float: left;
+  left: 0;
   position: absolute;
   width: 100%;
   text-align: center;
@@ -579,12 +580,26 @@ body section#body[data-view="edit"] aside  > section.wrapper[aria-selected] sect
   background-color: #5f5f5f;
   z-index: 2;
 }
-body section#body[data-view="edit"] aside  > section.wrapper iframe {
+body section#body[data-view="edit"] aside  > section.wrapper section {
+  position: relative;
+  height: 100%;
+}
+body section#body[data-view="edit"] aside  > section.wrapper section * {
+  position: absolute;
+}
+body section#body[data-view="edit"] aside  > section.wrapper section iframe {
+  margin-left: 20px;
   width: 150px;
   height: 100px;
-  margin: auto;
   display: block;
   background-color: #ffffff;
+}
+body section#body[data-view="edit"] aside  > section.wrapper section section {
+  float: left;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 /******************************* Horizontal only ******************************/
 @media (orientation: landscape) {

@@ -70,13 +70,20 @@
 			// Add the preview of the new slide in the sidebar
 			newPreview = presWindow.document.createElement('section');
 			newPreview.setAttribute("class", "wrapper");
-			newPreview.innerHTML = "<section><h1></h1><iframe></iframe></section>";
+			newPreview.innerHTML = "																									\
+				<section>																																\
+					<h1></h1>																															\
+					<iframe></iframe>																											\
+					<section onclick='Slidez.EditView.changeToSlide(this);'></section>		\
+				</section>";
 			var crtPreview = window.document.body
 													 .querySelectorAll("aside .wrapper")[currentSlideIdx];
 			crtPreview.parentElement.insertBefore(newPreview, crtPreview.nextSibling);
 			var previewUrl = 'http://'+window.location.host+'/preview/'+presentationId
 																																 +'/'+slide._id;
 			newPreview.querySelector('iframe').setAttribute('src', previewUrl);
+
+			// Set up click event on the new slide.
 
 			// Tell DzSlides that there is a new slide
 			presWindow.Dz.listSlides();

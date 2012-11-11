@@ -25,9 +25,11 @@ block body
 								section
 									h1 #{index}
 									iframe(src="#{slide.url}")
+									section(onclick="Slidez.EditView.changeToSlide(this);")
 						default
 							section.wrapper
 								section
 									h1 #{index}
 									iframe(src="#{slide.url}")
+									section(onclick="Slidez.EditView.changeToSlide(this);")
 		include footer
