@@ -90,7 +90,7 @@
 			presWindow.Dz.listSlides();
 
 			// Go to the new slide
-			Slidez.EditView.changeToSlide(newPreview.querySelector('section'));
+			Slidez.EditView.changeToSlide(newPreview.querySelector('iframe+section'));
 		});
 	};
 
