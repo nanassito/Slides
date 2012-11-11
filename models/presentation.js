@@ -24,7 +24,7 @@ var Presentation = exports.model = db.model('Presentation', presentationSchema);
  * List all presentation for a given user
  */
 var list = exports.list = function(user, callback){
-	logger.trace("internal call : models/presentation/list");
+	logger.trace("model call : models/presentation/list");
 	Presentation.find({'author': user}, "title _id slides", function(err, docs){
 		if (err){
 			console.error("presentation.list got an error fetching datas.");
@@ -44,7 +44,7 @@ var list = exports.list = function(user, callback){
 	});
 }
 var getList = exports.getList = function(user, callback){
-	logger.trace("internal call : models/presentation/getList");
+	logger.trace("model call : models/presentation/getList");
 	logger.warn("deprecated call : models/presentation/getList");
 	list(user, callback);
 }
@@ -53,7 +53,7 @@ var getList = exports.getList = function(user, callback){
  * Get a specific presentation given its Id
  */
 var get = exports.get = function(presentationId, callback){
-	logger.trace("internal call : models/presentation/get");
+	logger.trace("model call : models/presentation/get");
 	Presentation.findById(presentationId, function(err, presentation){
 		if (err){
 			console.error("presentation.get got an error fetching the presentation.");
@@ -72,7 +72,7 @@ var get = exports.get = function(presentationId, callback){
  * Create a new presentation given its author, title and template
  */
 var create = exports.create = function(title, template, author, callback){
-	logger.trace("internal call : models/presentation/create");
+	logger.trace("model call : models/presentation/create");
 
 	var presentation = new Presentation({
 			'title': title,

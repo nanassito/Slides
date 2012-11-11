@@ -144,16 +144,13 @@ exports.setUp = function(app){
 	/**
 	 * Create a new slide
 	 */
-	//, persona.verifiedUser
-	app.put(route+'/slide', function(req, res){
+	app.put(route+'/slide', persona.verifiedUser, function(req, res){
 		logger.url('PUT '+route+'/slide');
 
 		if (!req.body.presentationId || !req.body.position){
 			logger.error("missing parameters.")
-			logger.debug('req.body.presentationId : '+req.body.presentationId);
-			logger.debug('req.body.position : '+req.body.position);
 			res.writeHead(400);
-			res.write("To create a slide we need a presentation and a position");
+			res.write("To create a slide we need a presentationId and a position");
 			res.end();
 			return;
 		}
@@ -165,6 +162,39 @@ exports.setUp = function(app){
 				res.writeHead(200);
 				res.write(JSON.stringify(slide));
 				res.end();
+			});
+		});
+	});
+
+
+	/**
+	 * Save modification made to a slide
+	 */
+	app.post(route+'/slide', function(req, res){
+		logger.url('POST'+route+'/slide');
+
+		if (!req.body.presentationId || !req.body.slide){
+			logger.error("missing parameters.")
+			res.writeHead(400);
+			res.write("To create a slide we need a presentationId and a slide");
+			res.end();
+			return;
+		}
+
+		var slide = JSON.parse(req.body.slide);
+
+		// Retrieve the presentation that contain the slide.
+		var target = Presentation.get(req.body.presentationId, function(presentation){
+
+			var target = presentation.slides.id(slide._id);
+			if (!target){
+				res.writeHead(404);
+				res.write("Can't find the slide to update");
+				res.end;
+			};
+			Slide.update(target, slide, function(actualSlide){
+				res.send('ok');
+				return;
 			});
 		});
 	});
