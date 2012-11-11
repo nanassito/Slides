@@ -6,6 +6,7 @@
 
 	Slidez.EditView = {};
 
+
 	/**
 	 * call the API to crete a new slide
 	 */
@@ -91,5 +92,32 @@
 			// Go to the new slide
 		});
 	};
+
+
+	/**
+	 * Changing the current slide
+	 */
+	Slidez.EditView.changeToSlide = function(targetSlide){
+		var presWindow = document.querySelector('article iframe').contentWindow;
+		var index = 0;
+		var container = targetSlide.parentElement.parentElement;
+
+		// remove the aria-selected from the current slide preview
+		var previews = document.querySelectorAll("aside .wrapper");
+		for (var i=0, preview; preview = previews[i]; i++){
+			preview.removeAttribute("aria-selected");
+
+			// as we are iterating, just check is the current slide is the new one.
+			if (preview == container){
+				index = i;
+			}
+		}
+
+		// add the aria-selected to the curent slide preview
+		container.setAttribute('aria-selected','true');
+
+		// tell DzSlides to move to the target slide.
+		presWindow.Dz.setSlide(index+1);
+	};//*/
 
 })( window );
