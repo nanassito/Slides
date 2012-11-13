@@ -145,6 +145,13 @@ app.get('/list/presentations', verifiedUser, function(req, res){
 app.get('/view/:presentationId', function(req, res){
 	logger.url('GET /view/:presentationId');
 	Presentation.get(req.params.presentationId, function(presentation){
+		if(req.query['edit']){
+			logger.debug('We really want an editable version of the presentation.');
+			presentation.edit = true;
+		}else{
+			presentation.edit = false;
+		}
+
 		res.render('presentation', presentation);
 	});
 });

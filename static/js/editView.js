@@ -7,9 +7,22 @@
 	Slidez.EditView = {};
 
 
+
 /******************************************************************************
  *                              internal methods                              *
  ******************************************************************************/
+
+ 	/**
+ 	 * Initialization
+ 	 */
+ 	document.addEventListener("DOMContentLoaded", function () {
+		// Window containing the presentation being edited
+		var presWindow = document.querySelector('article iframe').contentWindow;
+
+	 	presWindow.Slidez = window.Slidez;
+
+ 	});//*/
+
 
 	/**
 	 * call the API to crete a new slide
@@ -71,6 +84,7 @@
 			// Add the new slide in the presentation
 			newSlide = presWindow.document.createElement('section');
 			newSlide.setAttribute("data-slide", slide._id);
+			newSlide.setAttribute("contenteditable", "true");
 			newSlide.innerHTML = slide.content;
 			var crtSlide = presWindow.document
 														 .querySelectorAll("[data-slide]")[currentSlideIdx];
@@ -128,5 +142,50 @@
 		// tell DzSlides to move to the target slide.
 		presWindow.Dz.setSlide(index+1);
 	};//*/
+
+
+	/**
+	 * Save the slide in it's current state
+	 */
+	Slidez.EditView.saveSlide = function(slide){
+		var presWindow = document.querySelector('article iframe').contentWindow;
+
+		var presentationId = presWindow.document.head
+																	 .querySelector("meta[name='presentationId']")
+																	 .getAttribute('content');
+
+		var httpRequest = new XMLHttpRequest();
+		var formData = new FormData();
+		formData.append("presentationId", presentationId);
+		formData.append("slide", JSON.stringify({
+			'_id':slide.getAttribute('data-slide'),
+			'content':slide.innerHTML,
+			'classes': slide.getAttribute('class')
+		}));
+				
+		// get the response from the server
+		httpRequest.onreadystatechange = function(){
+			// state 4 means that we have the full response.
+			if (httpRequest.readyState === 4) {
+				if (httpRequest.status === 200) {
+					console.log("Slide updated");
+					console.log(httpRequest.responseText);
+
+				} else if(httpRequest.status === 403){
+					console.log("You new to be connected to update a slide");
+					alert("Failed to update the slide");
+
+				}else {
+					console.error("Failed to update the slide");
+					alert("Failed to update the slide");
+				}
+			}
+		};
+				
+		// Send the assertion for server-side verification and login
+		console.log("sending the update request");
+		httpRequest.open("POST", "/api/0.3/slide");
+		httpRequest.send(formData);//*/
+	};
 
 })( window );

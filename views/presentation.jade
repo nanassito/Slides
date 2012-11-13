@@ -7,6 +7,7 @@ link(href="/template/#{template}", rel="stylesheet", type="text/css")
 link(href="/static/css/dzslides.css", rel="stylesheet", type="text/css")
 script(type="text/javascript", src="/static/js/dzslides.js")
 
+- if (typeof(edit) === "undefined") edit = false;
 
 - var i = 0	
 each slide in slides
@@ -14,9 +15,9 @@ each slide in slides
   section(
   	class="#{slide.classes}", 
   	data-slide="#{slide._id}",
-  	onfocus="Slidez.EditView.onSlideFocus(this);",
-  	onblur="Slidez.EditView.onSlideBlur(this);",
-  	tabindex="#{i}"
+  	onblur="Slidez.EditView.saveSlide(this);",
+  	tabindex="#{i}",
+  	contenteditable="#{edit}"
   )!= slide.content
 
 div#progress-bar
