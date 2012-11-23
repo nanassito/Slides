@@ -48,27 +48,35 @@ exports.setUp = function(app){
 	/**
 	 * Login a user
 	 */
-	app.post(
-		route+'/user/auth', 
-		function(req, res, next){
-			logger.url('POST '+route+'/user/auth');
-			next();
-		}, 
-		persona.auth
-	);
+	app.post(route+'/user/auth', function(req, res){
+		logger.url('POST '+route+'/user/auth');
+
+		persona.auth(req.body.assertion, function(verified){
+
+			if (verified.status == 'okay') {
+				req.session.email = verified.email;
+				logger.log(req.session.email+ ' is logged in.');
+			}else{
+				logger.warn('login failed : '+verified.reason);
+				res.writeHead(403);
+			};
+
+			res.write(JSON.stringify(verified));
+			res.end();
+		})
+	});
 
 
 	/**
 	 * Logout the user
 	 */
-	app.get(
-		route+'/user/logout', 
-		function(req, res, next){
-			logger.url('GET '+route+'/user/logout');
-			next();
-		},
-		persona.logout
-	);
+	app.get(route+'/user/logout', function(req, res){
+		logger.url('GET '+route+'/user/logout');
+		persona.logout(req);
+		res.setHeader('Location', '/');
+		res.writeHead(301);
+		res.end();
+	});
 
 
 	/**

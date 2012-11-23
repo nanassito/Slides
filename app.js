@@ -36,9 +36,6 @@ nconf.defaults({
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , jade = require('jade')
-  , fs = require('fs')
 
   , Presentation = require('./models/presentation.js')
   , Template = require('./models/template.js')
@@ -76,34 +73,6 @@ app.configure('production', function(){
 
 
 
-
-// Routes
-var verifiedUser = routes.persona.verifiedUser;
-
-//app.get('/presentation/:presentation_id', routes.presentation.getPresentation);
-//app.post('/presentation/:presentation_id', verifiedUser, 
-//												routes.presentation.saveSlide);
-//app.post('/new/presentation',verifiedUser, routes.presentation.newPresentation);
-//
-//app.get('/list/presentations', verifiedUser, routes.presentation.getList);
-//app.get('/list/templates', routes.template.getList);
-
-
-/**
- * Login a user
- */
-app.post('/user/auth', routes.persona.auth);
-
-/**
- * Logout the user
- */
-app.get('/user/logout', routes.persona.logout);
-
-
-
-
-
-
 /******************************************************************************
  *                                 Public API                                 * 
  ******************************************************************************/
@@ -131,7 +100,7 @@ app.get('/', function(req, res){
 /**
  * Serve the page displaying the list of all user's presentations.
  */
-app.get('/list/presentations', verifiedUser, function(req, res){
+app.get('/list/presentations', persona.verifiedUser, function(req, res){
 	logger.url('GET /list/presentations');
 	Presentation.getList(req.session.email, function(presentationList){
 		res.render( 'home', { 'presentations' : presentationList } );
@@ -219,5 +188,5 @@ app.get('/create/presentation', persona.verifiedUser, function(req, res){
  ******************************************************************************/
 
 app.listen(3000); // FIXME : use nconf 
-logger.info("Express server listening on port %d in %s mode", 
-																					app.address().port, app.settings.env);
+logger.info("Express server listening on port "+app.address().port+" in "
+																											+app.settings.env+" mode");
