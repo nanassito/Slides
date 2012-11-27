@@ -49,6 +49,7 @@ var getList = exports.getList = function(user, callback){
 	list(user, callback);
 }
 
+
 /**
  * Get a specific presentation given its Id
  */
@@ -67,6 +68,7 @@ var get = exports.get = function(presentationId, callback){
 		}
 	});
 }
+
 
 /**
  * Create a new presentation given its author, title and template

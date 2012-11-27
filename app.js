@@ -102,7 +102,7 @@ app.get('/', function(req, res){
  */
 app.get('/list/presentations', persona.verifiedUser, function(req, res){
 	logger.url('GET /list/presentations');
-	Presentation.getList(req.session.email, function(presentationList){
+	Presentation.list(req.session.email, function(presentationList){
 		res.render( 'home', { 'presentations' : presentationList } );
 	});
 });
