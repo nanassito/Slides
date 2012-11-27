@@ -85,6 +85,7 @@
 			newSlide = presWindow.document.createElement('section');
 			newSlide.setAttribute("data-slide", slide._id);
 			newSlide.setAttribute("contenteditable", "true");
+			newSlide.setAttribute("onblur", "Slidez.EditView.saveSlide(this);");
 			newSlide.innerHTML = slide.content;
 			var crtSlide = presWindow.document
 														 .querySelectorAll("[data-slide]")[currentSlideIdx];
