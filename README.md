@@ -18,6 +18,7 @@ At the moment there are no publicly available server running this code. Neverthe
 What needs to be done ?  
 As I stated before the project is still imature.  
 here is a list without any kind of priorities of what needs to be done to achieve 1.0 :  
+- better organize the code base. see #31
 - Find a better way to handle the slide's preview in edit mode
 - Add functionality to the edit mode to ease the insertion of different type of content
 - Add more templates
